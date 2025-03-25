@@ -126,7 +126,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-MEDIA_URL = "/media/"
+MEDIA_URL = "backend/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 ALLOWED_IMAGE_FILE_EXTENSIONS = ['png', 'jpg', 'bmp']

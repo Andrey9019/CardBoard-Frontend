@@ -95,7 +95,7 @@ class Game(models.Model):
 
 class Image(models.Model):
     game = models.ForeignKey(Game, related_name="images", on_delete=models.CASCADE)
-    url = models.ImageField(
+    path = models.ImageField(
         upload_to=game_image_upload_to,
         validators=[
             FileExtensionValidator(settings.ALLOWED_IMAGE_FILE_EXTENSIONS),
@@ -104,7 +104,7 @@ class Image(models.Model):
     )
 
     def __str__(self):
-        return self.url
+        return str(self.path)
 
 
 class Type(models.Model):

@@ -1,8 +1,11 @@
 from django_filters import NumberFilter, BaseInFilter
 from rest_framework import viewsets
-from .serializers import GameSerializer
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+from .serializers import GameSerializer, ImageSerializer
 from rest_framework import permissions
-from .models import Game
+from .models import Game, Image
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 
@@ -39,9 +42,20 @@ class GameModelViewSet(viewsets.ModelViewSet):
     search_fields = ['title', 'description']
 
     def get_permissions(self):
-        if self.action == 'list' or self.action == 'retrieve':
+        if self.action in ['list', 'retrieve', 'images']:
             permission_classes =  [permissions.AllowAny]
         else:
             permission_classes = [permissions.IsAdminUser]
         return [permission() for permission in permission_classes]
 
+    @action(detail=True, methods=['get'], permission_classes=[permissions.AllowAny])
+    def images(self, request, pk=None):
+        """
+        Custom action to retrieve all images for a specific game
+        """
+        game = self.get_object()
+        images = game.images.all()
+        # print(images)
+        print(Image.objects.all())
+        serializer = ImageSerializer(images, many=True, context={'request': request})
+        return Response(serializer.data)

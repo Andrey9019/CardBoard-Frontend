@@ -1,10 +1,25 @@
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
 from django.contrib.auth.models import User
 from ddf import G
-from .models import Game, AgeGroup, Type, DifficultyLevel, Genre, Mechanic, Duration, Review, PlayerCount, Publisher
+from games.models import Game, AgeGroup, Type, DifficultyLevel, Genre, Mechanic, Duration, Review, PlayerCount, Publisher
 from datetime import date
+
+import io
+
+from django.core.files.uploadedfile import SimpleUploadedFile
+from PIL import Image
+
+
+def create_image(height: int, width: int) -> SimpleUploadedFile:
+    # Creates image with different sizes for tests
+    valid_image = Image.new('RGB', (height, width), color='white')
+    buffer = io.BytesIO()
+    valid_image.save(buffer, format='JPEG')
+    image_data = buffer.getvalue()
+    return SimpleUploadedFile('cover.jpg', image_data, content_type='image/jpg')
 
 
 class GameViewSetTest(APITestCase):
@@ -113,17 +128,23 @@ class GameViewSetTest(APITestCase):
             'title': 'New Game',
             'description': 'A newly created game',
             'price': '35.00',
-            'publisher': self.publisher.id,
-            'type': [self.type_board.id],
-            'player_count': self.player_count_4.id,
-            'age_group': self.age_group_12.id,
-            'difficulty': self.difficulty_hard.id,
-            'genre': [self.genre_adventure.id],
-            'mechanic': [self.mechanic_4.id],
-            'duration': self.duration_45.id,
-            'release_year': '2023-01-01'
+            'publisher_name': "Some new publisher",
+            'type_ids': [self.type_board.id],
+            'player_count_id': self.player_count_4.id,
+            'age_group_id': self.age_group_12.id,
+            'difficulty_id': self.difficulty_hard.id,
+            'genre_ids': [self.genre_adventure.id],
+            'mechanic_ids': [self.mechanic_4.id],
+            'duration_id': self.duration_45.id,
+            'release_year': '2023-01-01',
+            "images": [
+                create_image(1000, 1500),
+                create_image(800, 800)
+            ]
+
         }
         response = self.admin_client.post(self.list_url, data)
+        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_create_game_unauthorized(self):
