@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "games.apps.GamesConfig",
+    "csp",
 ]
 
 MIDDLEWARE = [
@@ -125,5 +126,23 @@ REST_FRAMEWORK = {
     ]
 }
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 ALLOWED_IMAGE_FILE_EXTENSIONS = ['png', 'jpg', 'bmp']
 MAX_IMAGE_FILE_SIZE = 5 * 1024 * 1024
+
+# Add security headers
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"
+CSP_DEFAULT_SRC = ("'self'",)
+
+# CSP settings for dev
+CSP_SCRIPT_SRC = ("'self'", "http://localhost:3000")
+CSP_STYLE_SRC = ("'self'", "http://localhost:3000")
+CSP_IMG_SRC = ("'self'", "data:", "http://localhost:3000")
+
+# CSP settings for prod
+# CSP_SCRIPT_SRC = ("'self'",)
+# CSP_STYLE_SRC = ("'self'",) # add here more links if js is loaded not only from project static files
+# CSP_IMG_SRC = ("'self'", "data:")
