@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django_filters",
     "games.apps.GamesConfig",
     "csp",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -123,7 +124,8 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
-    ]
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 MEDIA_URL = "backend/media/"
