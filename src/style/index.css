@@ -1,8 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -10,17 +13,28 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 body {
-  @apply min-h-screen flex flex-col;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   margin: 0;
+  @apply bg-background;
 }
 
 main {
-  @apply flex-grow;
+  flex-grow: 1;
 }
 
 main:has(.back-link) {
-  @apply text-center;
+  text-align: center;
 }
 
 h1,
@@ -60,26 +74,30 @@ a {
 }
 
 .container {
-  @apply mx-auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Mobile */
+
 @media only screen and (min-width: 320px) and (max-width: 375px) {
   .container {
-    @apply max-w-[375px];
+    max-width: 375px;
   }
 }
 
 /* Tablet */
-@media only screen and (min-width: 768px) {
+
+@media only screen and (min-width: 1024px) {
   .container {
-    @apply max-w-[768px];
+    max-width: 1024px;
   }
 }
 
 /* Desktop */
-@media only screen and (min-width: 1200px) {
+
+@media only screen and (min-width: 1440px) {
   .container {
-    @apply max-w-[1200px];
+    max-width: 1440px;
   }
 }
