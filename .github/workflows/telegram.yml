@@ -22,8 +22,7 @@ jobs:
           MESSAGE="🚀 *Оновлена головна гілка!*
           🛠 Репозиторій: *$GITHUB_REPO*
           👤 Оновлено: *$GITHUB_ACTOR*
-
-            🔄 Будь ласка, витягніть останні зміни:
+          🔄 Будь ласка, витягніть останні зміни:
           \`git checkout main && git pull origin main\`"
 
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
