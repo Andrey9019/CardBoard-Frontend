@@ -2,15 +2,13 @@ name: Notify on Main Update
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
     types: [closed]
 
 jobs:
-  notify:
+  main_job:
     runs-on: ubuntu-latest
     steps:
       - name: Send notification to Telegram
