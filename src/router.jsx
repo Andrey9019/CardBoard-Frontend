@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Main from "./pages/Main";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import GamePage from "./pages/GamePage";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
 
 const Router = () => {
   return (
@@ -15,7 +15,7 @@ const Router = () => {
         <Routes>
           <Route path="/login" element={<Login />} />
 
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Main />} />
           <Route path="/game/:id" element={<GamePage />} />
 
           <Route path="*" element={<NotFound />} />
