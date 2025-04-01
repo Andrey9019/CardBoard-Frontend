@@ -16,5 +16,5 @@ jobs:
         run: |
           curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
           -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-          -d "text=🚀 Оновлена головна гілка!%0A%0A Репозиторій: Front ${{github.repository}}!%0A%0A📩 Повідомлення: ${{ github.event.head_commit.message }}%0A%0A🔄 Будь ласка, витягніть останні зміни:%0A%60%60%60git checkout main %26%26 git pull origin main%60%60%60"
-          -d "parse_mode=Markdown"
+          - d "text=🚀 Оновлена головна гілка!%0A%0A💻Репозиторій: Front ${{github.repository}}%0A%0A📩 Повідомлення: ${{ github.event.head_commit.message }}%0A%0A🔄 Будь ласка, витягніть останні зміни:%0A%60git checkout main %26%26 git pull origin main%60"
+           -d "parse_mode=Markdown"
