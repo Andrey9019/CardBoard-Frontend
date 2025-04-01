@@ -11,8 +11,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="header flex justify-between items-center bg-primary text-secondary px-11 py-6 rounded-b-xl">
-      <Logo />
+    <header className="header flex justify-between items-center bg-primary text-secondary px-9 py-6 rounded-b-xl">
+      <Logo size="small" className="w-24" />
       <nav className="hidden lg:flex">
         <Link to="/">Складність гри</Link>
         <Link to="/">Тривалість гри</Link>
