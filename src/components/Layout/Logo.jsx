@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import extraLargeLogo from "../../assets/logos/Logo-Extra-Large.svg";
 import largeLogo from "../../assets/logos/Logo-Large.svg";
 import mediumLogo from "../../assets/logos/Logo-Medium.svg";
@@ -12,11 +13,13 @@ const Logo = ({ size = "medium", className = "" }) => {
   };
 
   return (
-    <img
-      src={logos[size] || smallLogo}
-      alt="Logo"
-      className={`h-auto ${className}`}
-    />
+    <Link to={"/"}>
+      <img
+        src={logos[size] || smallLogo}
+        alt="Logo"
+        className={`h-auto ${className}`}
+      />
+    </Link>
   );
 };
 

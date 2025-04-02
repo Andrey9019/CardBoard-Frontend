@@ -1,31 +1,69 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { IoCartOutline } from "react-icons/io5";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { FaRegUser } from "react-icons/fa6";
-import { IoIosSearch } from "react-icons/io";
+import { useState, useEffect, useRef } from "react";
 
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 // import SearchBtn from "./SearchBtn";
 
+import { IoCartOutline } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoIosArrowDown } from "react-icons/io";
+import { HiOutlineUser } from "react-icons/hi2";
+import { IoIosSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
+
 export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const itemRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (itemRef.current && !itemRef.current.contains(event.target)) {
+        setIsSearchOpen(false);
+        setIsCatalogOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const toggleSearch = () => {
+    if (isCatalogOpen) setIsCatalogOpen(false);
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  const toggleCatalog = () => {
+    if (isSearchOpen) setIsSearchOpen(false);
+
+    setIsCatalogOpen((prev) => !prev);
+  };
 
   return (
-    <header className="header  bg-primary text-secondary px-9 py-6 rounded-b-3xl">
+    <header
+      className={`header relative bg-primary text-secondary px-9 xl:px-16 py-6 
+        ${isSearchOpen ? "rounded-b-none" : "rounded-b-3xl"}
+        ${isCatalogOpen ? "rounded-b-none" : "rounded-b-3xl"}
+
+      `}
+    >
       <div className="flex justify-between items-center">
+        <div className="hidden xl:flex">
+          <button
+            onClick={toggleCatalog}
+            className="flex gap-4 justify-between items-center"
+          >
+            <span className="text-lg font-bold ">Каталог</span>
+
+            <IoIosArrowDown
+              className={`w-8 h-8 transform transition-transform duration-300 ${
+                isCatalogOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        </div>
         <Logo size="small" className="w-24" />
-        {/* <nav className="hidden lg:flex">
-        <Link to="/">Складність гри</Link>
-        <Link to="/">Тривалість гри</Link>
-        <Link to="/">Типи гри</Link>
-        <Link to="/">Жанр гри</Link>
-        <Link to="/">Механіка гри</Link>
-        <Link to="/">Аксесуари</Link>
-        <Link to="/">Оренда і обмін</Link>
-      </nav> */}
+
         <div className="flex">
           <ul className="flex gap-4">
             <li
@@ -33,20 +71,20 @@ export default function Header() {
                 isSearchOpen ? "opacity-0 scale-90" : "opacity-100 scale-100"
               }`}
             >
-              <button onClick={() => setIsSearchOpen(true)} className="flex">
+              <button onClick={toggleSearch} className="flex">
                 <IoIosSearch className="w-8 h-8" />
               </button>
             </li>
             <li className="p-2">
               <IoCartOutline className="w-8 h-8 " />
             </li>
-            <li className="hidden lg:flex">
-              <FaRegUser />
+            <li className="hidden lg:flex p-2">
+              <HiOutlineUser className="w-8 h-8 " />
             </li>
           </ul>
 
           <button
-            className="lg:hidden ml-4 p-2"
+            className="xl:hidden ml-4 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <RxHamburgerMenu className="w-8 h-8" />
@@ -59,8 +97,11 @@ export default function Header() {
       </div>
 
       {isSearchOpen && (
-        <div className="mt-12 transition-all duration-900 transform -translate-y-4 opacity-100">
-          <form className="rounded-xl flex px-4 py-3 items-center border w-full max-w-md mx-auto ">
+        <div
+          ref={itemRef}
+          className="absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl"
+        >
+          <form className="rounded-xl flex px-4 py-3 items-center border md:max-w-prose mx-auto">
             <div className="flex items-center flex-1">
               <input
                 type="text"
@@ -68,11 +109,58 @@ export default function Header() {
                 placeholder="Search..."
               />
 
-              <button onClick={() => setIsSearchOpen(false)}>
-                <IoIosSearch className="w-8 h-8 " />
+              <button type="button" onClick={() => setIsSearchOpen(false)}>
+                <IoIosSearch className="w-8 h-8" />
               </button>
             </div>
           </form>
+        </div>
+      )}
+
+      {isCatalogOpen && (
+        <div
+          // ref={itemRef}
+          className="absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl"
+        >
+          <div className="mb-9 grid grid-cols-3 grid-rows-3">
+            <ul className="gap-9 ">
+              <li>1</li>
+            </ul>
+            <ul>
+              <li>1</li>
+            </ul>
+            <ul>
+              <li>1</li>
+            </ul>
+            <ul>
+              <li>1</li>
+            </ul>
+            <ul>
+              <li>1</li>
+            </ul>
+            <ul>
+              <li>1</li>
+            </ul>
+            <ul>
+              <li>1</li>
+            </ul>
+            <ul>
+              <li>1</li>
+            </ul>
+          </div>
+          <div>
+            <div className="relative before:absolute before:top-0 before:left-0 before:w-full before:h-[1px] before:bg-secondary "></div>
+          </div>
+          <div className="pt-9 pb-9">
+            <ul className="grid grid-cols-3 gap-9 ">
+              <Link>
+                <li>Обмін і повернення</li>
+              </Link>
+              <Link>
+                <li>Оренда?</li>
+              </Link>
+            </ul>
+          </div>
         </div>
       )}
     </header>
