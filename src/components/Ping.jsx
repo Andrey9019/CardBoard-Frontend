@@ -17,7 +17,7 @@ export default function Ping() {
 
   return (
     <section className="flex items-center justify-center">
-      <button onClick={handlePing} className="border p-2 border-primary">
+      <button onClick={handlePing} className="border border-primary p-2">
         Ping
       </button>
       <p>{pingMessage}</p>
