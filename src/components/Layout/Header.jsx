@@ -46,22 +46,20 @@ export default function Header() {
 
   return (
     <header
-      className={`header relative bg-primary text-secondary px-9 xl:px-16 py-6 
-        ${
-          isSearchOpen || isCatalogOpen ? "rounded-b-none" : "rounded-b-3xl"
-        }        
-        `}
+      className={`header relative z-10 bg-primary px-9 py-6 text-secondary xl:px-16 ${
+        isSearchOpen || isCatalogOpen ? "rounded-b-none" : "rounded-b-3xl"
+      } `}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <div className="hidden xl:flex">
           <button
             onClick={toggleCatalog}
-            className="flex gap-4 justify-between items-center"
+            className="flex items-center justify-between gap-4"
           >
-            <span className="text-lg font-bold ">Каталог</span>
+            <span className="text-lg font-bold">Каталог</span>
 
             <IoIosArrowDown
-              className={`w-8 h-8 transform transition-transform duration-300 ${
+              className={`h-8 w-8 transform transition-transform duration-300 ${
                 isCatalogOpen ? "rotate-180" : ""
               }`}
             />
@@ -73,7 +71,7 @@ export default function Header() {
           <ul className="flex gap-4">
             <li
               className={`p-2 transition-all duration-300 ${
-                isSearchOpen ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                isSearchOpen ? "scale-90 opacity-0" : "scale-100 opacity-100"
               }`}
             >
               <button
@@ -81,19 +79,19 @@ export default function Header() {
                 disabled={isSearchOpen}
                 className="flex"
               >
-                <IoIosSearch className="w-8 h-8" />
+                <IoIosSearch className="h-8 w-8" />
               </button>
             </li>
             <li className="p-2">
-              <IoCartOutline className="w-8 h-8 " />
+              <IoCartOutline className="h-8 w-8" />
             </li>
-            <li className="hidden lg:flex p-2">
-              <HiOutlineUser className="w-8 h-8 " />
+            <li className="hidden p-2 lg:flex">
+              <HiOutlineUser className="h-8 w-8" />
             </li>
           </ul>
 
-          <button className="xl:hidden ml-4 p-2" onClick={toggleMobileMenu}>
-            <RxHamburgerMenu className="w-8 h-8" />
+          <button className="ml-4 p-2 xl:hidden" onClick={toggleMobileMenu}>
+            <RxHamburgerMenu className="h-8 w-8" />
           </button>
 
           {isMobileMenuOpen && (
@@ -105,18 +103,18 @@ export default function Header() {
       {isSearchOpen && (
         <div
           ref={itemRef}
-          className={`absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl `}
+          className={`absolute left-0 z-10 mt-4 w-full rounded-b-3xl bg-primary px-9 py-4`}
         >
-          <form className="rounded-xl flex px-4 py-3 items-center border md:max-w-prose mx-auto">
-            <div className="flex items-center flex-1">
+          <form className="mx-auto flex items-center rounded-xl border px-4 py-3 md:max-w-prose">
+            <div className="flex flex-1 items-center">
               <input
                 type="text"
-                className="flex-1 h-10 border-none outline-none bg-transparent"
+                className="h-10 flex-1 border-none bg-transparent outline-none"
                 placeholder="Search..."
               />
 
               <button type="button" onClick={() => setIsSearchOpen(false)}>
-                <IoIosSearch className="w-8 h-8" />
+                <IoIosSearch className="h-8 w-8" />
               </button>
             </div>
           </form>
@@ -125,10 +123,10 @@ export default function Header() {
 
       {isCatalogOpen && (
         <div
-          className={`absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl`}
+          className={`absolute left-0 z-10 mt-4 w-full rounded-b-3xl bg-primary px-9 py-4`}
         >
           <div className="mb-9 grid grid-cols-3 grid-rows-3">
-            <ul className="gap-9 ">
+            <ul className="gap-9">
               <li>null</li>
             </ul>
             <ul>
@@ -154,10 +152,10 @@ export default function Header() {
             </ul>
           </div>
           <div>
-            <div className="relative before:absolute before:top-0 before:left-0 before:w-full before:h-[1px] before:bg-secondary "></div>
+            <div className="relative before:absolute before:left-0 before:top-0 before:h-[1px] before:w-full before:bg-secondary"></div>
           </div>
-          <div className="pt-9 pb-9">
-            <ul className="grid grid-cols-3 gap-9 ">
+          <div className="pb-9 pt-9">
+            <ul className="grid grid-cols-3 gap-9">
               <Link>
                 <li>Обмін і повернення</li>
               </Link>
