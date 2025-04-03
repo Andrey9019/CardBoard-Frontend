@@ -1,13 +1,26 @@
 import { Link } from "react-router-dom";
+import extraLargeLogo from "../../assets/logos/Logo-Extra-Large.svg";
+import largeLogo from "../../assets/logos/Logo-Large.svg";
+import mediumLogo from "../../assets/logos/Logo-Medium.svg";
+import smallLogo from "../../assets/logos/Logo-Small.svg";
 
-export default function Logo() {
+const Logo = ({ size = "medium", className = "" }) => {
+  const logos = {
+    extraLarge: extraLargeLogo,
+    large: largeLogo,
+    medium: mediumLogo,
+    small: smallLogo,
+  };
+
   return (
-    <div className="text-lg font-bold uppercase leading-none">
-      <Link to="/">
-        CARDS&
-        <br />
-        BOARD
-      </Link>
-    </div>
+    <Link to={"/"}>
+      <img
+        src={logos[size] || smallLogo}
+        alt="Logo"
+        className={`h-auto ${className}`}
+      />
+    </Link>
   );
-}
+};
+
+export default Logo;
