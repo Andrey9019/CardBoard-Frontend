@@ -7,27 +7,27 @@ import Logo from "./Logo";
 
 export default function MobileMenu({ onClose }) {
   return (
-    <div className="absolute top-0 left-0 w-full h-screen bg-primary text-secondary px-9 pt-6 pb-12">
-      <div className="flex justify-between items-center ">
+    <div className="absolute left-0 top-0 h-screen w-full bg-primary px-9 pb-12 pt-6 text-secondary">
+      <div className="flex items-center justify-between">
         <Logo size="small" className="w-24" />
 
         <div className="flex">
           <ul className="flex gap-4">
-            <li className={`p-2 transition-all duration-300 `}>
+            <li className={`p-2 transition-all duration-300`}>
               <button className="flex">
-                <IoIosSearch className="w-8 h-8" />
+                <IoIosSearch className="h-8 w-8" />
               </button>
             </li>
             <li className="p-2">
-              <IoCartOutline className="w-8 h-8 " />
+              <IoCartOutline className="h-8 w-8" />
             </li>
-            <li className="hidden lg:flex p-2">
-              <HiOutlineUser className="w-8 h-8 " />
+            <li className="hidden p-2 lg:flex">
+              <HiOutlineUser className="h-8 w-8" />
             </li>
           </ul>
 
-          <button onClick={onClose} className=" ml-4 p-2">
-            <IoCloseOutline className="w-8 h-8" />
+          <button onClick={onClose} className="ml-4 p-2">
+            <IoCloseOutline className="h-8 w-8" />
           </button>
         </div>
       </div>

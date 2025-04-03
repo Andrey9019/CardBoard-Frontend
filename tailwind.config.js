@@ -16,9 +16,9 @@ export default {
         background: "#ECDEF6",
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        serif: ["Merriweather", "serif"],
-        mono: ["Fira Code", "monospace"],
+        sans: ["Poppins", "sans-serif"],
+        serif: ["Poppins", "serif"],
+        mono: ["Poppins", "monospace"],
       },
     },
   },

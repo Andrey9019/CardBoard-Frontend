@@ -1,13 +1,16 @@
-import AllGameList from "../components/AllGameList";
+import Hero from "../components/Main/Hero";
+import Recommendations from "../components/Main/Recommendations";
+import About from "../components/Main/About";
 import Ping from "../components/Ping";
 
 export default function Main() {
   return (
     <section>
-      {/* <h1>Welcome to Mian Page</h1> */}
-      {/* <p>This is the Mian page content.</p> */}
-      {/* <Ping /> */}
-      {/* <AllGameList /> */}
+      <Hero />
+      <Recommendations />
+      <About />
+
+      <Ping />
     </section>
   );
 }

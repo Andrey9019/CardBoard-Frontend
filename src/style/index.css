@@ -73,7 +73,7 @@ a {
   text-decoration: none;
 }
 
-.container {
+section {
   margin-left: auto;
   margin-right: auto;
 }
@@ -81,7 +81,7 @@ a {
 /* Mobile */
 
 @media only screen and (min-width: 320px) and (max-width: 375px) {
-  .container {
+  section {
     max-width: 375px;
   }
 }
@@ -89,7 +89,7 @@ a {
 /* Tablet */
 
 @media only screen and (min-width: 1024px) {
-  .container {
+  section {
     max-width: 1024px;
   }
 }
@@ -97,7 +97,7 @@ a {
 /* Desktop */
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  section {
     max-width: 1440px;
   }
 }

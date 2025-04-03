@@ -11,7 +11,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Header />
-      <main className="container">
+      <main className="container relative -top-6">
         <Routes>
           <Route path="/login" element={<Login />} />
 
