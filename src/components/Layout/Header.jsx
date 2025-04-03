@@ -24,8 +24,8 @@ export default function Header() {
         setIsCatalogOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mouseup", handleClickOutside);
+    return () => document.removeEventListener("mouseup", handleClickOutside);
   }, []);
 
   const toggleSearch = () => {
@@ -35,17 +35,22 @@ export default function Header() {
 
   const toggleCatalog = () => {
     if (isSearchOpen) setIsSearchOpen(false);
+    setIsCatalogOpen(!isCatalogOpen);
+  };
 
-    setIsCatalogOpen((prev) => !prev);
+  const toggleMobileMenu = () => {
+    if (isSearchOpen) setIsSearchOpen(false);
+    if (isCatalogOpen) setIsCatalogOpen(false);
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
     <header
       className={`header relative bg-primary text-secondary px-9 xl:px-16 py-6 
-        ${isSearchOpen ? "rounded-b-none" : "rounded-b-3xl"}
-        ${isCatalogOpen ? "rounded-b-none" : "rounded-b-3xl"}
-
-      `}
+        ${
+          isSearchOpen || isCatalogOpen ? "rounded-b-none" : "rounded-b-3xl"
+        }        
+        `}
     >
       <div className="flex justify-between items-center">
         <div className="hidden xl:flex">
@@ -71,7 +76,11 @@ export default function Header() {
                 isSearchOpen ? "opacity-0 scale-90" : "opacity-100 scale-100"
               }`}
             >
-              <button onClick={toggleSearch} className="flex">
+              <button
+                onClick={toggleSearch}
+                disabled={isSearchOpen}
+                className="flex"
+              >
                 <IoIosSearch className="w-8 h-8" />
               </button>
             </li>
@@ -83,10 +92,7 @@ export default function Header() {
             </li>
           </ul>
 
-          <button
-            className="xl:hidden ml-4 p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
+          <button className="xl:hidden ml-4 p-2" onClick={toggleMobileMenu}>
             <RxHamburgerMenu className="w-8 h-8" />
           </button>
 
@@ -99,7 +105,7 @@ export default function Header() {
       {isSearchOpen && (
         <div
           ref={itemRef}
-          className="absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl"
+          className={`absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl `}
         >
           <form className="rounded-xl flex px-4 py-3 items-center border md:max-w-prose mx-auto">
             <div className="flex items-center flex-1">
@@ -119,33 +125,32 @@ export default function Header() {
 
       {isCatalogOpen && (
         <div
-          // ref={itemRef}
-          className="absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl"
+          className={`absolute mt-4 left-0 w-full py-4 px-9 z-10 bg-primary rounded-b-3xl`}
         >
           <div className="mb-9 grid grid-cols-3 grid-rows-3">
             <ul className="gap-9 ">
-              <li>1</li>
+              <li>null</li>
             </ul>
             <ul>
-              <li>1</li>
+              <li>null</li>
             </ul>
             <ul>
-              <li>1</li>
+              <li>null</li>
             </ul>
             <ul>
-              <li>1</li>
+              <li>null</li>
             </ul>
             <ul>
-              <li>1</li>
+              <li>null</li>
             </ul>
             <ul>
-              <li>1</li>
+              <li>null</li>
             </ul>
             <ul>
-              <li>1</li>
+              <li>null</li>
             </ul>
             <ul>
-              <li>1</li>
+              <li>null</li>
             </ul>
           </div>
           <div>
@@ -155,9 +160,6 @@ export default function Header() {
             <ul className="grid grid-cols-3 gap-9 ">
               <Link>
                 <li>Обмін і повернення</li>
-              </Link>
-              <Link>
-                <li>Оренда?</li>
               </Link>
             </ul>
           </div>
