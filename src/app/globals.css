@@ -1,0 +1,45 @@
+:root {
+  --radius: 0.625rem;
+  --background: #ecdef6;
+  --foreground: #000000;
+  --primary: #6a2ecb;
+  --primary-foreground: #ecdef6;
+  --hover: #4a1f89;
+  --border: #6a2ecb;
+  --input: #6a2ecb;
+  --ring: #4a1f89;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-poppins-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
