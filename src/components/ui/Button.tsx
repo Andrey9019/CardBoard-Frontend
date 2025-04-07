@@ -1,11 +1,10 @@
-interface ButtonProps  {
+interface ButtonProps {
   text: string;
   type: "primary" | "secondary";
   onClick?: () => void;
   icon?: React.ReactNode;
   disabled?: boolean;
   className?: string;
-
 }
 
 const Button = ({
@@ -15,9 +14,9 @@ const Button = ({
   icon,
   disabled,
   className,
-}:ButtonProps) => {
+}: ButtonProps) => {
   const baseStyles =
-    "px-6 py-3 text-lg xl:text-2xl font-semibold max-w-max rounded-md transition duration-200 flex items-center justify-center gap-2";
+    "px-6 py-3 text-lg xl:text-2xl rounded-md font-semibold max-w-max transition duration-200 flex items-center justify-center gap-2";
 
   const primaryStyles = `bg-primary text-secondary  hover:bg-card active:bg-background disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed`;
 

@@ -25,23 +25,21 @@ export default function AllGameList() {
     getGames();
   }, []);
   return (
-    <div>
-      <ul className="flex flex-wrap gap-x-4 gap-y-9">
-        {games.map((game) => (
-          <li
-            key={game.id}
-            className="item-shadow max-w-[196px] rounded-lg bg-white p-4"
-          >
-            <Link href={`/game/${game.id}`}>
-              <button className="items-end">❤️</button>
-              <Image src={noImg} alt="Фото гри" />
-              <p>{game.title}</p>
-              <p>{game.price}</p>
-              <Button type="primary" text="Купити" className="min-w-full" />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9">
+      {games.map((game) => (
+        <li
+          key={game.id}
+          className="item-shadow max-w-[196px] rounded-lg bg-white p-4"
+        >
+          <Link href={`/game/${game.id}`}>
+            <button className="items-end">❤️</button>
+            <Image src={noImg} alt="Фото гри" />
+            <p>{game.title}</p>
+            <p>{game.price}</p>
+            <Button type="primary" text="Купити" className="min-w-full" />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

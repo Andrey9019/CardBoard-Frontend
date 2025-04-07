@@ -69,7 +69,7 @@ export default function Header() {
         <Logo size="small" className="w-24" />
 
         <div className="flex">
-          <ul className="flex gap-4">
+          <ul className="flex gap-2">
             <li
               className={`p-2 transition-all duration-300 ${
                 isSearchOpen ? "scale-90 opacity-0" : "scale-100 opacity-100"
@@ -91,7 +91,7 @@ export default function Header() {
             </li>
           </ul>
 
-          <button className="ml-4 p-2 xl:hidden" onClick={toggleMobileMenu}>
+          <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
             <RxHamburgerMenu className="h-8 w-8" />
           </button>
 
