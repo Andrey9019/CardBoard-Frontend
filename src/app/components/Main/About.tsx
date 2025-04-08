@@ -8,8 +8,8 @@ export default function About() {
       <div className="lg:flex">
         <Image
           src={aboutPic}
-          width={300}
-          height={300}
+          // width={300}
+          // height={300}
           alt="Just a picture from the about us section"
           className="mb-4 object-cover lg:mr-4 lg:max-w-[360px] xl:mr-10 xl:mb-0 xl:max-w-[372px]"
         />

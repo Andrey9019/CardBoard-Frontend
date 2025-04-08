@@ -37,7 +37,7 @@ section {
 }
 
 :root {
-  --radius: 0.65rem;
+  /* --radius: 1rem; */
   --background: #2b1047;
   --foreground: oklch(0.141 0.005 285.823);
   --card: #4a1f89;
@@ -106,10 +106,10 @@ section {
 }
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
+  /* --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 4px); */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: #4a1f89;
