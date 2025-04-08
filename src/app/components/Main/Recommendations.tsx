@@ -6,23 +6,14 @@ export default function Recommendations() {
       <p className="text-center text-3xl font-bold lg:text-4xl xl:text-5xl">
         Рекомендації
       </p>
-      <div>
-        <p className="mb-7 text-xl font-semibold lg:mb-5 lg:text-2xl xl:text-3xl">
-          Популярне
-        </p>
-        <PopularListGame />
-      </div>
-      <div>
-        <p className="mb-7 text-xl font-semibold lg:mb-5 lg:text-2xl xl:text-3xl">
-          Новинки
-        </p>
-        <PopularListGame />
-      </div>
 
       <div>
-        <p className="mb-7 text-xl font-semibold lg:mb-5 lg:text-2xl xl:text-3xl">
-          Акція
-        </p>
+        <PopularListGame />
+      </div>
+      <div>
+        <PopularListGame />
+      </div>
+      <div>
         <PopularListGame />
       </div>
     </section>
