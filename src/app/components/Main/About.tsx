@@ -4,14 +4,15 @@ import aboutPic from "../../../../public/images/About.png";
 export default function About() {
   return (
     <section className="mb-12 px-9 lg:mb-16 lg:px-8 xl:px-[120px]">
+      <div className="h-10 bg-red-500 xl:bg-green-500">Тест брейкпоінтів</div>
       <h3 className="mb-9 text-center text-3xl font-bold lg:text-4xl">
         Про нас
       </h3>
       <div className="flex flex-col items-center lg:flex-row">
         <Image
           src={aboutPic}
-          // width={300}
-          // height={300}
+          width={300}
+          height={300}
           alt="Just a picture from the about us section"
           className="mb-4 object-cover lg:mr-4 lg:mb-0 lg:max-w-[360px] xl:mr-10 xl:max-w-[372px]"
         />
