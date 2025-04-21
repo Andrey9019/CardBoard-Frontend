@@ -64,7 +64,7 @@ const faqData = [
 
 export default function QuestionsAndAnswers() {
   return (
-    <section className="px-9">
+    <section className="mb-12 px-9 lg:mb-16 xl:px-[120px]">
       <h3 className="mb-9 text-center text-3xl font-bold">Q&A</h3>
       <Accordion
         type="single"

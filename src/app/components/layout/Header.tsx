@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
@@ -31,6 +32,7 @@ export default function Header() {
 
   const toggleSearch = () => {
     if (isCatalogOpen) setIsCatalogOpen(false);
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
     setIsSearchOpen(!isSearchOpen);
   };
 
@@ -44,6 +46,9 @@ export default function Header() {
     if (isCatalogOpen) setIsCatalogOpen(false);
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+  }, [isMobileMenuOpen]);
 
   return (
     <header
@@ -91,20 +96,28 @@ export default function Header() {
             </li>
           </ul>
 
-          <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
-            <RxHamburgerMenu className="h-8 w-8" />
-          </button>
-
-          {isMobileMenuOpen && (
-            <MobileMenu onClose={() => setIsMobileMenuOpen(false)} />
+          {!isMobileMenuOpen && (
+            <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
+              <RxHamburgerMenu className="h-8 w-8" />
+            </button>
           )}
+
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <MobileMenu
+                onClose={() => setIsMobileMenuOpen(false)}
+                toggleSearch={toggleSearch}
+                isMobileMenuOpen={isMobileMenuOpen}
+              />
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
       {isSearchOpen && (
         <div
           ref={itemRef}
-          className={`bg-primary absolute left-0 z-10 mt-4 w-full rounded-b-3xl px-9 py-4`}
+          className={`bg-primary animate-fade-in-down-03 absolute left-0 z-10 mt-4 w-full translate-y-[-20px] rounded-b-3xl px-9 py-4 opacity-0`}
         >
           <form className="mx-auto flex items-center rounded-xl border px-4 py-3 md:max-w-prose">
             <div className="flex flex-1 items-center">
@@ -124,7 +137,7 @@ export default function Header() {
 
       {isCatalogOpen && (
         <div
-          className={`bg-primary absolute left-0 z-10 mt-4 w-full rounded-b-3xl px-9 py-4`}
+          className={`bg-primary animate-fade-in-down-03 absolute left-0 z-10 mt-4 w-full translate-y-[-20px] rounded-b-3xl px-9 py-4 opacity-0`}
         >
           <div className="mb-9 grid grid-cols-3 grid-rows-3">
             <ul className="gap-9">

@@ -13,7 +13,11 @@ import Game from "@/app/types/interface";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 
-export default function PopularListGame() {
+interface ListGameProp {
+  title: string;
+}
+
+export default function PopularListGame(title: ListGameProp) {
   const [games, setGames] = useState<Game[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [gamesPerPage, setGamesPerPage] = useState(2);
@@ -56,7 +60,7 @@ export default function PopularListGame() {
     <>
       <div className="mb-7 flex justify-between lg:mb-4">
         <p className="text-xl font-semibold lg:text-2xl xl:text-3xl">
-          Популярне
+          {title.title}
         </p>
         <div className="hidden items-center justify-center gap-4 lg:flex">
           <button
@@ -92,7 +96,7 @@ export default function PopularListGame() {
           </button>
         </div>
       </div>
-      <ul className="flex flex-wrap justify-around gap-x-4 gap-y-9">
+      <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between">
         {currentGames.map((game) => (
           <li
             key={game.id}
@@ -162,7 +166,7 @@ export default function PopularListGame() {
         >
           <IoIosArrowForward className="h-5 w-5" />
         </button>
-      </div>{" "}
+      </div>
     </>
   );
 }

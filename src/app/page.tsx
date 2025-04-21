@@ -5,11 +5,11 @@ import QuestionsAndAnswers from "./components/Main/Q&A";
 
 export default function Home() {
   return (
-    <main className="relative -top-6">
+    <>
       <Hero />
       <Recommendations />
       <About />
       <QuestionsAndAnswers />
-    </main>
+    </>
   );
 }
