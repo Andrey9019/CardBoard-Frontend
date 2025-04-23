@@ -8,13 +8,13 @@ export default function Recommendations() {
       </p>
 
       <div>
-        <PopularListGame title={"Популярне"} />
+        <PopularListGame title="Популярне" />
       </div>
       <div>
-        <PopularListGame title={"Новинки"} />
+        <PopularListGame title="Новинки" />
       </div>
       <div>
-        <PopularListGame title={"Акція"} />
+        <PopularListGame title="Акція" />
       </div>
     </section>
   );

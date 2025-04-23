@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import noImg from "../../../../public/images/no-image.png";
 
-import { getAllGames } from "@/utils/api/getAllGame";
+import { getAllGames } from "@/utils/index";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";

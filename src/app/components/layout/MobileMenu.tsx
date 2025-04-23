@@ -1,11 +1,20 @@
 "use client";
+import { getAllCategories } from "@/utils/index";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { IoCartOutline, IoCloseOutline } from "react-icons/io5";
 import { HiOutlineUser } from "react-icons/hi2";
 import Logo from "./Logo";
 import { motion, AnimatePresence } from "framer-motion";
+import Categorires from "@/app/types/allCategories";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Link from "next/link";
 
 interface MobileMenuProps {
   onClose: () => void;
@@ -14,7 +23,20 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
+  const [categories, setCategories] = useState<Categorires[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const data = await getAllCategories();
+        setCategories(data);
+      } catch (error) {
+        console.log("error getGame", error);
+      }
+    };
+    getCategories();
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -32,7 +54,7 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
         exit={{ x: "100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 50 }}
         ref={containerRef}
-        className="bg-primary text-secondary fixed top-0 left-0 z-[99] h-full w-full overflow-y-auto px-9 pt-6 pb-12 shadow-xl"
+        className="bg-primary text-secondary fixed top-0 left-0 z-[99] flex h-full w-full flex-col justify-between overflow-y-auto px-9 pt-6 pb-12 shadow-xl"
       >
         <div className="flex items-center justify-between">
           <Logo size="small" className="w-24" />
@@ -58,7 +80,40 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
           </div>
         </div>
 
-        <div className="mt-12">Каталог, навігація, контент</div>
+        <div className="flex-1 pt-9">
+          <p className="pb-9 text-2xl font-bold">Каталог</p>
+          <Accordion type="single" collapsible>
+            {categories.map((category) => (
+              <AccordionItem
+                key={category.name}
+                value={category.name}
+                className="mb-9 max-w-max font-semibold"
+              >
+                <AccordionTrigger>{category.display_name}</AccordionTrigger>
+                <AccordionContent>
+                  <ul>
+                    {category.values.map((value) => (
+                      <li key={value.id} className="py-1.5 text-base">
+                        {value.name}
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <div className="before:bg-secondary relative w-full pb-9 before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full"></div>
+          <Link href={"/"} className="font-semibold">
+            Обмін і повернення
+          </Link>
+        </div>
+
+        <div>
+          <p className="pb-9 font-semibold">особистий кабінет</p>
+
+          <div className="before:bg-secondary relative before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full"></div>
+          <p className="pt-9 font-semibold">звʼязатись з нами</p>
+        </div>
       </motion.div>
     </AnimatePresence>
   );

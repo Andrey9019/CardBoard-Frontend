@@ -33,7 +33,7 @@ export default function Footer() {
           </li>
         </ul>
         <div className="flex max-w-fit flex-col items-center gap-4 lg:items-end">
-          <Logo size="extraLarge" className="" />
+          <Logo size="extraLarge" />
           <span className="text-xs font-bold">
             ©{currentYear}. All right reserved
           </span>

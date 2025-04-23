@@ -5,7 +5,9 @@ import { AnimatePresence } from "framer-motion";
 
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
+import Categorires from "@/app/types/allCategories";
 
+import { getAllCategories } from "@/utils/index";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
@@ -17,7 +19,23 @@ export default function Header() {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [categories, setCategories] = useState<Categorires[]>([]);
+
   const itemRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const data = await getAllCategories();
+        setCategories(data);
+        console.log(data);
+      } catch (error) {
+        console.log("error getGame", error);
+      }
+    };
+    getCategories();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,7 +70,7 @@ export default function Header() {
 
   return (
     <header
-      className={`header bg-primary text-secondary relative z-10 px-9 py-6 xl:px-16 ${
+      className={`header bg-primary text-secondary relative z-10 px-9 py-6 transition-all xl:px-16 ${
         isSearchOpen || isCatalogOpen ? "rounded-b-none" : "rounded-b-3xl"
       } `}
     >
@@ -117,7 +135,7 @@ export default function Header() {
       {isSearchOpen && (
         <div
           ref={itemRef}
-          className={`bg-primary animate-fade-in-down-03 absolute left-0 z-10 mt-4 w-full translate-y-[-20px] rounded-b-3xl px-9 py-4 opacity-0`}
+          className={`bg-primary animate-fade-in-down-03 absolute left-0 z-10 mt-4 w-full rounded-b-3xl px-9 py-4 opacity-0`}
         >
           <form className="mx-auto flex items-center rounded-xl border px-4 py-3 md:max-w-prose">
             <div className="flex flex-1 items-center">
@@ -137,43 +155,32 @@ export default function Header() {
 
       {isCatalogOpen && (
         <div
-          className={`bg-primary animate-fade-in-down-03 absolute left-0 z-10 mt-4 w-full translate-y-[-20px] rounded-b-3xl px-9 py-4 opacity-0`}
+          // ref={itemRef}
+          className={`bg-primary animate-fade-in-down-03 absolute left-0 z-9 mt-4 w-full rounded-b-3xl px-16 py-8 opacity-0`}
         >
-          <div className="mb-9 grid grid-cols-3 grid-rows-3">
-            <ul className="gap-9">
-              <li>null</li>
-            </ul>
-            <ul>
-              <li>null</li>
-            </ul>
-            <ul>
-              <li>null</li>
-            </ul>
-            <ul>
-              <li>null</li>
-            </ul>
-            <ul>
-              <li>null</li>
-            </ul>
-            <ul>
-              <li>null</li>
-            </ul>
-            <ul>
-              <li>null</li>
-            </ul>
-            <ul>
-              <li>null</li>
-            </ul>
+          <div className="container mb-9 grid grid-cols-3 grid-rows-3 gap-9">
+            {categories.map((category) => (
+              <ul key={category.name} className="mr-2 font-bold">
+                <div className="flex gap-2">
+                  {category.display_name}
+                  <IoIosArrowDown className="h-6 w-6 items-start justify-between text-left" />
+                </div>
+                {category.values.map((value) => (
+                  <li key={value.id} className="py-1.5 text-base">
+                    {value.name}
+                  </li>
+                ))}
+              </ul>
+            ))}
           </div>
+
           <div>
             <div className="before:bg-secondary relative before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full"></div>
           </div>
-          <div className="pt-9 pb-9">
-            <ul className="grid grid-cols-3 gap-9">
-              <Link href={"/"}>
-                <li>Обмін і повернення</li>
-              </Link>
-            </ul>
+          <div className="container pt-9 pb-9">
+            <Link href={"/"}>
+              <p>Обмін і повернення</p>
+            </Link>
           </div>
         </div>
       )}
