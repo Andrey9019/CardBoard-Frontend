@@ -109,7 +109,7 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
         </div>
 
         <div>
-          <p className="pb-9 font-semibold">особистий кабінет</p>
+          <p className="py-9 font-semibold">особистий кабінет</p>
 
           <div className="before:bg-secondary relative before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full"></div>
           <p className="pt-9 font-semibold">звʼязатись з нами</p>
