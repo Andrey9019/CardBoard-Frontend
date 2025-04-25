@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import noImg from "../../../../public/images/no-image.png";
+import noImg from "../../../../public/images/not-found-page/no-image.png";
 
 import { getAllGames } from "@/utils/index";
 import Link from "next/link";
