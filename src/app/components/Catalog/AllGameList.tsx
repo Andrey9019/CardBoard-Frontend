@@ -37,6 +37,7 @@ export default function PopularListGame() {
         <SkeletonCard />
       ) : (
         <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between">
+          {/* <ul className="mx-auto flex flex-wrap justify-start gap-x-4 gap-y-9 xl:gap-x-12"> */}
           {games.map((game) => (
             <li
               key={game.id}
