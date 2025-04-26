@@ -1,0 +1,19 @@
+name: Notify on Main Update
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+jobs:
+  run_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send notification to Telegram
+        id: send_tg_message
+        run: |
+          curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d "text=🚀 Оновлена головна гілка!%0A%0A💻Репозиторій: Front ${{github.repository}}%0A%0A📩 Повідомлення: ${{ github.event.head_commit.message }}%0A%0A🔄 Будь ласка, витягніть останні зміни:%0A%0Agit checkout main %26%26 git pull origin main" \
