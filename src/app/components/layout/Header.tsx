@@ -4,7 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import Logo from "./Logo";
+import SearchBtn from "./SearchBtn";
 import MobileMenu from "./MobileMenu";
+
 import Categorires from "@/app/types/allCategories";
 
 import { getAllCategories } from "@/utils/index";
@@ -40,7 +42,7 @@ export default function Header() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (itemRef.current && !itemRef.current.contains(event.target as Node)) {
-        setIsSearchOpen(false);
+        // setIsSearchOpen(false);
         setIsCatalogOpen(false);
       }
     };
@@ -133,24 +135,10 @@ export default function Header() {
       </div>
 
       {isSearchOpen && (
-        <div
-          ref={itemRef}
-          className={`bg-primary animate-fade-in-down-03 absolute left-0 z-10 mt-4 w-full rounded-b-3xl px-9 py-4 opacity-0`}
-        >
-          <form className="mx-auto flex items-center rounded-xl border px-4 py-3 md:max-w-prose">
-            <div className="flex flex-1 items-center">
-              <input
-                type="text"
-                className="h-10 flex-1 border-none bg-transparent outline-none"
-                placeholder="Search..."
-              />
-
-              <button type="button" onClick={() => setIsSearchOpen(false)}>
-                <IoIosSearch className="h-8 w-8" />
-              </button>
-            </div>
-          </form>
-        </div>
+        <SearchBtn
+          setIsSearchOpen={setIsSearchOpen}
+          isSearchOpen={isSearchOpen}
+        />
       )}
 
       {isCatalogOpen && (
