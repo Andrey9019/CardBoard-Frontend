@@ -15,7 +15,7 @@ import { VscSettings } from "react-icons/vsc";
 
 export default function Catalog() {
   return (
-    <section className="px-9 pt-12">
+    <section className="px-9 pt-12 lg:px-8 lg:pt-16 xl:px-[120px]">
       <Breadcrumb className="mb-12">
         <BreadcrumbList>
           <BreadcrumbItem>
