@@ -88,7 +88,7 @@ export default function SearchBtn({
         </form>
 
         {results.length > 0 && (
-          <div className="bg-secondary animate-fade-in-down-03 absolute flex w-full max-w-prose flex-col rounded-xl border px-2 py-3 text-black transition-all duration-300 lg:px-3">
+          <div className="bg-secondary item-shadow animate-fade-in-down-03 absolute flex w-full max-w-prose flex-col rounded-xl border px-2 py-3 text-black transition-all duration-300 lg:px-3">
             <ul className="">
               {results.map((result) => (
                 <Link
@@ -124,7 +124,7 @@ export default function SearchBtn({
           </div>
         )}
         {query.length > 0 && results.length === 0 && (
-          <div className="bg-secondary animate-fade-in-down-03 absolute flex w-full max-w-prose flex-col rounded-xl border px-3 py-6 text-black transition-all duration-300">
+          <div className="bg-secondary item-shadow animate-fade-in-down-03 absolute flex w-full max-w-prose flex-col rounded-xl border px-3 py-6 text-black transition-all duration-300">
             <p className="text-center">
               На жаль, за вашим запитом нічого не знайдено.
             </p>

@@ -185,7 +185,7 @@ export default function GamePage() {
             <p className="mb-4 text-sm lg:text-base xl:text-lg">
               Самовивіз з мазагину
             </p>
-            <p className="text-sm lg:text-base xl:text-lg">Делальніше</p>
+            <p className="text-sm lg:text-base xl:text-lg">Детальніше</p>
           </div>
           <div className="mb-12 lg:mb-16">
             <p className="mb-6 text-2xl font-semibold">Відгуки</p>
@@ -193,7 +193,7 @@ export default function GamePage() {
               Поки що ніхто не залишив відгуків
             </p>
             <div className="flex justify-end">
-              <Button type="secondary" text="Залиште свій відгук" />
+              <Button type="secondary" text="Залиште свій відгук" disabled />
             </div>
           </div>
         </div>
