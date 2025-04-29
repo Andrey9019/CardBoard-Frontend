@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { AnimatePresence } from "framer-motion";
 
 import Logo from "./Logo";
 import SearchBtn from "./SearchBtn";
@@ -67,7 +66,7 @@ export default function Header() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
 
   return (
@@ -114,23 +113,26 @@ export default function Header() {
             <li className="hidden p-2 lg:flex">
               <HiOutlineUser className="h-8 w-8 cursor-pointer" />
             </li>
+            <li className="p-2 xl:hidden">
+              <button className=" " onClick={toggleMobileMenu}>
+                <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
+              </button>
+            </li>
           </ul>
 
-          {!isMobileMenuOpen && (
-            <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
-              <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
-            </button>
-          )}
+          {/* {!isMobileMenuOpen && ( */}
+          {/* <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
+            <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
+          </button> */}
+          {/* )} */}
 
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <MobileMenu
-                onClose={() => setIsMobileMenuOpen(false)}
-                toggleSearch={toggleSearch}
-                isMobileMenuOpen={isMobileMenuOpen}
-              />
-            )}
-          </AnimatePresence>
+          {isMobileMenuOpen && (
+            <MobileMenu
+              onClose={() => setIsMobileMenuOpen(false)}
+              toggleSearch={toggleSearch}
+              isMobileMenuOpen={isMobileMenuOpen}
+            />
+          )}
         </div>
       </div>
 

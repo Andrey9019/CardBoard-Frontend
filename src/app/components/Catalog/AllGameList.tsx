@@ -78,6 +78,7 @@ export default function PopularListGame() {
           ))}
         </ul>
       )}
+      <div>pagination</div>
     </>
   );
 }

@@ -38,13 +38,6 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
     getCategories();
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
-
   return (
     <AnimatePresence>
       <motion.div
