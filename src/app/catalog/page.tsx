@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import AllGameList from "@/app/components/Catalog/AllGameList";
 
 import {
@@ -21,10 +19,8 @@ export default function Catalog() {
       <Breadcrumb className="mb-12">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink className="text-primary">
-              <Link href="/">
-                <IoHomeOutline />
-              </Link>
+            <BreadcrumbLink className="text-primary" href="/">
+              <IoHomeOutline />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <IoIosArrowForward className="text-primary" />

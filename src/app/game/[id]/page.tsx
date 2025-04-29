@@ -11,7 +11,6 @@ import { Badge } from "@/components/ui/badge";
 
 import { IoIosArrowForward } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
-import Link from "next/link";
 
 import { getGameById } from "@/utils/index";
 import { useEffect } from "react";
@@ -49,18 +48,17 @@ export default function GamePage() {
       <Breadcrumb className="mb-12 xl:mb-16">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink className="text-primary">
-              <Link href="/">
-                <IoHomeOutline />
-              </Link>
+            <BreadcrumbLink href="/" className="text-primary">
+              <IoHomeOutline />
             </BreadcrumbLink>
           </BreadcrumbItem>
           <IoIosArrowForward className="text-primary" />
           <BreadcrumbItem>
-            <BreadcrumbLink className="text-primary">
-              <Link href="/catalog" className="font-semibold">
-                Каталог
-              </Link>
+            <BreadcrumbLink
+              href="/catalog"
+              className="text-primary font-semibold"
+            >
+              Каталог
             </BreadcrumbLink>
           </BreadcrumbItem>
           <IoIosArrowForward className="text-primary" />
@@ -95,7 +93,7 @@ export default function GamePage() {
             </div>
             <p className="text-2xl font-bold">
               {game?.price && (
-                <p className="text-2xl font-bold">{game.price} грн</p>
+                <span className="text-2xl font-bold">{game.price} грн</span>
               )}
             </p>
             <div className="flex justify-between gap-6 sm:justify-start">
@@ -187,7 +185,7 @@ export default function GamePage() {
             <p className="mb-4 text-sm lg:text-base xl:text-lg">
               Самовивіз з мазагину
             </p>
-            <p className="text-sm lg:text-base xl:text-lg">Делальніше</p>
+            <p className="text-sm lg:text-base xl:text-lg">Детальніше</p>
           </div>
           <div className="mb-12 lg:mb-16">
             <p className="mb-6 text-2xl font-semibold">Відгуки</p>
@@ -195,7 +193,7 @@ export default function GamePage() {
               Поки що ніхто не залишив відгуків
             </p>
             <div className="flex justify-end">
-              <Button type="secondary" text="Залиште свій відгук" />
+              <Button type="secondary" text="Залиште свій відгук" disabled />
             </div>
           </div>
         </div>
