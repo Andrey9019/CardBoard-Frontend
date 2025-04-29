@@ -82,7 +82,7 @@ export default function SearchBtn({
             />
 
             <button type="button">
-              <IoIosSearch className="h-8 w-8 group-focus-within:text-black" />
+              <IoIosSearch className="h-8 w-8 cursor-pointer group-focus-within:text-black" />
             </button>
           </div>
         </form>

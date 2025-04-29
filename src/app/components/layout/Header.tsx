@@ -80,7 +80,7 @@ export default function Header() {
         <div className="hidden xl:flex">
           <button
             onClick={toggleCatalog}
-            className="flex items-center justify-between gap-4"
+            className="flex cursor-pointer items-center justify-between gap-4"
           >
             <span className="text-lg font-bold">Каталог</span>
 
@@ -105,20 +105,20 @@ export default function Header() {
                 disabled={isSearchOpen}
                 className="flex"
               >
-                <IoIosSearch className="h-8 w-8" />
+                <IoIosSearch className="h-8 w-8 cursor-pointer" />
               </button>
             </li>
             <li className="p-2">
-              <IoCartOutline className="h-8 w-8" />
+              <IoCartOutline className="h-8 w-8 cursor-pointer" />
             </li>
             <li className="hidden p-2 lg:flex">
-              <HiOutlineUser className="h-8 w-8" />
+              <HiOutlineUser className="h-8 w-8 cursor-pointer" />
             </li>
           </ul>
 
           {!isMobileMenuOpen && (
             <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
-              <RxHamburgerMenu className="h-8 w-8" />
+              <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
             </button>
           )}
 
