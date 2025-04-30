@@ -31,19 +31,40 @@ function AccordionTrigger({
   ...props
 }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
   return (
-    <AccordionPrimitive.Header className="flex gap-x-4 [&[data-state=open]>svg]:rotate-180">
+    <AccordionPrimitive.Header>
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between text-left transition-all hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
-
+          "group focus-visible:ring-ring/50 mb-4 flex w-full items-center justify-between gap-x-2 text-left transition-all hover:underline focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50",
           className,
         )}
         {...props}
       >
-        {children}
+        <span className="flex-1">{children}</span>
+        <IoIosArrowDown className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
       </AccordionPrimitive.Trigger>
-      <IoIosArrowDown className="focus-visible:border-ring focus-visible:ring-ring/50 pointer-events-none h-6 w-6 items-start justify-between text-left duration-200 hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50" />
+    </AccordionPrimitive.Header>
+  );
+}
+
+function AccordionTriggerFilter({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
+  return (
+    <AccordionPrimitive.Header>
+      <AccordionPrimitive.Trigger
+        data-slot="accordion-trigger"
+        className={cn(
+          "group focus-visible:ring-ring/50 flex w-full items-center justify-between gap-x-2 text-left transition-all hover:underline focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50",
+          className,
+        )}
+        {...props}
+      >
+        <IoIosArrowDown className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+        <span className="flex-1">{children}</span>
+      </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
 }
@@ -64,4 +85,10 @@ function AccordionContent({
   );
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionTriggerFilter,
+};
