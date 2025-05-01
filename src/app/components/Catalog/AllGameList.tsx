@@ -1,27 +1,31 @@
 "use client";
-
 import { useEffect, useState } from "react";
-
-import noImg from "../../../../public/images/not-found-page/no-image.png";
-
-import { getAllGames } from "@/utils";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import Button from "@/components/ui/Button";
+
+import { getAllGames } from "@/utils";
 import Game from "@/app/types/interface";
 
-import { FaRegHeart } from "react-icons/fa";
+import Button from "@/components/ui/Button";
 import SkeletonCard from "../layout/Skeleton";
+
+import { FaRegHeart } from "react-icons/fa";
+import noImg from "../../../../public/images/not-found-page/no-image.png";
 
 export default function PopularListGame() {
   const [games, setGames] = useState<Game[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     const getGames = async () => {
       try {
-        const data = await getAllGames();
+        const query = searchParams.toString();
+        console.log(query);
+        const data = await getAllGames(query);
         setGames(data);
       } catch (error) {
         console.log("error getGame", error);
@@ -30,13 +34,13 @@ export default function PopularListGame() {
       }
     };
     getGames();
-  }, []);
+  }, [searchParams]);
   return (
     <>
       {isLoading ? (
         <SkeletonCard />
       ) : (
-        <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between">
+        <ul className="flex h-max flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between xl:gap-x-10">
           {/* <ul className="mx-auto flex flex-wrap justify-start gap-x-4 gap-y-9 xl:gap-x-12"> */}
           {games.map((game) => (
             <li
@@ -78,7 +82,6 @@ export default function PopularListGame() {
           ))}
         </ul>
       )}
-      <div>pagination</div>
     </>
   );
 }
