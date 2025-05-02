@@ -146,6 +146,7 @@ export default function Header() {
       {isCatalogOpen && (
         <div
           // ref={itemRef}
+
           className={`bg-primary animate-fade-in-down-03 absolute left-0 z-9 mt-4 w-full rounded-b-3xl px-16 py-8 opacity-0`}
         >
           <div className="container mb-9 grid grid-cols-3 grid-rows-3 gap-9">
