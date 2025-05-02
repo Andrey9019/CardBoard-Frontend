@@ -119,20 +119,25 @@ export default function Catalog() {
           <p className="text-3xl font-bold">Каталог</p>
           {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
           <div className="text-primary mb-9 flex w-full justify-between">
-            <button
-              onClick={toggleFilter}
-              // disabled={isFilterOpen}
-              className="flex"
-            >
-              <VscSettings className="h-8 w-8 cursor-pointer" />
-            </button>
-            <button
-              onClick={toggleSort}
-              // disabled={isSortOpen}
-              className="flex"
-            >
-              <TbSortDescending className="h-8 w-8 cursor-pointer" />
-            </button>
+            <div className="lg:border-primary lg:active:border-background lg:active:text-background lg:hover:border-card lg:hover:text-card items-center transition duration-200 lg:flex lg:max-w-[228px] lg:min-w-[228px] lg:rounded-lg lg:border lg:py-2 xl:max-w-[270px] xl:min-w-[270px]">
+              <button
+                onClick={toggleFilter}
+                // disabled={isFilterOpen}
+                className="flex w-full cursor-pointer justify-center"
+              >
+                <VscSettings className="h-8 w-8 lg:mr-2.5" />
+                <p className="hidden text-2xl font-semibold lg:block">Фільтр</p>
+              </button>
+            </div>
+            <div>
+              <button
+                onClick={toggleSort}
+                // disabled={isSortOpen}
+                className="flex"
+              >
+                <TbSortDescending className="h-8 w-8 cursor-pointer" />
+              </button>
+            </div>
           </div>
         </div>
         {/* </> */}

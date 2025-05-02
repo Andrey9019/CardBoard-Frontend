@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-// import { getAllCategories } from "@/utils";
 
 import {
   Accordion,
@@ -24,22 +23,11 @@ export default function FiltersStatic({
   toggleFilter,
   categories,
 }: FiltersStaticProps) {
-  //   const [categories, setCategories] = useState<Categorires[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: number[];
   }>({});
-
-  //   useEffect(() => {
-  //     const getCategories = async () => {
-  //       try {
-  //         const data = await getAllCategories();
-  //         setCategories(data);
-  //       } catch (error) {
-  //         console.log("error getGame", error);
-  //       }
-  //     };
-  //     getCategories();
-  //   }, []);
+  //   const [openItems, setOpenItems] = useState<string[]>([]);
+  //   console.log(openItems);
 
   useEffect(() => {
     const currentParams = new URLSearchParams(window.location.search);
@@ -52,6 +40,7 @@ export default function FiltersStatic({
     }
 
     setSelectedFilters(restoredFilters);
+    // setOpenItems(Object.keys(restoredFilters));
   }, []);
 
   const handleToggle = (category: string, value: number) => {
@@ -83,10 +72,11 @@ export default function FiltersStatic({
   };
 
   return (
-    <div className="mr-4 flex h-max w-[228px] flex-col gap-4 rounded-lg bg-white p-6 xl:mr-10 xl:w-[270px]">
-      {/* <p className="text-xl font-semibold">Фільтр</p> */}
-
-      <Accordion type="multiple">
+    <div className="item-shadow animate-fade-in-left-03 mr-4 flex h-max max-w-[228px] min-w-[228px] flex-col gap-4 rounded-lg bg-white p-6 xl:mr-10 xl:max-w-[270px] xl:min-w-[270px]">
+      <Accordion
+        type="multiple"
+        //   defaultValue={openItems}
+      >
         {categories.map((category) => (
           <AccordionItem
             key={category.name}
