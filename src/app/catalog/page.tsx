@@ -49,7 +49,7 @@ export default function Catalog() {
     setIsSortOpen(!isSortOpen);
   };
   return (
-    <section className="px-9 pt-12 lg:px-8 lg:pt-16 xl:px-[120px]">
+    <section className="mb-12 px-9 pt-12 lg:px-8 lg:pt-16 lg:pb-16 xl:px-[120px]">
       <div className="block lg:hidden">
         {!isFilterOpen && (
           <>

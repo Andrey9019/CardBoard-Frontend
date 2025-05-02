@@ -41,7 +41,6 @@ export default function PopularListGame() {
         <SkeletonCard />
       ) : (
         <ul className="flex h-max flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between xl:gap-x-10">
-          {/* <ul className="mx-auto flex flex-wrap justify-start gap-x-4 gap-y-9 xl:gap-x-12"> */}
           {games.map((game) => (
             <li
               key={game.id}
@@ -70,7 +69,7 @@ export default function PopularListGame() {
                   {game.price}
                 </p>
 
-                <div className="mt-auto flex flex-col justify-end">
+                <div className="mt-auto flex w-full flex-col justify-end">
                   <Button
                     type="primary"
                     text="Купити"

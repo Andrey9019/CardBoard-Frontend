@@ -121,7 +121,7 @@ export default function FiltersStatic({
         type="primary"
         text="Застосувати"
         onClick={handlleApplyFilters}
-        className=""
+        className="min-w-full"
       />
     </div>
   );
