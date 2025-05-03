@@ -72,6 +72,8 @@ export default function Catalog() {
             <div className="flex flex-col items-center gap-12">
               <p className="text-3xl font-bold">Каталог</p>
               {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
+              {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
+              {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
               <div className="text-primary mb-9 flex w-full justify-between">
                 <button
                   onClick={toggleFilter}
@@ -118,26 +120,33 @@ export default function Catalog() {
         <div className="flex flex-col items-center gap-12">
           <p className="text-3xl font-bold">Каталог</p>
           {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
+          {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
+          {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
           <div className="text-primary mb-9 flex w-full justify-between">
-            <div className="lg:border-primary lg:active:border-background lg:active:text-background lg:hover:border-card lg:hover:text-card items-center transition duration-200 lg:flex lg:max-w-[228px] lg:min-w-[228px] lg:rounded-lg lg:border lg:py-2 xl:max-w-[270px] xl:min-w-[270px]">
+            <div className="flex gap-4 xl:gap-10">
+              {/* може кастомні кнопки? */}
+              {/* може кастомні кнопки? */}
+              {/* може кастомні кнопки? */}
               <button
                 onClick={toggleFilter}
                 // disabled={isFilterOpen}
-                className="flex w-full cursor-pointer justify-center"
+                className="lg:border-primary lg:active:border-background lg:active:text-background lg:hover:border-card lg:hover:text-card hidden w-full cursor-pointer items-center justify-center transition duration-200 lg:flex lg:max-w-[228px] lg:min-w-[228px] lg:rounded-lg lg:border lg:py-2 xl:max-w-[270px] xl:min-w-[270px]"
               >
                 <VscSettings className="h-8 w-8 lg:mr-2.5" />
-                <p className="hidden text-2xl font-semibold lg:block">Фільтр</p>
+                <p className="text-2xl font-semibold">Фільтр</p>
               </button>
+              {/* <button className="lg:border-primary lg:active:border-background lg:active:text-background lg:hover:border-card lg:hover:text-card flex w-full cursor-pointer items-center justify-center px-5 transition duration-200 lg:flex lg:rounded-lg lg:border lg:py-2">
+                <p className="hidden font-semibold lg:block">Скинути фільтр</p>
+              </button> */}
             </div>
-            <div>
-              <button
-                onClick={toggleSort}
-                // disabled={isSortOpen}
-                className="flex"
-              >
-                <TbSortDescending className="h-8 w-8 cursor-pointer" />
-              </button>
-            </div>
+
+            <button
+              onClick={toggleSort}
+              // disabled={isSortOpen}
+              className="flex"
+            >
+              <TbSortDescending className="h-8 w-8 cursor-pointer" />
+            </button>
           </div>
         </div>
         {/* </> */}

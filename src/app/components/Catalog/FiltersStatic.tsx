@@ -71,6 +71,12 @@ export default function FiltersStatic({
     toggleFilter();
   };
 
+  const handlleResetFilters = () => {
+    setSelectedFilters({});
+    router.push("/catalog");
+    toggleFilter();
+  };
+
   return (
     <div className="item-shadow animate-fade-in-left-03 mr-4 flex h-max max-w-[228px] min-w-[228px] flex-col gap-4 rounded-lg bg-white p-6 xl:mr-10 xl:max-w-[270px] xl:min-w-[270px]">
       <Accordion
@@ -122,6 +128,12 @@ export default function FiltersStatic({
         text="Застосувати"
         onClick={handlleApplyFilters}
         className="min-w-full"
+      />
+      <Button
+        type="secondary"
+        text="Скинути фільтр"
+        onClick={handlleResetFilters}
+        className="min-w-full !px-3"
       />
     </div>
   );
