@@ -26,22 +26,9 @@ export default function FiltersDrawer({
   toggleFilter,
   categories,
 }: FiltersDrawerProps) {
-  // const [categories, setCategories] = useState<Categorires[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: number[];
   }>({});
-
-  // useEffect(() => {
-  //   const getCategories = async () => {
-  //     try {
-  //       const data = await getAllCategories();
-  //       setCategories(data);
-  //     } catch (error) {
-  //       console.log("error getGame", error);
-  //     }
-  //   };
-  //   getCategories();
-  // }, []);
 
   useEffect(() => {
     const currentParams = new URLSearchParams(window.location.search);
@@ -81,6 +68,12 @@ export default function FiltersDrawer({
     });
     router.push(`?${searchParams.toString()}`);
 
+    toggleFilter();
+  };
+
+  const handlleResetFilters = () => {
+    setSelectedFilters({});
+    router.push("/catalog");
     toggleFilter();
   };
 
@@ -138,6 +131,12 @@ export default function FiltersDrawer({
         text="Застосувати"
         onClick={handlleApplyFilters}
         className=""
+      />
+      <Button
+        type="secondary"
+        text="Скинути фільтр"
+        onClick={handlleResetFilters}
+        className="min-w-full !px-3"
       />
     </div>
   );
