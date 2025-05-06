@@ -5,13 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { getAllGames } from "@/utils";
-import Game from "@/app/types/interface";
+import Game from "@/types/interface";
 
 import Button from "@/components/ui/Button";
 import SkeletonCard from "../layout/Skeleton";
 
 import { FaRegHeart } from "react-icons/fa";
-import noImg from "../../../../public/images/not-found-page/no-image.png";
+// import noImg from "../../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../public/images/not-found-page/no-image.png";
 
 export default function PopularListGame() {
   const [games, setGames] = useState<Game[]>([]);

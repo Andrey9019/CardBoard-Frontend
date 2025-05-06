@@ -16,9 +16,9 @@ import { getGameById } from "@/utils/index";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import Game from "../../types/interface";
+import Game from "@/types/interface";
 import Button from "@/components/ui/Button";
-import PopularListGame from "@/app/components/Main/PopularListGame";
+import PopularListGame from "@/components/Main/PopularListGame";
 
 export default function GamePage() {
   const [game, setGame] = useState<Game | null>(null);

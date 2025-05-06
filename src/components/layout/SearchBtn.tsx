@@ -6,7 +6,7 @@ import { formatPrice } from "@/utils/index";
 
 import { IoIosSearch } from "react-icons/io";
 import Image from "next/image";
-import noImg from "../../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../public/images/not-found-page/no-image.png";
 import Link from "next/link";
 
 interface SearchBtnProps {

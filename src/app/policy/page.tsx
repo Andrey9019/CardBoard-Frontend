@@ -8,7 +8,7 @@ import {
 
 import { IoHomeOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
-import PolicyTabs from "../components/Policy/PolicyTabs";
+import PolicyTabs from "../../components/Policy/PolicyTabs";
 
 export default function PolicyPage() {
   return (

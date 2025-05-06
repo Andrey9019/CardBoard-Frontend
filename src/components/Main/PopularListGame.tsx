@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-import noImg from "../../../../public/images/not-found-page/no-image.png";
+// import noImg from "../../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../public/images/not-found-page/no-image.png";
 
 import { getAllGames } from "@/utils/index";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import Game from "@/app/types/interface";
+import Game from "@/types/interface";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";

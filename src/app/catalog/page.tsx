@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { getAllCategories } from "@/utils";
 
-import Categorires from "@/app/types/allCategories";
+import Categorires from "@/types/allCategories";
 
-import AllGameList from "@/app/components/Catalog/AllGameList";
-import FiltersDrawer from "../components/Catalog/FiltersDrawer";
-import FiltersStatic from "../components/Catalog/FiltersStatic";
-import SortDrawer from "../components/Catalog/SortDrawer";
+import AllGameList from "@/components/Catalog/AllGameList";
+import FiltersDrawer from "../../components/Catalog/FiltersDrawer";
+import FiltersStatic from "../../components/Catalog/FiltersStatic";
+import SortDrawer from "../../components/Catalog/SortDrawer";
 import {
   Breadcrumb,
   BreadcrumbItem,

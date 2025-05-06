@@ -6,7 +6,7 @@ import Logo from "./Logo";
 import SearchBtn from "./SearchBtn";
 import MobileMenu from "./MobileMenu";
 
-import Categorires from "@/app/types/allCategories";
+import Categorires from "@/types/allCategories";
 
 import { getAllCategories } from "@/utils/index";
 import { IoCartOutline } from "react-icons/io5";
