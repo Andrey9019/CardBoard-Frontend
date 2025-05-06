@@ -1,0 +1,1 @@
+export type TabType = "policy-confident" | "policy-cookies" | "use-terms";

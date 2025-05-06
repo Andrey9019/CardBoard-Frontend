@@ -1,5 +1,3 @@
-import AllGameList from "@/app/components/Catalog/AllGameList";
-
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,13 +8,12 @@ import {
 
 import { IoHomeOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
-import { TbSortDescending } from "react-icons/tb";
-import { VscSettings } from "react-icons/vsc";
+import PolicyTabs from "../components/Policy/PolicyTabs";
 
-export default function Catalog() {
+export default function PolicyPage() {
   return (
     <section className="px-9 pt-12">
-      <Breadcrumb className="mb-12">
+      <Breadcrumb className="mb-12 hidden md:block">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink className="text-primary" href="/">
@@ -26,20 +23,13 @@ export default function Catalog() {
           <IoIosArrowForward className="text-primary" />
           <BreadcrumbItem>
             <BreadcrumbPage className="text-primary font-bold">
-              Каталог
+              Правова політика
             </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="flex flex-col items-center gap-12">
-        <p className="text-3xl font-bold">Каталог</p>
-        <div className="text-primary flex w-full justify-between">
-          <VscSettings className="h-8 w-8" />
-          <TbSortDescending className="h-8 w-8" />
-        </div>
-        <AllGameList />
-        <div>pagination</div>
-      </div>
+
+      <PolicyTabs />
     </section>
   );
 }

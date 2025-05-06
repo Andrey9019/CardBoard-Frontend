@@ -17,12 +17,12 @@ export default function Footer() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/exchange-return">
               <span className="text-sm font-bold"> Обмін і повернення</span>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/policy">
               <span className="text-sm font-bold"> Правова політика</span>
             </Link>
           </li>
