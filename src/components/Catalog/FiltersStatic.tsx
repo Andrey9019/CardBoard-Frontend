@@ -9,10 +9,11 @@ import {
   AccordionItem,
   AccordionTriggerFilter,
 } from "@/components/ui/accordion";
-import Categorires from "@/types/allCategories";
+import Categorires from "@/shared/types/allCategories";
 import { Checkbox } from "@/components/ui/ckeckbox";
 import { Label } from "@/components/ui/label";
 import Button from "@/components/ui/Button";
+// import useClearFiltersAndClose from "@/shared/hooks/useClearFiltersAndClose";
 
 interface FiltersStaticProps {
   toggleFilter: () => void;
@@ -26,6 +27,10 @@ export default function FiltersStatic({
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: number[];
   }>({});
+
+  // хук скидає фільтр і закриває його
+  // const { resetFiltersAndClose } = useClearFiltersAndClose(toggleFilter);
+
   //   const [openItems, setOpenItems] = useState<string[]>([]);
   //   console.log(openItems);
 

@@ -6,9 +6,9 @@ import Logo from "./Logo";
 import SearchBtn from "./SearchBtn";
 import MobileMenu from "./MobileMenu";
 
-import Categorires from "@/types/allCategories";
+import Categorires from "@/shared/types/allCategories";
 
-import { getAllCategories } from "@/utils/index";
+import { getAllCategories } from "@/shared/utils/index";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-import Game from "../../types/interface";
-import { getAllGames } from "@/utils/index";
-import { formatPrice } from "@/utils/index";
+import Game from "../../shared/types/interface";
+import { getAllGames } from "@/shared/utils/index";
+import { formatPrice } from "@/shared/utils/index";
 
 import { IoIosSearch } from "react-icons/io";
 import Image from "next/image";

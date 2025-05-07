@@ -1,5 +1,5 @@
 "use client";
-import { getAllCategories } from "@/utils/index";
+import { getAllCategories } from "@/shared/utils/index";
 
 import { useEffect, useRef, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
@@ -7,7 +7,7 @@ import { IoCartOutline, IoCloseOutline } from "react-icons/io5";
 import { HiOutlineUser } from "react-icons/hi2";
 import Logo from "./Logo";
 import { motion, AnimatePresence } from "framer-motion";
-import Categorires from "@/types/allCategories";
+import Categorires from "@/shared/types/allCategories";
 import {
   Accordion,
   AccordionContent,

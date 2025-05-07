@@ -12,11 +12,11 @@ import { Badge } from "@/components/ui/badge";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 
-import { getGameById } from "@/utils/index";
+import { getGameById } from "@/shared/utils/index";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import Game from "@/types/interface";
+import Game from "@/shared/types/interface";
 import Button from "@/components/ui/Button";
 import PopularListGame from "@/components/Main/PopularListGame";
 

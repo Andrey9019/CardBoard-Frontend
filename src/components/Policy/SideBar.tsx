@@ -1,4 +1,4 @@
-import { TabType } from "@/types/policyTabs";
+import { TabType } from "@/shared/types/policyTabs";
 
 interface SideBarProps {
   setActiveTab: (tab: TabType) => void;

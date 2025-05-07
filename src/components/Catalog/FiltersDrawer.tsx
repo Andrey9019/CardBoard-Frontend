@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTriggerFilter,
 } from "@/components/ui/accordion";
-import Categorires from "@/types/allCategories";
+import Categorires from "@/shared/types/allCategories";
 import { Checkbox } from "@/components/ui/ckeckbox";
 import { Label } from "@/components/ui/label";
 import Button from "@/components/ui/Button";
