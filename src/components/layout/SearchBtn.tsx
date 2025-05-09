@@ -27,8 +27,8 @@ export default function SearchBtn({
   useEffect(() => {
     const getGames = async () => {
       try {
-        const data = await getAllGames();
-        setGames(data);
+        const data = await getAllGames("");
+        setGames(data.results);
         console.log(data);
       } catch (error) {
         console.log("error getGame", error);

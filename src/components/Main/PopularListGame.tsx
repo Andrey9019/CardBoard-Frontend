@@ -51,8 +51,9 @@ export default function PopularListGame(title: ListGameProp) {
   useEffect(() => {
     const getGames = async () => {
       try {
-        const data = await getAllGames();
-        setGames(data);
+        const data = await getAllGames("");
+        console.log(data);
+        setGames(data.results);
       } catch (error) {
         console.log("error getGame", error);
       } finally {
@@ -105,6 +106,7 @@ export default function PopularListGame(title: ListGameProp) {
         <SkeletonCard />
       ) : (
         <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between">
+          {/* {games.map((game) => ( */}
           {currentGames.map((game) => (
             <li
               key={game.id}

@@ -36,7 +36,7 @@ export default function PopularListGame() {
         const query = searchParams.toString();
         console.log(query);
         const data = await getAllGames(query);
-        setGames(data);
+        setGames(data.results);
         setIsLoading(true);
       } catch (error) {
         console.log("error getGame", error);
