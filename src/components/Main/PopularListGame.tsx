@@ -51,7 +51,7 @@ export default function PopularListGame(title: ListGameProp) {
   useEffect(() => {
     const getGames = async () => {
       try {
-        const data = await getAllGames("");
+        const data = await getAllGames();
         console.log(data);
         setGames(data.results);
       } catch (error) {

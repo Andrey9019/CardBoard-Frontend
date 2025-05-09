@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = process.env.NEXT_PUBLIC_DB_API_BASE_URL;
 
-export const getAllGames = async (query: string) => {
+export const getAllGames = async (query?: string) => {
   try {
     const response = await axios.get(`${baseUrl}/api/games/?${query}`);
     console.log("Response:", response);
