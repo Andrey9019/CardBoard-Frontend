@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { getAllCategories } from "@/shared/utils";
 
 import Categorires from "@/shared/types/allCategories";
@@ -125,7 +125,11 @@ export default function Catalog() {
           <FiltersDrawer toggleFilter={toggleFilter} categories={categories} />
         )}
         {isSortOpen && !isFilterOpen && <SortDrawer />}
-        {!isFilterOpen && <AllGameList />}
+        {!isFilterOpen && (
+          <Suspense>
+            <AllGameList />
+          </Suspense>
+        )}
       </div>
       {/* блок видно після 1024px */}
       <div className="hidden lg:block">
@@ -193,7 +197,9 @@ export default function Catalog() {
             />
           )}
           {/* {isSortOpen && !isFilterOpen && <SortDrawer />} */}
-          <AllGameList />
+          <Suspense>
+            <AllGameList />
+          </Suspense>
         </div>
       </div>
     </section>
