@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-import Game from "../../types/interface";
-import { getAllGames } from "@/utils/index";
-import { formatPrice } from "@/utils/index";
+import Game from "../../shared/types/interface";
+import { getAllGames } from "@/shared/utils/index";
+import { formatPrice } from "@/shared/utils/index";
 
 import { IoIosSearch } from "react-icons/io";
 import Image from "next/image";
-import noImg from "../../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../public/images/not-found-page/no-image.png";
 import Link from "next/link";
 
 interface SearchBtnProps {
@@ -28,7 +28,7 @@ export default function SearchBtn({
     const getGames = async () => {
       try {
         const data = await getAllGames();
-        setGames(data);
+        setGames(data.results);
         console.log(data);
       } catch (error) {
         console.log("error getGame", error);

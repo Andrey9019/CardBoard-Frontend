@@ -1,15 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { AnimatePresence } from "framer-motion";
 
 import Logo from "./Logo";
 import SearchBtn from "./SearchBtn";
 import MobileMenu from "./MobileMenu";
 
-import Categorires from "@/app/types/allCategories";
+import Categorires from "@/shared/types/allCategories";
 
-import { getAllCategories } from "@/utils/index";
+import { getAllCategories } from "@/shared/utils/index";
 import { IoCartOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
@@ -67,7 +66,7 @@ export default function Header() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
 
   return (
@@ -114,23 +113,26 @@ export default function Header() {
             <li className="hidden p-2 lg:flex">
               <HiOutlineUser className="h-8 w-8 cursor-pointer" />
             </li>
+            <li className="p-2 xl:hidden">
+              <button className=" " onClick={toggleMobileMenu}>
+                <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
+              </button>
+            </li>
           </ul>
 
-          {!isMobileMenuOpen && (
-            <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
-              <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
-            </button>
-          )}
+          {/* {!isMobileMenuOpen && ( */}
+          {/* <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
+            <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
+          </button> */}
+          {/* )} */}
 
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <MobileMenu
-                onClose={() => setIsMobileMenuOpen(false)}
-                toggleSearch={toggleSearch}
-                isMobileMenuOpen={isMobileMenuOpen}
-              />
-            )}
-          </AnimatePresence>
+          {isMobileMenuOpen && (
+            <MobileMenu
+              onClose={() => setIsMobileMenuOpen(false)}
+              toggleSearch={toggleSearch}
+              isMobileMenuOpen={isMobileMenuOpen}
+            />
+          )}
         </div>
       </div>
 
@@ -144,6 +146,7 @@ export default function Header() {
       {isCatalogOpen && (
         <div
           // ref={itemRef}
+
           className={`bg-primary animate-fade-in-down-03 absolute left-0 z-9 mt-4 w-full rounded-b-3xl px-16 py-8 opacity-0`}
         >
           <div className="container mb-9 grid grid-cols-3 grid-rows-3 gap-9">

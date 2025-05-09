@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-import noImg from "../../../../public/images/not-found-page/no-image.png";
+// import noImg from "../../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../public/images/not-found-page/no-image.png";
 
-import { getAllGames } from "@/utils/index";
+import { getAllGames } from "@/shared/utils/index";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import Game from "@/app/types/interface";
+import Game from "@/shared/types/interface";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -51,7 +52,8 @@ export default function PopularListGame(title: ListGameProp) {
     const getGames = async () => {
       try {
         const data = await getAllGames();
-        setGames(data);
+        console.log(data);
+        setGames(data.results);
       } catch (error) {
         console.log("error getGame", error);
       } finally {
@@ -104,6 +106,7 @@ export default function PopularListGame(title: ListGameProp) {
         <SkeletonCard />
       ) : (
         <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between">
+          {/* {games.map((game) => ( */}
           {currentGames.map((game) => (
             <li
               key={game.id}

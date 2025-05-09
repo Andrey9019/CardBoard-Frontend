@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TabType } from "@/app/types/policyTabs";
+import { TabType } from "@/shared/types/policyTabs";
 
 import SideBar from "./SideBar";
 import PolicyMobile from "./PolicyMobile";

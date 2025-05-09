@@ -37,11 +37,11 @@ export default function ExchangePage() {
         </Link>
       </div>
 
-      <h2 className="text-[24px] lg:text-[28px] font-bold lg:text-3xl">
+      <h2 className="text-[24px] font-bold lg:text-3xl lg:text-[28px]">
         Умови обміну та повернення
       </h2>
 
-      <div className="mx-auto my-0 mt-12 mb-12 md:mt-16 md:mb-16 min-w-[408px] md:w-[716px] lg:w-[994px] text-[18px]">
+      <div className="mx-auto my-0 mt-12 mb-12 min-w-[408px] text-[18px] md:mt-16 md:mb-16 md:w-[716px] lg:w-[994px]">
         <p>
           Якщо з будь-яких причин вас не влаштовує товар, придбаний в
           Card&Board, ви можете повернути або обміняти його протягом 14 днів з
