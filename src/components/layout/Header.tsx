@@ -90,7 +90,7 @@ export default function Header() {
             />
           </button>
         </div>
-        <Logo size="small" className="w-24" />
+        <Logo size="small" className="w-24" toggleCatalog={toggleCatalog} />
 
         <div className="flex">
           <ul className="flex gap-2">
