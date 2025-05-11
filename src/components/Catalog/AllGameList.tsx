@@ -65,8 +65,9 @@ export default function PopularListGame() {
         </p>
 
         <Button
+          as="button"
+          variant="primary"
           onClick={handlleResetFilters}
-          type="primary"
           text=" Скинути фільтри"
         />
       </div>
@@ -106,7 +107,8 @@ export default function PopularListGame() {
 
               <div className="mt-auto flex w-full flex-col justify-end">
                 <Button
-                  type="primary"
+                  as="button"
+                  variant="primary"
                   text="Купити"
                   className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
                 />

@@ -137,7 +137,9 @@ export default function PopularListGame(title: ListGameProp) {
 
                 <div className="mt-auto flex flex-col justify-end">
                   <Button
-                    type="primary"
+                    // тут лінг на кошик?
+                    as="button"
+                    variant="primary"
                     text="Купити"
                     className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
                   />
