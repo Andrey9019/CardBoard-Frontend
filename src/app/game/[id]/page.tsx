@@ -16,7 +16,7 @@ import { getGameById } from "@/shared/utils/index";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import Game from "@/shared/types/interface";
+import Game from "@/shared/types/game";
 import Button from "@/components/ui/Button";
 import PopularListGame from "@/components/Main/PopularListGame";
 

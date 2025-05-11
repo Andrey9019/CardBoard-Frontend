@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import Game from "../../shared/types/interface";
+import Game from "../../shared/types/game";
 import { getAllGames } from "@/shared/utils/index";
 import { formatPrice } from "@/shared/utils/index";
 

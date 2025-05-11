@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { getAllGames } from "@/shared/utils";
-import Game from "@/shared/types/interface";
+import Game from "@/shared/types/game";
 
 import Button from "@/components/ui/Button";
 import SkeletonCard from "../layout/Skeleton";
