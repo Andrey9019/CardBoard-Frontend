@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
@@ -12,13 +11,14 @@ export default function Hero() {
           Відкрийте для себе нові стратегії та розваги для компанії будь-якої
           форми.
         </p>
-        <Link href="/catalog">
-          <Button
-            text={"Перейти до каталогу"}
-            type="primary"
-            className="animate-fade-in-down-12 translate-y-[-20px] opacity-0"
-          />
-        </Link>
+
+        <Button
+          as="link"
+          href="/catalog"
+          text={"Перейти до каталогу"}
+          variant="primary"
+          className="animate-fade-in-down-12 translate-y-[-20px] opacity-0"
+        />
       </div>
     </section>
   );

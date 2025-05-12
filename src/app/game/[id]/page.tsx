@@ -16,7 +16,7 @@ import { getGameById } from "@/shared/utils/index";
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import Game from "@/shared/types/interface";
+import Game from "@/shared/types/game";
 import Button from "@/components/ui/Button";
 import PopularListGame from "@/components/Main/PopularListGame";
 
@@ -97,15 +97,19 @@ export default function GamePage() {
               )}
             </p>
             <div className="flex justify-between gap-6 sm:justify-start">
+              {/* змінити на лінк? */}
               <Button
-                className="lg:min-w-[346px] xl:min-w-[264px]"
-                type="primary"
+                as="button"
+                variant="primary"
                 text="Купити зараз"
-              />
-              <Button
                 className="lg:min-w-[346px] xl:min-w-[264px]"
-                type="secondary"
+              />
+              {/* змінити на лінк? */}
+              <Button
+                as="button"
+                variant="secondary"
                 text="Додати в кошик"
+                className="lg:min-w-[346px] xl:min-w-[264px]"
               />
             </div>
           </div>
@@ -193,7 +197,12 @@ export default function GamePage() {
               Поки що ніхто не залишив відгуків
             </p>
             <div className="flex justify-end">
-              <Button type="secondary" text="Залиште свій відгук" disabled />
+              <Button
+                as="button"
+                variant="secondary"
+                text="Залиште свій відгук"
+                disabled
+              />
             </div>
           </div>
         </div>

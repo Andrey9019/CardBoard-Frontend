@@ -129,13 +129,15 @@ export default function FiltersStatic({
         ))}
       </Accordion>
       <Button
-        type="primary"
+        as="button"
+        variant="primary"
         text="Застосувати"
         onClick={handlleApplyFilters}
         className="min-w-full"
       />
       <Button
-        type="secondary"
+        as="button"
+        variant="secondary"
         text="Скинути фільтр"
         onClick={handlleResetFilters}
         className="min-w-full !px-3"

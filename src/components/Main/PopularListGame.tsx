@@ -9,7 +9,7 @@ import { getAllGames } from "@/shared/utils/index";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import Game from "@/shared/types/interface";
+import Game from "@/shared/types/game";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
@@ -137,7 +137,9 @@ export default function PopularListGame(title: ListGameProp) {
 
                 <div className="mt-auto flex flex-col justify-end">
                   <Button
-                    type="primary"
+                    // тут лінг на кошик?
+                    as="button"
+                    variant="primary"
                     text="Купити"
                     className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
                   />

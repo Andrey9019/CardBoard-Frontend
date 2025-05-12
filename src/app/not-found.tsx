@@ -27,10 +27,11 @@ export default function NotFound() {
         Спробуйте свою вдачу ще раз
       </p>
       <Button
+        as="button"
+        variant="primary"
         text="Повернутись на головну"
-        type="primary"
-        className="mt-9 text-sm lg:text-lg xl:text-2xl"
         onClick={handleMain}
+        className="mt-9 text-sm lg:text-lg xl:text-2xl"
       />
     </div>
   );

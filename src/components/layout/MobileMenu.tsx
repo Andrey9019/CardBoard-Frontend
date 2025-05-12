@@ -87,7 +87,13 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
                   <ul>
                     {category.values.map((value) => (
                       <li key={value.id} className="py-1.5 text-base">
-                        {value.name}
+                        <Link
+                          href={`/catalog${value.filter_url}`}
+                          onClick={onClose}
+                          className="pb-1 hover:border-b-1"
+                        >
+                          {value.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -96,7 +102,11 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
             ))}
           </Accordion>
           <div className="before:bg-secondary relative w-full pb-9 before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full"></div>
-          <Link href={"/"} className="font-semibold">
+          <Link
+            href={"/exchange-return"}
+            className="font-semibold"
+            onClick={onClose}
+          >
             Обмін і повернення
           </Link>
         </div>

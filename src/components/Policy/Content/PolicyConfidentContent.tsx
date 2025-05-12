@@ -10,7 +10,7 @@ export default function PolicyConfidentContent({
   return (
     <>
       <div
-        className={`${isMobilePage ? "hidden md:block" : "block"} mt-12 mb-0 mb-12 md:mt-0`}
+        className={`${isMobilePage ? "hidden md:block" : "block"} mt-12 mb-0 md:mt-0`}
       >
         <h3>Політика конфіденційності</h3>
         <p>1. Вступ</p>

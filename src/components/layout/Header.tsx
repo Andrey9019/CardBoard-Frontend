@@ -65,6 +65,11 @@ export default function Header() {
     if (isCatalogOpen) setIsCatalogOpen(false);
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const closeAll = () => {
+    if (isSearchOpen) setIsSearchOpen(false);
+    if (isCatalogOpen) setIsCatalogOpen(false);
+  };
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
@@ -90,7 +95,7 @@ export default function Header() {
             />
           </button>
         </div>
-        <Logo size="small" className="w-24" />
+        <Logo size="small" className="w-24" closeAll={closeAll} />
 
         <div className="flex">
           <ul className="flex gap-2">
@@ -153,12 +158,18 @@ export default function Header() {
             {categories.map((category) => (
               <ul key={category.name} className="mr-2 font-bold">
                 <div className="flex gap-2">
-                  {category.display_name}
+                  <p> {category.display_name}</p>
                   <IoIosArrowDown className="h-6 w-6 items-start justify-between text-left" />
                 </div>
                 {category.values.map((value) => (
                   <li key={value.id} className="py-1.5 text-base">
-                    {value.name}
+                    <Link
+                      href={`/catalog${value.filter_url}`}
+                      onClick={toggleCatalog}
+                      className="pb-1 hover:border-b-1"
+                    >
+                      {value.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -169,8 +180,12 @@ export default function Header() {
             <div className="before:bg-secondary relative before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full"></div>
           </div>
           <div className="container pt-9 pb-9">
-            <Link href={"/"}>
-              <p>Обмін і повернення</p>
+            <Link
+              href={"/exchange-return"}
+              onClick={toggleCatalog}
+              className="pb-1 hover:border-b-1"
+            >
+              Обмін і повернення
             </Link>
           </div>
         </div>

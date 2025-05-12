@@ -23,6 +23,7 @@ import { TbSortDescending } from "react-icons/tb";
 import { VscSettings } from "react-icons/vsc";
 // import useClearFilters from "@/shared/hooks/useClearFilters";
 import { useRouter } from "next/navigation";
+import Button from "@/components/ui/Button";
 
 export default function Catalog() {
   const [categories, setCategories] = useState<Categorires[]>([]);
@@ -101,14 +102,15 @@ export default function Catalog() {
                   >
                     <VscSettings className="mr-4 h-8 w-8 cursor-pointer" />
                   </button>
-                  <button
+                  <Button
+                    as="button"
+                    variant="secondary"
+                    text="Скинути фільтри"
                     onClick={handlleResetFilters}
                     className={`border-primary hover:text-card active:border-background active:text-background w-full cursor-pointer items-center justify-center rounded-lg border-2 px-4 py-2 text-xs font-semibold hover:border-card${
                       isFilterOpen ? "flex" : "hidden"
                     } `}
-                  >
-                    Скинути фільтри
-                  </button>
+                  />
                 </div>
                 <button
                   onClick={toggleSort}
@@ -160,22 +162,25 @@ export default function Catalog() {
               {/* може кастомні кнопки? */}
               {/* може кастомні кнопки? */}
               {/* може кастомні кнопки? */}
-              <button
+              <Button
+                as="button"
+                variant="secondary"
+                text="Фільтр"
+                icon={<VscSettings className="h-8 w-8" />}
                 onClick={toggleFilter}
                 // disabled={isFilterOpen}
                 className="lg:border-primary lg:active:border-background lg:active:text-background lg:hover:border-card lg:hover:text-card hidden w-full cursor-pointer items-center justify-center transition duration-200 lg:flex lg:max-w-[228px] lg:min-w-[228px] lg:rounded-lg lg:border lg:py-2 xl:max-w-[270px] xl:min-w-[270px]"
-              >
-                <VscSettings className="h-8 w-8 lg:mr-2.5" />
-                <p className="text-2xl font-semibold">Фільтр</p>
-              </button>
-              <button
-                className={`border-primary animate-fade-in-down-03 hover:text-card hover:border-card active:border-background active:text-background w-full transform cursor-pointer items-center justify-center rounded-lg border-2 px-4 py-2 text-xs font-semibold transition-all duration-300 ${
+              />
+
+              <Button
+                as="button"
+                variant="secondary"
+                text="Скинути фільтри"
+                className={`animate-fade-in-down-03 hover:border-card w-full border-2 px-4 py-2 !text-xs font-semibold ${
                   isFilterOpen ? "hidden" : "flex"
                 } `}
                 onClick={handlleResetFilters}
-              >
-                Скинути фільтри
-              </button>
+              />
             </div>
 
             <button
