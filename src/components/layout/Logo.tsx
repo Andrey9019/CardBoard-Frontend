@@ -9,13 +9,13 @@ import smallLogo from "@/assets/logos/Logo-Small.svg";
 interface LogoProps {
   size?: "extraLarge" | "large" | "medium" | "small";
   className?: string;
-  toggleCatalog?: () => void;
+  closeAll?: () => void;
 }
 
 export default function Logo({
   size = "medium",
   className = "",
-  toggleCatalog,
+  closeAll,
 }: LogoProps) {
   const logos = {
     extraLarge: extraLargeLogo,
@@ -25,7 +25,7 @@ export default function Logo({
   };
 
   return (
-    <Link href={"/"} onClick={toggleCatalog}>
+    <Link href={"/"} onClick={closeAll}>
       <Image
         src={logos[size] || smallLogo}
         alt="Logo"
