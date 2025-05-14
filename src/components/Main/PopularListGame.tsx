@@ -14,6 +14,7 @@ import Game from "@/shared/types/game";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 import SkeletonCard from "../layout/Skeleton";
+// import GameCard from "../Game/GameCard";
 
 interface ListGameProp {
   title: string;
@@ -112,6 +113,7 @@ export default function PopularListGame(title: ListGameProp) {
               key={game.id}
               className="item-shadow min-h-[365px] max-w-[196px] rounded-lg bg-white lg:min-h-[429px] lg:max-w-[228px] xl:min-h-[477px] xl:max-w-[270px]"
             >
+              {/* <GameCard key={game.id} game={game} /> */}
               <Link
                 href={`/game/${game.id}`}
                 className="flex h-full flex-col justify-between p-4"

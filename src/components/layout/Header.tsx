@@ -113,7 +113,9 @@ export default function Header() {
               </button>
             </li>
             <li className="p-2">
-              <IoCartOutline className="h-8 w-8 cursor-pointer" />
+              <Link href={`/cart`} onClick={closeAll}>
+                <IoCartOutline className="h-8 w-8 cursor-pointer" />
+              </Link>
             </li>
             <li className="hidden p-2 lg:flex">
               <HiOutlineUser className="h-8 w-8 cursor-pointer" />

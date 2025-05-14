@@ -212,3 +212,24 @@ section {
     animation: fade-in-left 1.2s ease-out forwards;
   }
 }
+
+/* фон сторінки 404 */
+
+.not-found-page {
+  background-image: url("/images/not-found-page/404-d.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .not-found-page {
+    background-image: url("/images/not-found-page/404-t.png");
+  }
+}
+@media (max-width: 768px) {
+  .not-found-page {
+    background-image: url("/images/not-found-page/404-m.png");
+  }
+}
