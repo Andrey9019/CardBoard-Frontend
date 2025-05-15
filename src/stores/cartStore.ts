@@ -1,65 +1,83 @@
-// import { create } from "zustand";
-// import { persist, createJSONStorage } from "zustand/middleware";
+import { create } from "zustand";
+import { persist, createJSONStorage, devtools } from "zustand/middleware";
 
-// export const useCartStore = create(
-//   persist(
-//     (set, get) => ({
-//       cart: [],
-//       total: 0,
+import CartStore from "@/shared/types/cartStore";
 
-//       countTotal: () => {
-//         const { cart } = get();
-//         let total = 0;
-//         cart.map((e) => (total = total + e.price * e.amount));
-//         total = Math.round(total);
-//         set({
-//           total: total,
-//         });
-//       },
+export const useCartStore = create<CartStore>()(
+  devtools(
+    persist(
+      (set, get) => ({
+        cart: [],
+        total: 0,
 
-//       addProduct: (data) => {
-//         const { cart } = get();
-//         const isItemInCart = cart.find((e) => e.id == data.id);
-//         const newCart = isItemInCart
-//           ? cart.map((e) =>
-//               e.id == data.id ? { ...e, amount: e.amount + 1 } : e,
-//             )
-//           : [...cart, { ...data, amount: 1 }];
-//         set({
-//           cart: newCart,
-//         });
-//       },
-//       removeProduct: (data) => {
-//         const { cart } = get();
-//         const isItemAmount = cart.find((e) => e.id == data.id).amount > 1;
-//         const newCart = isItemAmount
-//           ? cart.map((e) =>
-//               e.id == data.id ? { ...e, amount: e.amount - 1 } : e,
-//             )
-//           : [...cart.filter((e) => e.id !== data.id)];
-//         set({ cart: newCart });
-//       },
-//       deleteProduct: (id) => {
-//         const { cart } = get();
-//         const newCart = [...cart.filter((e) => e.id !== id)];
-//         set({
-//           cart: newCart,
-//         });
-//       },
-//       changeAmount: (id, amount) => {
-//         const { cart } = get();
-//         const newCart = cart.map((e) =>
-//           e.id == id ? { ...e, amount: amount } : e,
-//         );
-//         set({
-//           cart: newCart,
-//         });
-//       },
-//     }),
+        // підрахунок загальної суми total
+        countTotal: () => {
+          const { cart } = get();
+          const total = Math.round(
+            cart.reduce((acc, item) => acc + item.price * item.amount, 0),
+          );
+          set({
+            total: total,
+          });
+        },
 
-//     {
-//       name: "cart_storage",
-//       storage: createJSONStorage(() => localStorage),
-//     },
-//   ),
-// );
+        // додає товар
+        addProduct: (data) => {
+          const { cart } = get();
+          const isItemInCart = cart.find((item) => item.id === data.id);
+          const newItem = isItemInCart
+            ? cart.map((item) =>
+                item.id === data.id
+                  ? { ...item, amount: item.amount + 1 }
+                  : item,
+              )
+            : [...cart, { ...data, amount: 1 }];
+          set({
+            cart: newItem,
+          });
+          get().countTotal();
+          console.log("add new imet", newItem);
+        },
+
+        //  змінює кількість
+        removeProduct: (data) => {
+          const { cart } = get();
+          const isItemInCart = cart.find((item) => item.id === data.id);
+          if (!isItemInCart) return;
+          const newItem =
+            isItemInCart.amount > 1
+              ? cart.map((item) =>
+                  item.id === data.id
+                    ? { ...item, amount: item.amount - 1 }
+                    : item,
+                )
+              : cart.filter((item) => item.id !== data.id);
+          set({ cart: newItem });
+        },
+
+        // повністю видаляє
+        deleteProduct: (id) => {
+          const { cart } = get();
+          const newCart = [...cart.filter((item) => item.id !== id)];
+          set({
+            cart: newCart,
+          });
+        },
+
+        // ставить свою кількість
+        changeAmount: (id, amount) => {
+          const { cart } = get();
+          const newCart = cart.map((item) =>
+            item.id === id ? { ...item, amount } : item,
+          );
+          set({ cart: newCart });
+        },
+      }),
+
+      {
+        name: "cart_storage",
+        storage: createJSONStorage(() => localStorage),
+      },
+    ),
+  ),
+);

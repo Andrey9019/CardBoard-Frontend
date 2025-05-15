@@ -113,7 +113,7 @@ export default function PopularListGame() {
                   variant="primary"
                   text="Купити"
                   className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
-                  // onClick={() => {}}
+                  onClick={() => {}}
                 />
               </div>
             </Link>

@@ -47,7 +47,7 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
         exit={{ x: "100%" }}
         transition={{ type: "spring", stiffness: 300, damping: 50 }}
         ref={containerRef}
-        className="bg-primary text-secondary fixed top-0 left-0 z-[99] flex h-full w-full flex-col justify-between overflow-y-auto px-9 pt-6 pb-12 shadow-xl"
+        className="bg-primary text-secondary fixed top-0 left-0 z-999 flex h-full w-full flex-col justify-between overflow-y-auto px-9 pt-6 pb-12 shadow-xl"
       >
         <div className="flex items-center justify-between">
           <Logo size="small" className="w-24" />
