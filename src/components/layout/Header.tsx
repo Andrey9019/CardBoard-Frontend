@@ -1,22 +1,35 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-
-import Logo from "./Logo";
-import SearchBtn from "./SearchBtn";
-import MobileMenu from "./MobileMenu";
-
-import Categorires from "@/shared/types/allCategories";
-
 import { getAllCategories } from "@/shared/utils/index";
-import { IoCartOutline } from "react-icons/io5";
+import Categorires from "@/shared/types/allCategories";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+
+import MobileMenu from "./MobileMenu";
+import SearchBtn from "./SearchBtn";
+import Logo from "./Logo";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+
 import { RxHamburgerMenu } from "react-icons/rx";
+import { IoCartOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { HiOutlineUser } from "react-icons/hi2";
 import { IoIosSearch } from "react-icons/io";
-import Link from "next/link";
+import Image from "next/image";
+
+import noImg from "../../../public/images/not-found-page/no-image.png";
+import { useCartStore } from "@/stores/cartStore";
+import Button from "../ui/Button";
 
 export default function Header() {
+  const cart = useCartStore((state) => state.cart);
+  const total = useCartStore((state) => state.total);
+  const countTotal = useCartStore((state) => state.countTotal);
+
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -74,6 +87,10 @@ export default function Header() {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    countTotal();
+  }, [cart]);
+
   return (
     <header
       className={`header bg-primary text-secondary relative z-10 px-9 py-6 transition-all xl:px-16 ${
@@ -113,10 +130,69 @@ export default function Header() {
               </button>
             </li>
             <li className="p-2">
-              <Link href={`/cart`} onClick={closeAll}>
-                <IoCartOutline className="h-8 w-8 cursor-pointer" />
-              </Link>
+              <HoverCard openDelay={0}>
+                <HoverCardTrigger asChild>
+                  <Link href="/cart" onClick={closeAll}>
+                    <IoCartOutline className="h-8 w-8 cursor-pointer" />
+                  </Link>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  <div className="bg-secondary text-black">
+                    {cart.length != 0 ? (
+                      <div className="justify-between gap-4 lg:flex">
+                        <ul className="flex flex-col items-center gap-5 px-6 lg:gap-4 lg:px-0">
+                          {cart.map((game) => (
+                            <li
+                              key={game.id}
+                              className="item-shadow lg: flex rounded-lg bg-white px-4 py-3"
+                            >
+                              <Image
+                                // className="mr-4 h-[120px] lg:h-[164px] lg:w-[164px] xl:h-[175px] xl:w-[175px]"
+                                width={120}
+                                src={noImg}
+                                alt="Фото гри"
+                              />
+                              <div className="flex flex-1 flex-col justify-between">
+                                <span>{game.price} грн</span>
+
+                                <div className="flex justify-between">
+                                  <p className="">Всього:</p>
+                                  <span className="font-semibold">
+                                    {game.price * game.amount} грн
+                                  </span>
+                                </div>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+
+                        <div className="mx-2 flex flex-1 flex-col gap-4 pt-7 lg:mx-6 lg:border-t-[1px] lg:border-gray-400">
+                          <div className="flex justify-between">
+                            <p>Всього:</p>
+                            <span>{total}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center gap-3">
+                        <p className="text-primary text-center font-semibold">
+                          Кошик пустий, як поле перед першим ходом!
+                          <br /> Зроби перший хід — обери свою гру!
+                        </p>
+                        <Button
+                          as="link"
+                          href="/catalog"
+                          text={"Перейти до каталогу"}
+                          variant="primary"
+                          className="text-sm"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
             </li>
+
             <li className="hidden p-2 lg:flex">
               <HiOutlineUser className="h-8 w-8 cursor-pointer" />
             </li>

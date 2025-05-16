@@ -6,7 +6,7 @@ type ButtonProps = {
   variant: "primary" | "secondary";
   text?: string;
   href?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
   icon?: React.ReactNode;
   className?: string;
   disabled?: boolean;

@@ -1,10 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-
-import { IoIosArrowForward } from "react-icons/io";
-import { IoHomeOutline } from "react-icons/io5";
+import { useParams, useRouter } from "next/navigation";
 
 import Game from "@/shared/types/game";
 import { getGameById } from "@/shared/utils/index";
@@ -21,10 +18,15 @@ import { Badge } from "@/components/ui/badge";
 import Button from "@/components/ui/Button";
 import PopularListGame from "@/components/Main/PopularListGame";
 
+import { IoIosArrowForward } from "react-icons/io";
+import { IoHomeOutline } from "react-icons/io5";
+
 export default function GamePage() {
   const addProduct = useCartStore((state) => state.addProduct);
 
   const [game, setGame] = useState<Game | null>(null);
+
+  const router = useRouter();
 
   const params = useParams();
   const id = params.id;
@@ -107,6 +109,11 @@ export default function GamePage() {
                 variant="primary"
                 text="Купити зараз"
                 className="lg:min-w-[346px] xl:min-w-[264px]"
+                onClick={() => {
+                  if (!game) return;
+                  addProduct(game);
+                  router.push("/cart");
+                }}
               />
               <Button
                 as="button"

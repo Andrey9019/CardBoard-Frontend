@@ -80,28 +80,29 @@ export default function Cart() {
 
         <div className="container">
           {cart.length != 0 ? (
-            <div className="justify-between lg:flex">
+            <div className="justify-between gap-4 lg:flex">
               <ul className="flex flex-col items-center gap-5 px-6 lg:gap-4 lg:px-0">
-                {cart.map((e) => (
+                {cart.map((game) => (
                   <li
-                    key={e.id}
-                    className="item-shadow lg: flex w-[358px] rounded-lg bg-white px-4 py-3 lg:w-[472px]"
+                    key={game.id}
+                    className="item-shadow lg: flex w-[358px] rounded-lg bg-white px-4 py-3 lg:w-[472px] xl:w-[684px]"
                   >
                     <Image
-                      className="mr-4 h-[120px] lg:h-[164px] lg:w-[164px]"
+                      className="mr-4 h-[120px] lg:h-[164px] lg:w-[164px] xl:h-[175px] xl:w-[175px]"
                       width={120}
                       src={noImg}
                       alt="Фото гри"
                     />
-                    <div className="flex flex-1 flex-col gap-2">
+                    <div className="flex flex-1 flex-col justify-between">
                       <div className="flex items-start justify-between gap-4">
-                        <Link href={`/`}>
-                          <p className="line-clamp-2 cursor-pointer overflow-hidden text-base font-bold text-ellipsis sm:text-lg">
-                            {e.title}
-                          </p>
+                        <Link
+                          href={`/game/${game.id}`}
+                          className="line-clamp-2 cursor-pointer overflow-hidden text-base font-bold text-ellipsis sm:text-lg lg:text-lg"
+                        >
+                          {game.title}
                         </Link>
                         <button
-                          onClick={() => deleteProduct(e.id)}
+                          onClick={() => deleteProduct(game.id)}
                           className="text-primary text-xl"
                         >
                           <CiTrash />
@@ -109,23 +110,26 @@ export default function Cart() {
                       </div>
 
                       <div className="flex w-max items-center gap-3 rounded border p-1">
-                        <button onClick={() => removeProduct(e)} className="">
+                        <button
+                          onClick={() => removeProduct(game)}
+                          className=""
+                        >
                           -
                         </button>
                         <span className="text-center font-semibold">
-                          {e.amount}
+                          {game.amount}
                         </span>
-                        <button onClick={() => addProduct(e)} className="">
+                        <button onClick={() => addProduct(game)} className="">
                           +
                         </button>
                       </div>
 
-                      <span>{e.price} грн</span>
+                      <span>{game.price} грн</span>
 
                       <div className="flex justify-between">
                         <p className="">Всього:</p>
                         <span className="font-semibold">
-                          {e.price * e.amount} грн
+                          {game.price * game.amount} грн
                         </span>
                       </div>
                     </div>
@@ -133,13 +137,13 @@ export default function Cart() {
                 ))}
               </ul>
 
-              <div className="mx-2 mt-7 flex flex-col gap-4">
+              <div className="mx-2 flex flex-1 flex-col gap-4 pt-7 lg:mx-6 lg:border-t-[1px] lg:border-gray-400">
                 <div className="flex justify-between">
                   <p>Всього:</p>
                   <span>{total}</span>
                 </div>
                 <p>Промокод</p>
-                <div className="border-primary flex flex-1 items-center rounded-sm border-1 bg-white px-4 py-3">
+                <div className="border-primary flex items-center rounded-sm border-1 bg-white px-4 py-3">
                   <input
                     type="text"
                     // value={query}
@@ -160,13 +164,13 @@ export default function Cart() {
                   <span>знижка?</span>
                 </div>
 
-                <div className="flex justify-between font-semibold">
+                <div className="flex justify-between border-t-[1px] border-gray-400 pt-4 font-semibold">
                   <p>До сплати:</p>
                   <span>{total}</span>
                 </div>
                 {isFormСonfirm ? (
                   <div className="flex justify-center">
-                    <form className="item-shadow flex w-full max-w-[358px] flex-col gap-6 rounded-2xl bg-white p-6 text-black">
+                    <form className="item-shadow flex w-full max-w-[358px] flex-col gap-6 rounded-2xl bg-white p-6 text-black lg:max-w-[472px]">
                       <h2 className="text-lg font-bold">Контакти</h2>
 
                       <div className="flex flex-col gap-2">
