@@ -36,7 +36,7 @@ export default function Cart() {
 
   useEffect(() => {
     countTotal();
-  }, [cart]);
+  }, [cart, countTotal]);
 
   return (
     <section className="mb-12 px-9 pt-12 lg:px-8 lg:pt-16 lg:pb-16 xl:px-[120px]">
@@ -97,7 +97,7 @@ export default function Cart() {
                       <div className="flex items-start justify-between gap-4">
                         <Link
                           href={`/game/${game.id}`}
-                          className="line-clamp-2 cursor-pointer overflow-hidden text-base font-bold text-ellipsis sm:text-lg lg:text-lg"
+                          className="hover:text-primary line-clamp-2 cursor-pointer overflow-hidden text-base font-bold text-ellipsis sm:text-lg lg:text-lg"
                         >
                           {game.title}
                         </Link>
