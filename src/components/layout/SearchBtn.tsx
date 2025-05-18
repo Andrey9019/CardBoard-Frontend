@@ -100,7 +100,7 @@ export default function SearchBtn({
                     }, 100);
                   }}
                 >
-                  <li className="lg:border-b-primary mb-3 flex w-full p-1 lg:border">
+                  <li className="lg:border-b-primary mb-3 flex w-full p-1 lg:border-b">
                     <Image
                       src={noImg}
                       alt="Фото гри"

@@ -15,6 +15,7 @@ import { FaRegHeart } from "react-icons/fa";
 import noImg from "../../../public/images/not-found-page/no-image.png";
 // import useClearFilters from "@/shared/hooks/useClearFilters";
 import { useRouter } from "next/navigation";
+// import GameCard from "../Game/GameCard";
 
 export default function PopularListGame() {
   const [games, setGames] = useState<Game[]>([]);
@@ -84,6 +85,7 @@ export default function PopularListGame() {
             key={game.id}
             className="item-shadow min-h-[365px] max-w-[196px] rounded-lg bg-white lg:min-h-[429px] lg:max-w-[228px] xl:min-h-[477px] xl:max-w-[270px]"
           >
+            {/* <GameCard game={game} /> */}
             <Link
               href={`/game/${game.id}`}
               className="flex h-full flex-col justify-between p-4"
@@ -111,6 +113,7 @@ export default function PopularListGame() {
                   variant="primary"
                   text="Купити"
                   className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
+                  onClick={() => {}}
                 />
               </div>
             </Link>

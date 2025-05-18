@@ -1,20 +1,20 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-
-import Logo from "./Logo";
-import SearchBtn from "./SearchBtn";
-import MobileMenu from "./MobileMenu";
-
-import Categorires from "@/shared/types/allCategories";
-
 import { getAllCategories } from "@/shared/utils/index";
-import { IoCartOutline } from "react-icons/io5";
+import Categorires from "@/shared/types/allCategories";
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+
+import MobileMenu from "./MobileMenu";
+import SearchBtn from "./SearchBtn";
+import Logo from "./Logo";
+
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
 import { HiOutlineUser } from "react-icons/hi2";
 import { IoIosSearch } from "react-icons/io";
-import Link from "next/link";
+
+import CartBtn from "./CartBtn";
 
 export default function Header() {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
@@ -113,8 +113,9 @@ export default function Header() {
               </button>
             </li>
             <li className="p-2">
-              <IoCartOutline className="h-8 w-8 cursor-pointer" />
+              <CartBtn closeAll={closeAll} />
             </li>
+
             <li className="hidden p-2 lg:flex">
               <HiOutlineUser className="h-8 w-8 cursor-pointer" />
             </li>
@@ -124,12 +125,6 @@ export default function Header() {
               </button>
             </li>
           </ul>
-
-          {/* {!isMobileMenuOpen && ( */}
-          {/* <button className="ml-2 p-2 xl:hidden" onClick={toggleMobileMenu}>
-            <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
-          </button> */}
-          {/* )} */}
 
           {isMobileMenuOpen && (
             <MobileMenu

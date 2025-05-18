@@ -1,5 +1,12 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+
+import Game from "@/shared/types/game";
+import { getGameById } from "@/shared/utils/index";
+import { useCartStore } from "@/stores/cartStore";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,24 +15,23 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 import { Badge } from "@/components/ui/badge";
+import Button from "@/components/ui/Button";
+import PopularListGame from "@/components/Main/PopularListGame";
 
 import { IoIosArrowForward } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 
-import { getGameById } from "@/shared/utils/index";
-import { useEffect } from "react";
-import { useParams } from "next/navigation";
-
-import Game from "@/shared/types/game";
-import Button from "@/components/ui/Button";
-import PopularListGame from "@/components/Main/PopularListGame";
-
 export default function GamePage() {
+  const addProduct = useCartStore((state) => state.addProduct);
+
   const [game, setGame] = useState<Game | null>(null);
+
+  const router = useRouter();
 
   const params = useParams();
   const id = params.id;
   console.log("id", id);
+  //
 
   useEffect(() => {
     if (!id || Array.isArray(id)) return;
@@ -103,13 +109,21 @@ export default function GamePage() {
                 variant="primary"
                 text="Купити зараз"
                 className="lg:min-w-[346px] xl:min-w-[264px]"
+                onClick={() => {
+                  if (!game) return;
+                  addProduct(game);
+                  router.push("/cart");
+                }}
               />
-              {/* змінити на лінк? */}
               <Button
                 as="button"
                 variant="secondary"
                 text="Додати в кошик"
                 className="lg:min-w-[346px] xl:min-w-[264px]"
+                onClick={() => {
+                  if (!game) return;
+                  addProduct(game);
+                }}
               />
             </div>
           </div>

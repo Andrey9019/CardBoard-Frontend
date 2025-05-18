@@ -17,9 +17,10 @@ export default interface Game {
   description: string;
   rules_summary: string;
   release_year: string;
-  price: string;
+  price: number;
   discount_price: string;
   stock: number;
   created_at: string;
   updated_at: string;
+  amount: number;
 }

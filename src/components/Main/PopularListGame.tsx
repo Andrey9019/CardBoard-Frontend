@@ -1,29 +1,35 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// import { useRouter } from "next/navigation";
 
-// import noImg from "../../../../public/images/not-found-page/no-image.png";
-import noImg from "../../../public/images/not-found-page/no-image.png";
-
+// import { useCartStore } from "@/stores/cartStore";
 import { getAllGames } from "@/shared/utils/index";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Game from "@/shared/types/game";
 
+import SkeletonCard from "../layout/Skeleton";
+
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
-import SkeletonCard from "../layout/Skeleton";
+
+import noImg from "../../../public/images/not-found-page/no-image.png";
 
 interface ListGameProp {
   title: string;
 }
 
 export default function PopularListGame(title: ListGameProp) {
+  // const addProduct = useCartStore((state) => state.addProduct);
+
   const [games, setGames] = useState<Game[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [gamesPerPage, setGamesPerPage] = useState(2);
   const [isLoading, setIsLoading] = useState(true);
+
+  // const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -112,6 +118,7 @@ export default function PopularListGame(title: ListGameProp) {
               key={game.id}
               className="item-shadow min-h-[365px] max-w-[196px] rounded-lg bg-white lg:min-h-[429px] lg:max-w-[228px] xl:min-h-[477px] xl:max-w-[270px]"
             >
+              {/* <GameCard key={game.id} game={game} /> */}
               <Link
                 href={`/game/${game.id}`}
                 className="flex h-full flex-col justify-between p-4"
@@ -137,11 +144,15 @@ export default function PopularListGame(title: ListGameProp) {
 
                 <div className="mt-auto flex flex-col justify-end">
                   <Button
-                    // тут лінг на кошик?
                     as="button"
                     variant="primary"
                     text="Купити"
                     className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
+                    onClick={() => {
+                      // if (!game) return;
+                      // addProduct(game);
+                      // router.push("/cart");
+                    }}
                   />
                 </div>
               </Link>
