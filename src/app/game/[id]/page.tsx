@@ -16,10 +16,10 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Badge } from "@/components/ui/badge";
 import Button from "@/components/ui/Button";
-import PopularListGame from "@/components/Main/PopularListGame";
 
 import { IoIosArrowForward } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
+import RecommendationsList from "@/app/(main)/components/RecommendationsList";
 
 export default function GamePage() {
   const addProduct = useCartStore((state) => state.addProduct);
@@ -222,7 +222,7 @@ export default function GamePage() {
         </div>
       </div>
       <div className="mb-12 lg:mb-16">
-        <PopularListGame title="Вас також може зацікавити" />
+        <RecommendationsList title="Вас також може зацікавити" />
       </div>
     </section>
   );

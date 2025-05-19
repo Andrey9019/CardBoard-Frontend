@@ -1,5 +1,5 @@
 import Image from "next/image";
-import aboutPic from "../../../public/images/About.png";
+import aboutPic from "../../../../public/images/About.png";
 
 export default function About() {
   return (

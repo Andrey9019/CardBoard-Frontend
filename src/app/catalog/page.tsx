@@ -2,13 +2,14 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { getAllCategories } from "@/shared/utils";
+import { useRouter } from "next/navigation";
 
 import Categorires from "@/shared/types/allCategories";
-
 import AllGameList from "@/components/Catalog/AllGameList";
-import FiltersDrawer from "../../components/Catalog/FiltersDrawer";
-import FiltersStatic from "../../components/Catalog/FiltersStatic";
-import SortDrawer from "../../components/Catalog/SortDrawer";
+import FiltersDrawer from "@/components/Catalog/FiltersDrawer";
+import FiltersStatic from "@/components/Catalog/FiltersStatic";
+import SortDrawer from "@/components/Catalog/SortDrawer";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,48 +17,18 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
+import Button from "@/components/ui/Button";
 
 import { IoHomeOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { TbSortDescending } from "react-icons/tb";
 import { VscSettings } from "react-icons/vsc";
-// import useClearFilters from "@/shared/hooks/useClearFilters";
-import { useRouter } from "next/navigation";
-import Button from "@/components/ui/Button";
 
 export default function Catalog() {
   const [categories, setCategories] = useState<Categorires[]>([]);
-
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
-
-  // хук скидає фільтр
-  // const { resetFilters } = useClearFilters();
-
-  const [, setSelectedFilters] = useState<{
-    [key: string]: number[];
-  }>({});
-
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const data = await getAllCategories();
-        setCategories(data);
-      } catch (error) {
-        console.log("error getGame", error);
-      }
-    };
-    getCategories();
-  }, []);
-
-  const toggleFilter = () => {
-    if (isSortOpen) setIsSortOpen(false);
-    setIsFilterOpen(!isFilterOpen);
-  };
-  const toggleSort = () => {
-    if (isFilterOpen) setIsFilterOpen(false);
-    setIsSortOpen(!isSortOpen);
-  };
+  const [, setSelectedFilters] = useState<{ [key: string]: number[] }>({});
 
   const router = useRouter();
 
@@ -66,143 +37,98 @@ export default function Catalog() {
     router.push("/catalog");
   };
 
+  const toggleFilter = () => {
+    if (isSortOpen) setIsSortOpen(false);
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  const toggleSort = () => {
+    if (isFilterOpen) setIsFilterOpen(false);
+    setIsSortOpen(!isSortOpen);
+  };
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const data = await getAllCategories();
+        setCategories(data);
+      } catch (error) {
+        console.log("error getCategories", error);
+      }
+    };
+    getCategories();
+  }, []);
+
   return (
     <section className="mb-12 px-9 pt-12 lg:px-8 lg:pt-16 lg:pb-16 xl:px-[120px]">
-      {/* блок видно до 1024px */}
-      <div className="block lg:hidden">
-        {!isFilterOpen && (
-          <>
-            <Breadcrumb className="mb-12">
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink className="text-primary" href="/">
-                    <IoHomeOutline />
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <IoIosArrowForward className="text-primary" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage className="text-primary font-bold">
-                    Каталог
-                  </BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+      <Breadcrumb className="mb-12">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink className="text-primary" href="/">
+              <IoHomeOutline />
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <IoIosArrowForward className="text-primary" />
+          <BreadcrumbItem>
+            <BreadcrumbPage className="text-primary font-bold">
+              Каталог
+            </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
-            <div className="flex flex-col items-center gap-12">
-              <p className="text-3xl font-bold">Каталог</p>
-              {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
-              {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
-              {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
-              <div className="text-primary mb-9 flex w-full justify-between">
-                <div className="flex">
-                  <button
-                    onClick={toggleFilter}
-                    // disabled={isFilterOpen}
-                    className="flex"
-                  >
-                    <VscSettings className="mr-4 h-8 w-8 cursor-pointer" />
-                  </button>
-                  <Button
-                    as="button"
-                    variant="secondary"
-                    text="Скинути фільтри"
-                    onClick={handlleResetFilters}
-                    className={`border-primary hover:text-card active:border-background active:text-background w-full cursor-pointer items-center justify-center rounded-lg border-2 px-4 py-2 text-xs font-semibold hover:border-card${
-                      isFilterOpen ? "flex" : "hidden"
-                    } `}
-                  />
-                </div>
-                <button
-                  onClick={toggleSort}
-                  // disabled={isSortOpen}
-                  className="flex"
-                >
-                  <TbSortDescending className="h-8 w-8 cursor-pointer" />
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-        {isFilterOpen && (
-          <FiltersDrawer toggleFilter={toggleFilter} categories={categories} />
-        )}
-        {isSortOpen && !isFilterOpen && <SortDrawer />}
-        {!isFilterOpen && (
-          <Suspense>
-            <AllGameList />
-          </Suspense>
-        )}
-      </div>
-      {/* блок видно після 1024px */}
-      <div className="hidden lg:block">
-        {/* <> */}
-        <Breadcrumb className="mb-12">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink className="text-primary" href="/">
-                <IoHomeOutline />
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <IoIosArrowForward className="text-primary" />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-primary font-bold">
-                Каталог
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+      <div className="flex flex-col items-center gap-12">
+        <p className="text-3xl font-bold">Каталог</p>
 
-        <div className="flex flex-col items-center gap-12">
-          <p className="text-3xl font-bold">Каталог</p>
-          {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
-          {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
-          {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
-          <div className="text-primary mb-9 flex w-full justify-between">
-            <div className="flex gap-4 xl:gap-10">
-              <Button
-                as="button"
-                variant="secondary"
-                text="Фільтр"
-                icon={<VscSettings className="h-8 w-8" />}
-                onClick={toggleFilter}
-                // disabled={isFilterOpen}
-                className="lg:border-primary lg:active:border-background lg:active:text-background lg:hover:border-card lg:hover:text-card hidden w-full cursor-pointer items-center justify-center transition duration-200 lg:flex lg:max-w-[228px] lg:min-w-[228px] lg:rounded-lg lg:border lg:py-2 xl:max-w-[270px] xl:min-w-[270px]"
-              />
-
-              <Button
-                as="button"
-                variant="secondary"
-                text="Скинути фільтри"
-                className={`animate-fade-in-down-03 hover:border-card w-full border-2 px-4 py-2 !text-xs font-semibold ${
-                  isFilterOpen ? "hidden" : "flex"
-                } `}
-                onClick={handlleResetFilters}
-              />
-            </div>
-
-            <button
-              onClick={toggleSort}
-              // disabled={isSortOpen}
-              className="flex"
-            >
-              <TbSortDescending className="h-8 w-8 cursor-pointer" />
+        <div className="text-primary mb-9 flex w-full items-center justify-between">
+          <div className="flex">
+            <button onClick={toggleFilter} className="flex">
+              <VscSettings className="h-8 w-8 cursor-pointer lg:hidden" />
             </button>
-          </div>
-        </div>
-        {/* </> */}
 
-        <div className="flex">
-          {isFilterOpen && (
-            <FiltersStatic
-              toggleFilter={toggleFilter}
-              categories={categories}
+            <Button
+              as="button"
+              variant="secondary"
+              text="Фільтр"
+              icon={<VscSettings className="h-8 w-8" />}
+              onClick={toggleFilter}
+              className="hidden w-full max-w-[228px] min-w-[228px] cursor-pointer items-center justify-center lg:flex lg:h-11 lg:max-w-[228px] lg:min-w-[228px] xl:max-w-[270px] xl:min-w-[270px]"
             />
-          )}
-          {/* {isSortOpen && !isFilterOpen && <SortDrawer />} */}
-          <Suspense>
-            <AllGameList />
-          </Suspense>
+
+            <Button
+              as="button"
+              variant="secondary"
+              text="Скинути фільтри"
+              onClick={handlleResetFilters}
+              className={`ml-4 h-8 border-2 px-4 py-2 !text-xs font-semibold lg:h-11 xl:ml-10 ${
+                isFilterOpen ? "flex" : "hidden"
+              }`}
+            />
+          </div>
+
+          <button onClick={toggleSort} className="flex">
+            <TbSortDescending className="h-8 w-8 cursor-pointer" />
+          </button>
         </div>
+      </div>
+
+      {isFilterOpen && (
+        <div className="lg:hidden">
+          <FiltersDrawer toggleFilter={toggleFilter} categories={categories} />
+        </div>
+      )}
+      {isFilterOpen && (
+        <div className="hidden lg:block">
+          <FiltersStatic toggleFilter={toggleFilter} categories={categories} />
+        </div>
+      )}
+
+      {isSortOpen && !isFilterOpen && <SortDrawer />}
+
+      <div className={`${isFilterOpen ? "hidden" : "block"} w-full`}>
+        <Suspense>
+          <AllGameList />
+        </Suspense>
       </div>
     </section>
   );

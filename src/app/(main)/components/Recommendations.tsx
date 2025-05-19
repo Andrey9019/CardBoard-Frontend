@@ -1,4 +1,4 @@
-import PopularListGame from "./PopularListGame";
+import RecommendationsList from "./RecommendationsList";
 
 export default function Recommendations() {
   return (
@@ -8,13 +8,13 @@ export default function Recommendations() {
       </p>
 
       <div>
-        <PopularListGame title="Популярне" />
+        <RecommendationsList title="Популярне" />
       </div>
       <div>
-        <PopularListGame title="Новинки" />
+        <RecommendationsList title="Новинки" />
       </div>
       <div>
-        <PopularListGame title="Акція" />
+        <RecommendationsList title="Акція" />
       </div>
     </section>
   );

@@ -1,35 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
 
-// import { useCartStore } from "@/stores/cartStore";
 import { getAllGames } from "@/shared/utils/index";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Game from "@/shared/types/game";
 
-import SkeletonCard from "../layout/Skeleton";
-
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 
-import noImg from "../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../../public/images/not-found-page/no-image.png";
+import SkeletonCard from "@/components/layout/Skeleton";
 
 interface ListGameProp {
   title: string;
 }
 
-export default function PopularListGame(title: ListGameProp) {
-  // const addProduct = useCartStore((state) => state.addProduct);
-
+export default function RecommendationsList(title: ListGameProp) {
   const [games, setGames] = useState<Game[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [gamesPerPage, setGamesPerPage] = useState(2);
   const [isLoading, setIsLoading] = useState(true);
-
-  // const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -112,7 +105,6 @@ export default function PopularListGame(title: ListGameProp) {
         <SkeletonCard />
       ) : (
         <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between">
-          {/* {games.map((game) => ( */}
           {currentGames.map((game) => (
             <li
               key={game.id}
@@ -148,11 +140,7 @@ export default function PopularListGame(title: ListGameProp) {
                     variant="primary"
                     text="Купити"
                     className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
-                    onClick={() => {
-                      // if (!game) return;
-                      // addProduct(game);
-                      // router.push("/cart");
-                    }}
+                    onClick={() => {}}
                   />
                 </div>
               </Link>
