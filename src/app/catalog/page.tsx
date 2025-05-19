@@ -159,9 +159,6 @@ export default function Catalog() {
           {/* виводиться те ж чого перейшли, якщо перейшли з акцій вбо популярне відображати акції або популярне */}
           <div className="text-primary mb-9 flex w-full justify-between">
             <div className="flex gap-4 xl:gap-10">
-              {/* може кастомні кнопки? */}
-              {/* може кастомні кнопки? */}
-              {/* може кастомні кнопки? */}
               <Button
                 as="button"
                 variant="secondary"
