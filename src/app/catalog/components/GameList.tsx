@@ -8,26 +8,20 @@ import { getAllGames } from "@/shared/utils";
 import Game from "@/shared/types/game";
 
 import Button from "@/components/ui/Button";
-import SkeletonCard from "../layout/Skeleton";
+import SkeletonCard from "../../../components/layout/Skeleton";
 
 import { FaRegHeart } from "react-icons/fa";
 
-import noImg from "../../../public/images/not-found-page/no-image.png";
-// import useClearFilters from "@/shared/hooks/useClearFilters";
+import noImg from "../../../../public/images/not-found-page/no-image.png";
+
 import { useRouter } from "next/navigation";
-// import GameCard from "../Game/GameCard";
 
-export default function PopularListGame() {
+export default function GameList() {
   const [games, setGames] = useState<Game[]>([]);
-
   const [isLoading, setIsLoading] = useState(true);
-
   const [, setSelectedFilters] = useState<{
     [key: string]: number[];
   }>({});
-
-  // хук скидає фільтр
-  // const { resetFilters } = useClearFilters();
 
   const searchParams = useSearchParams();
 
@@ -75,17 +69,13 @@ export default function PopularListGame() {
     );
 
   return (
-    <>
-      {/* {isLoading ? (
-        <SkeletonCard />
-      ) : ( */}
+    <section className="mb-12 px-9 lg:px-8 lg:pb-16 xl:px-[120px]">
       <ul className="flex h-max flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between xl:gap-x-10">
         {games.map((game) => (
           <li
             key={game.id}
             className="item-shadow min-h-[365px] max-w-[196px] rounded-lg bg-white lg:min-h-[429px] lg:max-w-[228px] xl:min-h-[477px] xl:max-w-[270px]"
           >
-            {/* <GameCard game={game} /> */}
             <Link
               href={`/game/${game.id}`}
               className="flex h-full flex-col justify-between p-4"
@@ -120,7 +110,6 @@ export default function PopularListGame() {
           </li>
         ))}
       </ul>
-      {/* )} */}
-    </>
+    </section>
   );
 }

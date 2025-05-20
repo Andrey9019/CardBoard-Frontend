@@ -13,26 +13,21 @@ import Categorires from "@/shared/types/allCategories";
 import { Checkbox } from "@/components/ui/ckeckbox";
 import { Label } from "@/components/ui/label";
 import Button from "@/components/ui/Button";
-// import useClearFiltersAndClose from "@/shared/hooks/useClearFiltersAndClose";
 
-interface FiltersStaticProps {
+import { IoCloseOutline } from "react-icons/io5";
+
+interface FiltersDrawerProps {
   toggleFilter: () => void;
   categories: Categorires[];
 }
 
-export default function FiltersStatic({
+export default function FiltersDrawer({
   toggleFilter,
   categories,
-}: FiltersStaticProps) {
+}: FiltersDrawerProps) {
   const [selectedFilters, setSelectedFilters] = useState<{
     [key: string]: number[];
   }>({});
-
-  // хук скидає фільтр і закриває його
-  // const { resetFiltersAndClose } = useClearFiltersAndClose(toggleFilter);
-
-  //   const [openItems, setOpenItems] = useState<string[]>([]);
-  //   console.log(openItems);
 
   useEffect(() => {
     const currentParams = new URLSearchParams(window.location.search);
@@ -45,7 +40,6 @@ export default function FiltersStatic({
     }
 
     setSelectedFilters(restoredFilters);
-    // setOpenItems(Object.keys(restoredFilters));
   }, []);
 
   const handleToggle = (category: string, value: number) => {
@@ -83,11 +77,14 @@ export default function FiltersStatic({
   };
 
   return (
-    <div className="item-shadow animate-fade-in-left-03 mr-4 flex h-max max-w-[228px] min-w-[228px] flex-col gap-4 rounded-lg bg-white p-6 xl:mr-10 xl:max-w-[270px] xl:min-w-[270px]">
-      <Accordion
-        type="multiple"
-        //   defaultValue={openItems}
-      >
+    <div className="animate-fade-in-left-03 mb-8 flex flex-col gap-4 rounded-lg bg-white p-6">
+      <div className="flex items-center justify-between">
+        <p className="text-xl font-semibold">Фільтр</p>
+        <button onClick={toggleFilter} className="">
+          <IoCloseOutline className="text-primary h-8 w-8" />
+        </button>
+      </div>
+      <Accordion type="multiple">
         {categories.map((category) => (
           <AccordionItem
             key={category.name}
