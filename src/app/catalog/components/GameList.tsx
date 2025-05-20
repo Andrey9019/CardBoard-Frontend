@@ -69,7 +69,7 @@ export default function GameList() {
     );
 
   return (
-    <section className="mb-12 px-9 lg:px-8 lg:pb-16 xl:px-[120px]">
+    <>
       <ul className="flex h-max flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between xl:gap-x-10">
         {games.map((game) => (
           <li
@@ -110,6 +110,6 @@ export default function GameList() {
           </li>
         ))}
       </ul>
-    </section>
+    </>
   );
 }
