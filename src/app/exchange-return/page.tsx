@@ -7,10 +7,7 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 
-import { IoIosArrowBack } from "react-icons/io";
 import Link from "next/link";
-import { IoHomeOutline } from "react-icons/io5";
-import { IoIosArrowForward } from "react-icons/io";
 
 export default function ExchangePage() {
   return (
@@ -19,10 +16,14 @@ export default function ExchangePage() {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink className="text-primary" href="/">
-              <IoHomeOutline />
+              <svg className="h-6 w-6">
+                <use href="/sprite.svg#icon-home"></use>
+              </svg>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <IoIosArrowForward className="text-primary" />
+          <svg className="h-6 w-6">
+            <use href="/sprite.svg#icon-arrow-right-purple"></use>
+          </svg>
           <BreadcrumbItem>
             <BreadcrumbPage className="text-primary font-bold">
               Умови обміну та повернення
@@ -33,7 +34,9 @@ export default function ExchangePage() {
 
       <div className="mb-[48px] flex h-[40px] items-center md:hidden">
         <Link href="/">
-          <IoIosArrowBack size={32} style={{ color: "#0B0105" }} />
+          <svg height="32" width="32">
+            <use href="/sprite.svg#icon-arrow-left"></use>
+          </svg>
         </Link>
       </div>
 

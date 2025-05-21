@@ -4,7 +4,6 @@ import Game from "../../shared/types/game";
 import { getAllGames } from "@/shared/utils/index";
 import { formatPrice } from "@/shared/utils/index";
 
-import { IoIosSearch } from "react-icons/io";
 import Image from "next/image";
 import noImg from "../../../public/images/not-found-page/no-image.png";
 import Link from "next/link";
@@ -82,7 +81,9 @@ export default function SearchBtn({
             />
 
             <button type="button">
-              <IoIosSearch className="h-8 w-8 cursor-pointer group-focus-within:text-black" />
+              <svg className="h-8 w-8 cursor-pointer group-focus-within:text-black">
+                <use href="/sprite.svg#icon-search"></use>
+              </svg>
             </button>
           </div>
         </form>

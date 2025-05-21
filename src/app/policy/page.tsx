@@ -6,8 +6,6 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 
-import { IoHomeOutline } from "react-icons/io5";
-import { IoIosArrowForward } from "react-icons/io";
 import PolicyTabs from "../../components/Policy/PolicyTabs";
 
 export default function PolicyPage() {
@@ -17,10 +15,14 @@ export default function PolicyPage() {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink className="text-primary" href="/">
-              <IoHomeOutline />
+              <svg width="24" height="24">
+                <use href="/sprite.svg#icon-home"></use>
+              </svg>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <IoIosArrowForward className="text-primary" />
+          <svg className="h-6 w-6">
+            <use href="/sprite.svg#icon-arrow-right-purple"></use>
+          </svg>
           <BreadcrumbItem>
             <BreadcrumbPage className="text-primary font-bold">
               Правова політика

@@ -11,8 +11,6 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Game from "@/shared/types/game";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { FaRegHeart } from "react-icons/fa";
 import SkeletonCard from "../layout/Skeleton";
 
 interface ListGameProp {
@@ -74,7 +72,9 @@ export default function PopularListGame(title: ListGameProp) {
             disabled={currentPage === 1}
             className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
           >
-            <IoIosArrowBack className="h-5 w-5" />
+            <svg className="h-5 w-5 text-[#2B1047]">
+              <use href="/sprite.svg#icon-arrow-left"></use>
+            </svg>
           </button>
 
           <div className="flex items-center gap-3">
@@ -98,7 +98,9 @@ export default function PopularListGame(title: ListGameProp) {
             disabled={currentPage === totalPages}
             className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
           >
-            <IoIosArrowForward className="h-5 w-5" />
+            <svg className="h-5 w-5 text-[#2B1047]">
+              <use href="/sprite.svg#icon-arrow-right"></use>
+            </svg>
           </button>
         </div>
       </div>
@@ -118,7 +120,9 @@ export default function PopularListGame(title: ListGameProp) {
               >
                 <div className="flex justify-end">
                   <button className="max-w-max">
-                    <FaRegHeart className="text-primary h-[18px] w-[18px]" />
+                    <svg width="18" height="18">
+                      <use href="/sprite.svg#icon-heart"></use>
+                    </svg>
                   </button>
                 </div>
 
@@ -155,7 +159,9 @@ export default function PopularListGame(title: ListGameProp) {
           disabled={currentPage === 1}
           className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
         >
-          <IoIosArrowBack className="h-5 w-5" />
+          <svg className="h-5 w-5 text-[#2B1047]">
+            <use href="/sprite.svg#icon-arrow-left"></use>
+          </svg>
         </button>
 
         <div className="flex items-center gap-3">
@@ -179,7 +185,9 @@ export default function PopularListGame(title: ListGameProp) {
           disabled={currentPage === totalPages}
           className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
         >
-          <IoIosArrowForward className="h-5 w-5" />
+          <svg className="h-5 w-5 text-[#2B1047]">
+            <use href="/sprite.svg#icon-arrow-right"></use>
+          </svg>
         </button>
       </div>
     </>

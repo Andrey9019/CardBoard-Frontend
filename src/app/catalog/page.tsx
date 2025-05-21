@@ -17,10 +17,6 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 
-import { IoHomeOutline } from "react-icons/io5";
-import { IoIosArrowForward } from "react-icons/io";
-import { TbSortDescending } from "react-icons/tb";
-import { VscSettings } from "react-icons/vsc";
 // import useClearFilters from "@/shared/hooks/useClearFilters";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
@@ -76,10 +72,14 @@ export default function Catalog() {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink className="text-primary" href="/">
-                    <IoHomeOutline />
+                    <svg className="h-6 w-6">
+                      <use href="/sprite.svg#icon-home"></use>
+                    </svg>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
-                <IoIosArrowForward className="text-primary" />
+                <svg className="h-6 w-6">
+                  <use href="/sprite.svg#icon-arrow-right-purple"></use>
+                </svg>
                 <BreadcrumbItem>
                   <BreadcrumbPage className="text-primary font-bold">
                     Каталог
@@ -100,7 +100,9 @@ export default function Catalog() {
                     // disabled={isFilterOpen}
                     className="flex"
                   >
-                    <VscSettings className="mr-4 h-8 w-8 cursor-pointer" />
+                    <svg className="mr-4 h-8 w-8 cursor-pointer">
+                      <use href="/sprite.svg#icon-filters"></use>
+                    </svg>
                   </button>
                   <Button
                     as="button"
@@ -117,7 +119,9 @@ export default function Catalog() {
                   // disabled={isSortOpen}
                   className="flex"
                 >
-                  <TbSortDescending className="h-8 w-8 cursor-pointer" />
+                  <svg className="h-8 w-8 cursor-pointer">
+                    <use href="/sprite.svg#icon-sort"></use>
+                  </svg>
                 </button>
               </div>
             </div>
@@ -140,10 +144,14 @@ export default function Catalog() {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink className="text-primary" href="/">
-                <IoHomeOutline />
+                <svg height="24" width="24">
+                  <use href="/sprite.svg#icon-home"></use>
+                </svg>
               </BreadcrumbLink>
             </BreadcrumbItem>
-            <IoIosArrowForward className="text-primary" />
+            <svg className="h-6 w-6">
+              <use href="/sprite.svg#icon-arrow-right-purple"></use>
+            </svg>
             <BreadcrumbItem>
               <BreadcrumbPage className="text-primary font-bold">
                 Каталог
@@ -166,7 +174,11 @@ export default function Catalog() {
                 as="button"
                 variant="secondary"
                 text="Фільтр"
-                icon={<VscSettings className="h-8 w-8" />}
+                icon={
+                  <svg className="h-8 w-8">
+                    <use href="/sprite.svg#icon-filters"></use>
+                  </svg>
+                }
                 onClick={toggleFilter}
                 // disabled={isFilterOpen}
                 className="lg:border-primary lg:active:border-background lg:active:text-background lg:hover:border-card lg:hover:text-card hidden w-full cursor-pointer items-center justify-center transition duration-200 lg:flex lg:max-w-[228px] lg:min-w-[228px] lg:rounded-lg lg:border lg:py-2 xl:max-w-[270px] xl:min-w-[270px]"
@@ -188,7 +200,9 @@ export default function Catalog() {
               // disabled={isSortOpen}
               className="flex"
             >
-              <TbSortDescending className="h-8 w-8 cursor-pointer" />
+              <svg className="h-8 w-8 cursor-pointer">
+                <use href="/sprite.svg#icon-sort"></use>
+              </svg>
             </button>
           </div>
         </div>

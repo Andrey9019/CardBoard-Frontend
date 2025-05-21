@@ -7,10 +7,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
-import { Badge } from "@/components/ui/badge";
 
-import { IoIosArrowForward } from "react-icons/io";
-import { IoHomeOutline } from "react-icons/io5";
+import { Badge } from "@/components/ui/badge";
 
 import { getGameById } from "@/shared/utils/index";
 import { useEffect } from "react";
@@ -19,29 +17,53 @@ import { useParams } from "next/navigation";
 import Game from "@/shared/types/game";
 import Button from "@/components/ui/Button";
 import PopularListGame from "@/components/Main/PopularListGame";
+import NotFound from "@/app/not-found";
+import Loading from "@/app/loading";
 
 export default function GamePage() {
   const [game, setGame] = useState<Game | null>(null);
+  const [notFound, setNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
   const id = params.id;
   console.log("id", id);
 
   useEffect(() => {
-    if (!id || Array.isArray(id)) return;
+    if (!id || Array.isArray(id)) {
+      setNotFound(true);
+      setIsLoading(false);
+      return;
+    }
 
     const getGame = async () => {
       try {
         const numericId = parseInt(id);
         const data = await getGameById(numericId);
-        console.log(data);
-        setGame(data);
+        if (!data) {
+          setNotFound(true);
+        } else {
+          setGame(data);
+          console.log(data);
+        }
       } catch (error) {
+        setNotFound(true);
         console.log(error);
+        setIsLoading(false);
+      } finally {
+        setIsLoading(false);
       }
     };
     getGame();
   }, [id]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (notFound) {
+    return <NotFound />;
+  }
 
   return (
     <section className="px-9 pt-12 lg:px-8 lg:pt-16 xl:px-[120px]">
@@ -49,10 +71,14 @@ export default function GamePage() {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/" className="text-primary">
-              <IoHomeOutline />
+              <svg height="24" width="24">
+                <use href="/sprite.svg#icon-home"></use>
+              </svg>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <IoIosArrowForward className="text-primary" />
+          <svg className="h-6 w-6">
+            <use href="/sprite.svg#icon-arrow-right-purple"></use>
+          </svg>
           <BreadcrumbItem>
             <BreadcrumbLink
               href="/catalog"
@@ -61,7 +87,9 @@ export default function GamePage() {
               Каталог
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <IoIosArrowForward className="text-primary" />
+          <svg className="h-6 w-6">
+            <use href="/sprite.svg#icon-arrow-right-purple"></use>
+          </svg>
           <BreadcrumbItem>
             <BreadcrumbPage className="text-primary">
               <span className="font-semibold">{game?.title}</span>

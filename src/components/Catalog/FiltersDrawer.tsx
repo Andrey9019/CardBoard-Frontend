@@ -15,8 +15,6 @@ import { Checkbox } from "@/components/ui/ckeckbox";
 import { Label } from "@/components/ui/label";
 import Button from "@/components/ui/Button";
 
-import { IoCloseOutline } from "react-icons/io5";
-
 interface FiltersDrawerProps {
   toggleFilter: () => void;
   categories: Categorires[];
@@ -82,7 +80,9 @@ export default function FiltersDrawer({
       <div className="flex items-center justify-between">
         <p className="text-xl font-semibold">Фільтр</p>
         <button onClick={toggleFilter} className="">
-          <IoCloseOutline className="text-primary h-8 w-8" />
+          <svg className="h-8 w-8">
+            <use href="/sprite.svg#icon-close-purple"></use>
+          </svg>
         </button>
       </div>
       <Accordion type="multiple">

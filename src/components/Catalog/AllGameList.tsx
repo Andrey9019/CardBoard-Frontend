@@ -10,8 +10,6 @@ import Game from "@/shared/types/game";
 import Button from "@/components/ui/Button";
 import SkeletonCard from "../layout/Skeleton";
 
-import { FaRegHeart } from "react-icons/fa";
-
 import noImg from "../../../public/images/not-found-page/no-image.png";
 // import useClearFilters from "@/shared/hooks/useClearFilters";
 import { useRouter } from "next/navigation";
@@ -90,7 +88,9 @@ export default function PopularListGame() {
             >
               <div className="flex justify-end">
                 <button className="max-w-max">
-                  <FaRegHeart className="text-primary h-[18px] w-[18px]" />
+                  <svg className="h-[18px] w-[18px]">
+                    <use href="/sprite.svg#icon-heart"></use>
+                  </svg>
                 </button>
               </div>
 
