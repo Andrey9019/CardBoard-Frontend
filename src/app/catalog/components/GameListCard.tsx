@@ -14,7 +14,7 @@ interface GameListCard {
 
 export default function GameListCard({ game }: GameListCard) {
   return (
-    <li className="item-shadow min-h-[365px] max-w-[196px] rounded-lg bg-white lg:min-h-[429px] lg:max-w-[228px] xl:min-h-[477px] xl:max-w-[270px]">
+    <li className="item-shadow animate-fade-in-left-07 min-h-[365px] max-w-[196px] rounded-lg bg-white lg:min-h-[429px] lg:max-w-[228px] xl:min-h-[477px] xl:max-w-[270px]">
       <Link
         href={`/game/${game.id}`}
         className="flex h-full flex-col justify-between p-4"

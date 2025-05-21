@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Suspense } from "react";
-import GameList from "./GameList";
 
 import { getAllCategories } from "@/shared/utils";
 import Categorires from "@/shared/types/allCategories";
@@ -11,10 +10,13 @@ import Categorires from "@/shared/types/allCategories";
 import FiltersStatic from "@/app/catalog/components/FiltersStatic";
 import FiltersDrawer from "@/app/catalog/components/FiltersDrawer";
 import SortDrawer from "@/app/catalog/components/SortDrawer";
+import GameList from "./GameList";
+
 import Button from "@/components/ui/Button";
 
 import { TbSortDescending } from "react-icons/tb";
 import { VscSettings } from "react-icons/vsc";
+import { cn } from "@/shared/lib/utils";
 
 export default function CatalogBody({}) {
   const [categories, setCategories] = useState<Categorires[]>([]);
@@ -52,9 +54,9 @@ export default function CatalogBody({}) {
   }, []);
 
   return (
-    <section className="flex flex-col items-start gap-6 px-9 lg:px-8 xl:px-[120px]">
+    <section className="mb-12 flex flex-col gap-9 px-9 lg:px-8 xl:px-[120px]">
       <p className="text-center text-3xl font-bold">Каталог</p>
-      <div className="text-primary mb-9 flex w-full items-center justify-between">
+      <div className="text-primary flex w-full items-center justify-between">
         <div className="flex">
           <button onClick={toggleFilter} className="flex">
             <VscSettings className="h-8 w-8 cursor-pointer lg:hidden" />
@@ -93,13 +95,11 @@ export default function CatalogBody({}) {
 
       {isSortOpen && !isFilterOpen && <SortDrawer />}
 
-      {!isFilterOpen && (
-        <div className="lg:hidden">
-          <Suspense>
-            <GameList />
-          </Suspense>
-        </div>
-      )}
+      <div className={cn("lg:hidden", isFilterOpen && "hidden")}>
+        <Suspense>
+          <GameList />
+        </Suspense>
+      </div>
 
       <div className="hidden w-full lg:flex">
         {isFilterOpen && (

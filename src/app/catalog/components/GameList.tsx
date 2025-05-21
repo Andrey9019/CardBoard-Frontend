@@ -64,7 +64,7 @@ export default function GameList() {
 
   return (
     <>
-      <ul className="flex h-max flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between xl:gap-x-10">
+      <ul className="animate-fade-in-left-03 grid grid-cols-[repeat(auto-fit,minmax(196px,1fr))] justify-items-center gap-x-6 gap-y-9 lg:grid-cols-[repeat(auto-fit,minmax(228px,1fr))] lg:gap-x-10 xl:grid-cols-[repeat(auto-fit,minmax(270px,1fr))]">
         {games.map((game) => (
           <GameListCard key={game.id} game={game} />
         ))}
