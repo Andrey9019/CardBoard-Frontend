@@ -86,7 +86,7 @@ export default function FiltersStatic({
             <AccordionTriggerFilter className="mb-4">
               {category.display_name}
             </AccordionTriggerFilter>
-            <AccordionContent className="">
+            <AccordionContent>
               <ul className="flex flex-col gap-2.5">
                 {category.values.map((value) => (
                   <li

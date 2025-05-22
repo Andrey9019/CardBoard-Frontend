@@ -14,7 +14,10 @@ export default function ArrowBack({
 }: PolicyMobileProps) {
   if (!isMobilePage) {
     return (
-      <button  onClick={() => setMobilePage(true)} className="mb-[48px] flex h-[40px] items-center md:hidden">
+      <button
+        onClick={() => setMobilePage(true)}
+        className="mb-[48px] flex h-[40px] items-center md:hidden"
+      >
         <IoIosArrowBack size={32} style={{ color: "#0B0105" }} />
       </button>
     );

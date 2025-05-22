@@ -1,5 +1,3 @@
-//   amount: number;
-
 import CartItem from "./game";
 
 export default interface CardStore {
