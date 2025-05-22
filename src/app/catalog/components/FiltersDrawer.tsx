@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-// import { getAllCategories } from "@/utils";
 
 import {
   Accordion,
@@ -78,7 +77,7 @@ export default function FiltersDrawer({
   };
 
   return (
-    <div className="animate-fade-in-left-03 mb-8 flex flex-col gap-4 rounded-lg bg-white p-6">
+    <div className="animate-fade-in-left-03 flex max-w-[408px] flex-col gap-4 rounded-lg bg-white p-6">
       <div className="flex items-center justify-between">
         <p className="text-xl font-semibold">Фільтр</p>
         <button onClick={toggleFilter} className="">

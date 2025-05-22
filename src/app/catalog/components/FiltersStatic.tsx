@@ -13,7 +13,6 @@ import Categorires from "@/shared/types/allCategories";
 import { Checkbox } from "@/components/ui/ckeckbox";
 import { Label } from "@/components/ui/label";
 import Button from "@/components/ui/Button";
-// import useClearFiltersAndClose from "@/shared/hooks/useClearFiltersAndClose";
 
 interface FiltersStaticProps {
   toggleFilter: () => void;
@@ -28,12 +27,6 @@ export default function FiltersStatic({
     [key: string]: number[];
   }>({});
 
-  // хук скидає фільтр і закриває його
-  // const { resetFiltersAndClose } = useClearFiltersAndClose(toggleFilter);
-
-  //   const [openItems, setOpenItems] = useState<string[]>([]);
-  //   console.log(openItems);
-
   useEffect(() => {
     const currentParams = new URLSearchParams(window.location.search);
     const restoredFilters: { [key: string]: number[] } = {};
@@ -45,7 +38,6 @@ export default function FiltersStatic({
     }
 
     setSelectedFilters(restoredFilters);
-    // setOpenItems(Object.keys(restoredFilters));
   }, []);
 
   const handleToggle = (category: string, value: number) => {
@@ -84,10 +76,7 @@ export default function FiltersStatic({
 
   return (
     <div className="item-shadow animate-fade-in-left-03 mr-4 flex h-max max-w-[228px] min-w-[228px] flex-col gap-4 rounded-lg bg-white p-6 xl:mr-10 xl:max-w-[270px] xl:min-w-[270px]">
-      <Accordion
-        type="multiple"
-        //   defaultValue={openItems}
-      >
+      <Accordion type="multiple">
         {categories.map((category) => (
           <AccordionItem
             key={category.name}
@@ -97,7 +86,7 @@ export default function FiltersStatic({
             <AccordionTriggerFilter className="mb-4">
               {category.display_name}
             </AccordionTriggerFilter>
-            <AccordionContent className="">
+            <AccordionContent>
               <ul className="flex flex-col gap-2.5">
                 {category.values.map((value) => (
                   <li

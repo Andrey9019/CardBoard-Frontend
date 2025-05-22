@@ -1,7 +1,7 @@
-import Hero from "@/components/Main/Hero";
-import Recommendations from "@/components/Main/Recommendations";
-import About from "@/components/Main/About";
-import QuestionsAndAnswers from "../components/Main/Q&A";
+import Hero from "@/app/(main)/components/Hero";
+import Recommendations from "./(main)/components/Recommendations";
+import About from "./(main)/components/About";
+import QuestionsAndAnswers from "./(main)/components/Q&A";
 
 export default function Home() {
   return (
