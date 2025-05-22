@@ -5,6 +5,7 @@ export default function Catalog() {
   return (
     <>
       <BreadcrumbWidgest text1="Каталог" />
+
       <CatalogBody />
     </>
   );

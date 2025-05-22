@@ -18,7 +18,7 @@ import { TbSortDescending } from "react-icons/tb";
 import { VscSettings } from "react-icons/vsc";
 import { cn } from "@/shared/lib/utils";
 
-export default function CatalogBody({}) {
+export default function CatalogBody() {
   const [categories, setCategories] = useState<Categorires[]>([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);

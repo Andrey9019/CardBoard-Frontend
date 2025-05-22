@@ -1,35 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
 
 import { IoIosArrowBack } from "react-icons/io";
 import Link from "next/link";
-import { IoHomeOutline } from "react-icons/io5";
-import { IoIosArrowForward } from "react-icons/io";
+
+import BreadcrumbWidgest from "@/components/widgets/BreadcrumbWidgest";
 
 export default function ExchangePage() {
   return (
     <section className="px-9 pt-12">
-      <Breadcrumb className="mb-12 hidden md:block">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink className="text-primary" href="/">
-              <IoHomeOutline />
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <IoIosArrowForward className="text-primary" />
-          <BreadcrumbItem>
-            <BreadcrumbPage className="text-primary font-bold">
-              Умови обміну та повернення
-            </BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <BreadcrumbWidgest text1="Умови обміну та повернення" />
 
       <div className="mb-[48px] flex h-[40px] items-center md:hidden">
         <Link href="/">

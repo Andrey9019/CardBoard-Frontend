@@ -9,7 +9,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/components/ui/hover-card";
+} from "@/components/widgets/HoverCard";
 import Button from "../ui/Button";
 
 import noImg from "../../../public/images/not-found-page/no-image.png";
