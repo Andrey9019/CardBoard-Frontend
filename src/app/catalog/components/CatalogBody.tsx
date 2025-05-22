@@ -14,8 +14,6 @@ import GameList from "./GameList";
 
 import Button from "@/components/ui/Button";
 
-import { TbSortDescending } from "react-icons/tb";
-import { VscSettings } from "react-icons/vsc";
 import { cn } from "@/shared/lib/utils";
 
 export default function CatalogBody() {
@@ -59,14 +57,20 @@ export default function CatalogBody() {
       <div className="text-primary flex w-full items-center justify-between">
         <div className="flex">
           <button onClick={toggleFilter} className="flex">
-            <VscSettings className="h-8 w-8 cursor-pointer lg:hidden" />
+            <svg className="h-8 w-8 cursor-pointer lg:hidden">
+              <use href="/sprite.svg#icon-filters"></use>
+            </svg>
           </button>
 
           <Button
             as="button"
             variant="secondary"
             text="Фільтр"
-            icon={<VscSettings className="h-8 w-8" />}
+            icon={
+              <svg className="h-8 w-8">
+                <use href="/sprite.svg#icon-filters"></use>
+              </svg>
+            }
             onClick={toggleFilter}
             className="hidden w-full max-w-[228px] min-w-[228px] cursor-pointer items-center justify-center lg:flex lg:h-11 lg:max-w-[228px] lg:min-w-[228px] xl:max-w-[270px] xl:min-w-[270px]"
           />
@@ -83,7 +87,9 @@ export default function CatalogBody() {
         </div>
 
         <button onClick={toggleSort} className="flex">
-          <TbSortDescending className="h-8 w-8 cursor-pointer" />
+          <svg className="h-8 w-8 cursor-pointer">
+            <use href="/sprite.svg#icon-sort"></use>
+          </svg>
         </button>
       </div>
 

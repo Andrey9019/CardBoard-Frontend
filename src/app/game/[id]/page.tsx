@@ -10,29 +10,53 @@ import RecommendationsList from "@/app/(main)/components/RecommendationsList";
 import BreadcrumbWidgest from "@/components/widgets/BreadcrumbWidgest";
 import GameHeader from "./components/GameHeader";
 import GameDetails from "./components/GameDetails";
+import NotFound from "@/app/not-found";
+import Loading from "@/app/loading";
 
 export default function GamePage() {
   const [game, setGame] = useState<Game | null>(null);
+  const [notFound, setNotFound] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const params = useParams();
   const id = params.id;
   console.log("id", id);
 
   useEffect(() => {
-    if (!id || Array.isArray(id)) return;
+    if (!id || Array.isArray(id)) {
+      setNotFound(true);
+      setIsLoading(false);
+      return;
+    }
 
     const getGame = async () => {
       try {
         const numericId = parseInt(id);
         const data = await getGameById(numericId);
-        console.log(data);
-        setGame(data);
+        if (!data) {
+          setNotFound(true);
+        } else {
+          setGame(data);
+          console.log(data);
+        }
       } catch (error) {
+        setNotFound(true);
         console.log(error);
+        setIsLoading(false);
+      } finally {
+        setIsLoading(false);
       }
     };
     getGame();
   }, [id]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (notFound) {
+    return <NotFound />;
+  }
 
   return (
     <>

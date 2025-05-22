@@ -10,7 +10,7 @@ export default function PolicyCookiesContent({
   return (
     <>
       <div
-        className={`${isMobilePage ? "hidden md:block" : "block"} mt-12 mb-12`}
+        className={`${isMobilePage ? "hidden md:block" : "block"} mb-12`}
       >
         <h3>Політика використання куків</h3>
         <p>1. Вступ</p>

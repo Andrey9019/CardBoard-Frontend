@@ -6,8 +6,6 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 
-import { IoHomeOutline } from "react-icons/io5";
-import { IoIosArrowForward } from "react-icons/io";
 
 export default function BreadcrumbWidgest({
   text1,
@@ -24,10 +22,14 @@ export default function BreadcrumbWidgest({
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/" className="text-primary font-bold">
-              <IoHomeOutline />
+              <svg width="24" height="24">
+                <use href="/sprite.svg#icon-home"></use>
+              </svg>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <IoIosArrowForward className="text-primary" />
+          <svg className="h-6 w-6">
+            <use href="/sprite.svg#icon-arrow-right-purple"></use>
+          </svg>
           {text2 ? (
             <>
               <BreadcrumbItem>
@@ -38,7 +40,9 @@ export default function BreadcrumbWidgest({
                   {text1}
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <IoIosArrowForward className="text-primary font-bold" />
+              <svg className="h-6 w-6">
+                <use href="/sprite.svg#icon-arrow-right-purple"></use>
+              </svg>
               <BreadcrumbItem>
                 <BreadcrumbPage className="text-primary">
                   {text2}

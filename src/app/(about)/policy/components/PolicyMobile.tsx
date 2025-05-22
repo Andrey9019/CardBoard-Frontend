@@ -1,4 +1,3 @@
-import { IoIosArrowRoundForward } from "react-icons/io";
 /* eslint-disable react/no-unescaped-entities */
 
 type TabType = "policy-confident" | "policy-cookies" | "use-terms";
@@ -74,11 +73,9 @@ export default function PolicyMobile({
                 setMobilePage(false);
               }}
             >
-              <IoIosArrowRoundForward
-                size={34}
-                style={{ color: "#6A2ECB" }}
-                className="mr-[22px]"
-              />
+              <svg width="34" height="34">
+                <use href="/sprite.svg#icon-long-arrow-right"></use>
+              </svg>
             </button>
           </div>
 
@@ -143,11 +140,9 @@ export default function PolicyMobile({
                 setMobilePage(false);
               }}
             >
-              <IoIosArrowRoundForward
-                size={34}
-                style={{ color: "#6A2ECB" }}
-                className="mr-[22px]"
-              />
+              <svg width="34" height="34">
+                <use href="/sprite.svg#icon-long-arrow-right"></use>
+              </svg>
             </button>
           </div>
 
@@ -219,11 +214,9 @@ export default function PolicyMobile({
                 setMobilePage(false);
               }}
             >
-              <IoIosArrowRoundForward
-                size={34}
-                style={{ color: "#6A2ECB" }}
-                className="mr-[22px]"
-              />
+              <svg width="34" height="34">
+                <use href="/sprite.svg#icon-long-arrow-right"></use>
+              </svg>
             </button>
           </div>
         </>
