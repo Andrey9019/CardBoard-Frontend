@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCartStore } from "@/stores/cartStore";
 
-import { CiTrash } from "react-icons/ci";
 import noImg from "../../../../public/images/not-found-page/no-image.png";
 
 export default function GameList() {
@@ -38,7 +37,9 @@ export default function GameList() {
                 onClick={() => deleteProduct(game.id)}
                 className="text-primary text-xl"
               >
-                <CiTrash />
+                <svg className="h-8 w-8" fill="currentColor">
+                  <use href="/sprite.svg#icon-close-black"></use>
+                </svg>
               </button>
             </div>
 

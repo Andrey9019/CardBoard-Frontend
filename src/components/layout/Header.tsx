@@ -75,7 +75,7 @@ export default function Header() {
         isSearchOpen || isCatalogOpen ? "rounded-b-none" : "rounded-b-3xl"
       } `}
     >
-      <div className="container flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <div className="hidden xl:flex">
           <button
             onClick={toggleCatalog}
@@ -95,7 +95,7 @@ export default function Header() {
         <Logo size="small" className="w-24" closeAll={closeAll} />
 
         <div className="flex">
-          <ul className="flex gap-2">
+          <ul className="flex gap-x-2">
             <li
               className={`p-2 transition-all duration-300 ${
                 isSearchOpen ? "scale-90 opacity-0" : "scale-100 opacity-100"
