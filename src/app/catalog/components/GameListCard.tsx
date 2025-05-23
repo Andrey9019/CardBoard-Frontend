@@ -6,7 +6,6 @@ import Game from "@/shared/types/game";
 import Button from "@/components/ui/Button";
 import noImg from "../../../../public/images/not-found-page/no-image.png";
 
-import { FaRegHeart } from "react-icons/fa";
 
 interface GameListCard {
   game: Game;
@@ -21,7 +20,9 @@ export default function GameListCard({ game }: GameListCard) {
       >
         <div className="flex justify-end">
           <button className="max-w-max">
-            <FaRegHeart className="text-primary h-[18px] w-[18px]" />
+            <svg className="h-[18px] w-[18px]">
+              <use href="/sprite.svg#icon-heart"></use>
+            </svg>
           </button>
         </div>
 

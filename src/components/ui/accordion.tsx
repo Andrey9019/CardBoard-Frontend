@@ -4,7 +4,6 @@ import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
 import { cn } from "@/shared/lib/utils";
-import { IoIosArrowDown } from "react-icons/io";
 
 function Accordion({
   ...props
@@ -41,7 +40,14 @@ function AccordionTrigger({
         {...props}
       >
         <span className="flex-1">{children}</span>
-        <IoIosArrowDown className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+        <svg
+          className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          fill="currentColor"
+        >
+          <path d="M28.856 11.798l-11.636 10.343c-0.488 0.429-1.219 0.429-1.707 0l-11.636-10.343c-0.499-0.479-0.532-1.267-0.075-1.787s1.243-0.587 1.782-0.153l10.783 9.581 10.783-9.581c0.343-0.329 0.839-0.444 1.291-0.298s0.789 0.528 0.876 0.995c0.087 0.467-0.090 0.945-0.46 1.243z" />
+        </svg>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
@@ -62,7 +68,14 @@ function AccordionTriggerFilter({
         )}
         {...props}
       >
-        <IoIosArrowDown className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+        <svg
+          className="h-5 w-5 transition-transform duration-200 group-data-[state=open]:rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          fill="currentColor"
+        >
+          <path d="M28.856 11.798l-11.636 10.343c-0.488 0.429-1.219 0.429-1.707 0l-11.636-10.343c-0.499-0.479-0.532-1.267-0.075-1.787s1.243-0.587 1.782-0.153l10.783 9.581 10.783-9.581c0.343-0.329 0.839-0.444 1.291-0.298s0.789 0.528 0.876 0.995c0.087 0.467-0.090 0.945-0.46 1.243z" />
+        </svg>
         <span className="flex-1">{children}</span>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
