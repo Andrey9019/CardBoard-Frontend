@@ -9,11 +9,6 @@ import MobileMenu from "./MobileMenu";
 import SearchBtn from "./SearchBtn";
 import Logo from "./Logo";
 
-import { RxHamburgerMenu } from "react-icons/rx";
-import { IoIosArrowDown } from "react-icons/io";
-import { HiOutlineUser } from "react-icons/hi2";
-import { IoIosSearch } from "react-icons/io";
-
 import CartBtn from "./CartBtn";
 
 export default function Header() {
@@ -88,11 +83,13 @@ export default function Header() {
           >
             <span className="text-lg font-bold">Каталог</span>
 
-            <IoIosArrowDown
+            <svg
               className={`h-8 w-8 transform transition-transform duration-300 ${
                 isCatalogOpen ? "rotate-180" : ""
               }`}
-            />
+            >
+              <use href="/sprite.svg#icon-arrow-down"></use>
+            </svg>
           </button>
         </div>
         <Logo size="small" className="w-24" closeAll={closeAll} />
@@ -109,7 +106,9 @@ export default function Header() {
                 disabled={isSearchOpen}
                 className="flex"
               >
-                <IoIosSearch className="h-8 w-8 cursor-pointer" />
+                <svg className="h-8 w-8 cursor-pointer">
+                  <use href="/sprite.svg#icon-search"></use>
+                </svg>
               </button>
             </li>
             <li className="p-2">
@@ -117,11 +116,15 @@ export default function Header() {
             </li>
 
             <li className="hidden p-2 lg:flex">
-              <HiOutlineUser className="h-8 w-8 cursor-pointer" />
+              <svg className="h-8 w-8 cursor-pointer">
+                <use href="/sprite.svg#icon-person"></use>
+              </svg>
             </li>
             <li className="p-2 xl:hidden">
               <button className=" " onClick={toggleMobileMenu}>
-                <RxHamburgerMenu className="h-8 w-8 cursor-pointer" />
+                <svg className="h-8 w-8 cursor-pointer">
+                  <use href="/sprite.svg#icon-burger"></use>
+                </svg>
               </button>
             </li>
           </ul>
@@ -154,7 +157,9 @@ export default function Header() {
               <ul key={category.name} className="mr-2 font-bold">
                 <div className="flex gap-2">
                   <p> {category.display_name}</p>
-                  <IoIosArrowDown className="h-6 w-6 items-start justify-between text-left" />
+                  <svg className="h-6 w-6 items-start justify-between text-left">
+                    <use href="/sprite.svg#icon-arrow-down"></use>
+                  </svg>
                 </div>
                 {category.values.map((value) => (
                   <li key={value.id} className="py-1.5 text-base">

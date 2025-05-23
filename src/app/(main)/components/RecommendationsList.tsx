@@ -8,8 +8,6 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Game from "@/shared/types/game";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { FaRegHeart } from "react-icons/fa";
 
 import noImg from "../../../../public/images/not-found-page/no-image.png";
 import SkeletonCard from "@/components/layout/Skeleton";
@@ -73,7 +71,9 @@ export default function RecommendationsList(title: ListGameProp) {
             disabled={currentPage === 1}
             className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
           >
-            <IoIosArrowBack className="h-5 w-5" />
+            <svg className="h-5 w-5 text-[#2B1047]">
+              <use href="/sprite.svg#icon-arrow-left"></use>
+            </svg>
           </button>
 
           <div className="flex items-center gap-3">
@@ -97,7 +97,9 @@ export default function RecommendationsList(title: ListGameProp) {
             disabled={currentPage === totalPages}
             className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
           >
-            <IoIosArrowForward className="h-5 w-5" />
+            <svg className="h-5 w-5 text-[#2B1047]">
+              <use href="/sprite.svg#icon-arrow-right"></use>
+            </svg>
           </button>
         </div>
       </div>
@@ -105,19 +107,21 @@ export default function RecommendationsList(title: ListGameProp) {
         <SkeletonCard />
       ) : (
         <ul className="flex flex-wrap justify-center gap-x-4 gap-y-9 sm:justify-between">
+          {/* {games.map((game) => ( */}
           {currentGames.map((game) => (
             <li
               key={game.id}
               className="item-shadow min-h-[365px] max-w-[196px] rounded-lg bg-white lg:min-h-[429px] lg:max-w-[228px] xl:min-h-[477px] xl:max-w-[270px]"
             >
-              {/* <GameCard key={game.id} game={game} /> */}
               <Link
                 href={`/game/${game.id}`}
                 className="flex h-full flex-col justify-between p-4"
               >
                 <div className="flex justify-end">
                   <button className="max-w-max">
-                    <FaRegHeart className="text-primary h-[18px] w-[18px]" />
+                    <svg width="18" height="18">
+                      <use href="/sprite.svg#icon-heart"></use>
+                    </svg>
                   </button>
                 </div>
 
@@ -136,11 +140,11 @@ export default function RecommendationsList(title: ListGameProp) {
 
                 <div className="mt-auto flex flex-col justify-end">
                   <Button
+                    // тут лінг на кошик?
                     as="button"
                     variant="primary"
                     text="Купити"
                     className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"
-                    onClick={() => {}}
                   />
                 </div>
               </Link>
@@ -154,7 +158,9 @@ export default function RecommendationsList(title: ListGameProp) {
           disabled={currentPage === 1}
           className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
         >
-          <IoIosArrowBack className="h-5 w-5" />
+          <svg className="h-5 w-5 text-[#2B1047]">
+            <use href="/sprite.svg#icon-arrow-left"></use>
+          </svg>
         </button>
 
         <div className="flex items-center gap-3">
@@ -178,7 +184,9 @@ export default function RecommendationsList(title: ListGameProp) {
           disabled={currentPage === totalPages}
           className="text-primary transition-transform hover:scale-110 disabled:opacity-50"
         >
-          <IoIosArrowForward className="h-5 w-5" />
+          <svg className="h-5 w-5 text-[#2B1047]">
+            <use href="/sprite.svg#icon-arrow-right"></use>
+          </svg>
         </button>
       </div>
     </>

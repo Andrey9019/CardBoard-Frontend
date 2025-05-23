@@ -2,9 +2,6 @@
 import { getAllCategories } from "@/shared/utils/index";
 
 import { useEffect, useRef, useState } from "react";
-import { IoIosSearch } from "react-icons/io";
-import { IoCartOutline, IoCloseOutline } from "react-icons/io5";
-import { HiOutlineUser } from "react-icons/hi2";
 import Logo from "./Logo";
 import Categorires from "@/shared/types/allCategories";
 import {
@@ -49,19 +46,27 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
           <ul className="flex gap-2">
             <li className={`p-2 transition-all duration-300`}>
               <button onClick={toggleSearch} className="flex">
-                <IoIosSearch className="h-8 w-8" />
+                <svg className="h-8 w-8">
+                  <use href="/sprite.svg#icon-search"></use>
+                </svg>
               </button>
             </li>
             <li className="p-2">
-              <IoCartOutline className="h-8 w-8" />
+              <svg className="h-8 w-8">
+                <use href="/sprite.svg#icon-cart"></use>
+              </svg>
             </li>
             <li className="hidden p-2 lg:flex">
-              <HiOutlineUser className="h-8 w-8" />
+              <svg className="h-8 w-8">
+                <use href="/sprite.svg#icon-person"></use>
+              </svg>
             </li>
           </ul>
 
           <button onClick={onClose} className="ml-2 p-2">
-            <IoCloseOutline className="h-8 w-8" />
+            <svg className="h-8 w-8" fill="currentColor">
+              <use href="/sprite.svg#icon-close-black"></use>
+            </svg>
           </button>
         </div>
       </div>

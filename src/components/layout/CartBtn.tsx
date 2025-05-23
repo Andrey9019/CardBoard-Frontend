@@ -13,7 +13,6 @@ import {
 import Button from "../ui/Button";
 
 import noImg from "../../../public/images/not-found-page/no-image.png";
-import { IoCartOutline } from "react-icons/io5";
 
 interface CartBtnProps {
   closeAll: () => void;
@@ -32,7 +31,9 @@ export default function CartBtn({ closeAll }: CartBtnProps) {
     <HoverCard openDelay={0}>
       <HoverCardTrigger asChild>
         <Link href="/cart" onClick={closeAll} className="relative">
-          <IoCartOutline className="h-8 w-8 cursor-pointer" />
+          <svg className="h-8 w-8 cursor-pointer">
+            <use href="/sprite.svg#icon-cart"></use>
+          </svg>
 
           {cart.length != 0 && (
             <div className="absolute -top-2 -right-3">
