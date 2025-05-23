@@ -76,7 +76,7 @@ export default function GameDetails({ game }: GameProp) {
         <p className="mb-6 text-2xl font-semibold">Доставка</p>
 
         <p className="mb-4 text-sm lg:text-base xl:text-lg">
-          Самовивіз з мазагину
+          Самовивіз з магазину
         </p>
         <p className="text-sm lg:text-base xl:text-lg">Детальніше</p>
       </div>

@@ -15,6 +15,10 @@ body {
   flex-direction: column;
   background: var(--color-secondary);
   overflow: auto;
+
+  /* прибирання скролу */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
 
 main {
@@ -32,6 +36,31 @@ section {
   margin-left: auto;
   margin-right: auto;
   max-width: 1440px;
+}
+
+/* прибирання скролу */
+html {
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
+}
+
+.custom-scroll {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE і Edge */
+  overflow: auto;
+  /* або scroll */
+}
+
+.custom-scroll::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
 }
 
 @theme inline {
@@ -131,6 +160,18 @@ section {
     }
   }
 
+  @keyframes fade-in-rigth {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   .animate-fade-in-down-03 {
     animation: fade-in-down 0.3s ease-out forwards;
   }
@@ -143,21 +184,17 @@ section {
     animation: fade-in-down 1.2s ease-out forwards;
   }
 
-  .animate-fade-in-left-01 {
-    animation: fade-in-left 0.1s ease-out forwards;
-  }
-
   .animate-fade-in-left-03 {
     animation: fade-in-left 0.3s ease-out forwards;
   }
 
-  .animate-fade-in-left-12 {
-    animation: fade-in-left 1.2s ease-out forwards;
+  .animate-fade-in-rigth-05 {
+    animation: fade-in-rigth 0.5s ease-out forwards;
   }
+
 }
 
 /* фон сторінки 404 */
-
 .not-found-page {
   background-image: url("/images/not-found-page/404-d.png");
   background-size: cover;
