@@ -1,22 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-
-import Game from "../../shared/types/game";
-import { getAllGames } from "@/shared/utils/index";
-import { formatPrice } from "@/shared/utils/index";
-
-import Image from "next/image";
-import noImg from "../../../public/images/not-found-page/no-image.png";
 import Link from "next/link";
+import Image from "next/image";
+import Game from "@/shared/types/game";
+import { useEffect, useRef, useState } from "react";
+import { getAllGames, formatPrice } from "@/shared/utils/index";
 
-interface SearchBtnProps {
+import noImg from "../../../../public/images/not-found-page/no-image.png";
+
+interface SearchDropdownProps {
   setIsSearchOpen: (value: boolean) => void;
   isSearchOpen: boolean;
 }
 
-export default function SearchBtn({
+export default function SearchDropdown({
   setIsSearchOpen,
   isSearchOpen,
-}: SearchBtnProps) {
+}: SearchDropdownProps) {
   const itemRef = useRef<HTMLDivElement | null>(null);
 
   const [games, setGames] = useState<Game[]>([]);

@@ -1,38 +1,33 @@
-"use client";
-import { getAllCategories } from "@/shared/utils/index";
+import { useRef } from "react";
 
-import { useEffect, useRef, useState } from "react";
-import Logo from "./Logo";
-import Categorires from "@/shared/types/allCategories";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Logo from "../Logo";
 import Link from "next/link";
+import { useCategories } from "@/shared/hooks/useCategories";
 
 interface MobileMenuProps {
   onClose: () => void;
   toggleSearch: () => void;
   isMobileMenuOpen: boolean;
+  closeAll: () => void;
 }
 
-export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
-  const [categories, setCategories] = useState<Categorires[]>([]);
+export default function MobileMenu({
+  onClose,
+  toggleSearch,
+  closeAll,
+}: MobileMenuProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const data = await getAllCategories();
-        setCategories(data);
-      } catch (error) {
-        console.log("error getGame", error);
-      }
-    };
-    getCategories();
-  }, []);
+  const {
+    categories,
+    // isLoading, error
+  } = useCategories();
 
   return (
     <div
@@ -44,6 +39,7 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
 
         <div className="flex">
           <ul className="flex gap-2">
+            {/* пошук */}
             <li className={`p-2 transition-all duration-300`}>
               <button onClick={toggleSearch} className="flex">
                 <svg className="h-8 w-8">
@@ -51,11 +47,15 @@ export default function MobileMenu({ onClose, toggleSearch }: MobileMenuProps) {
                 </svg>
               </button>
             </li>
+            {/* кошик */}
             <li className="p-2">
-              <svg className="h-8 w-8">
-                <use href="/sprite.svg#icon-cart"></use>
-              </svg>
+              <Link href="/cart" onClick={closeAll} className="relative">
+                <svg className="h-8 w-8 cursor-pointer">
+                  <use href="/sprite.svg#icon-cart"></use>
+                </svg>
+              </Link>
             </li>
+            {/* користувач */}
             <li className="hidden p-2 lg:flex">
               <svg className="h-8 w-8">
                 <use href="/sprite.svg#icon-person"></use>

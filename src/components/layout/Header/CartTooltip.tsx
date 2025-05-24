@@ -1,24 +1,24 @@
 "use client";
 
-import { useCartStore } from "@/stores/cartStore";
-import { useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { useEffect } from "react";
+import { useCartStore } from "@/stores/cartStore";
 
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/widgets/HoverCard";
-import Button from "../ui/Button";
+import Button from "../../ui/Button";
 
-import noImg from "../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../../public/images/not-found-page/no-image.png";
 
-interface CartBtnProps {
+interface CartTooltipProps {
   closeAll: () => void;
 }
 
-export default function CartBtn({ closeAll }: CartBtnProps) {
+export default function CartTooltip({ closeAll }: CartTooltipProps) {
   const cart = useCartStore((state) => state.cart);
   const total = useCartStore((state) => state.total);
   const countTotal = useCartStore((state) => state.countTotal);
