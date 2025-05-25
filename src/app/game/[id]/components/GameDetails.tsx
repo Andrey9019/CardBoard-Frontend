@@ -1,10 +1,9 @@
-import Game from "@/shared/types/game";
 import Button from "@/components/ui/Button";
+import { useGameByID } from "../hooks/useGamebyID";
 
-interface GameProp {
-  game: Game | null;
-}
-export default function GameDetails({ game }: GameProp) {
+export default function GameDetails() {
+  const { game } = useGameByID();
+
   return (
     <div className="grid-cols-2 lg:grid">
       <div className="mb-12 lg:mb-16">

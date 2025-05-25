@@ -2,16 +2,14 @@
 
 import { useCartStore } from "@/stores/cartStore";
 import { useRouter } from "next/navigation";
-import Game from "@/shared/types/game";
 
 import Button from "@/components/ui/Button";
 import { Badge } from "@/components/ui/badge";
+import { useGameByID } from "../hooks/useGamebyID";
 
-interface GameProp {
-  game: Game | null;
-}
+export default function GameHeader() {
+  const { game } = useGameByID();
 
-export default function GameHeader({ game }: GameProp) {
   const addProduct = useCartStore((state) => state.addProduct);
 
   const router = useRouter();
