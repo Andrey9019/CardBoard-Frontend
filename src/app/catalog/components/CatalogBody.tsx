@@ -1,11 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
-
-import { getAllCategories } from "@/shared/utils";
-import Categorires from "@/shared/types/allCategories";
 
 import FiltersStatic from "@/app/catalog/components/FiltersStatic";
 import FiltersDrawer from "@/app/catalog/components/FiltersDrawer";
@@ -17,7 +13,6 @@ import Button from "@/components/ui/Button";
 import { cn } from "@/shared/lib/utils";
 
 export default function CatalogBody() {
-  const [categories, setCategories] = useState<Categorires[]>([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [, setSelectedFilters] = useState<{ [key: string]: number[] }>({});
@@ -38,18 +33,6 @@ export default function CatalogBody() {
     if (isFilterOpen) setIsFilterOpen(false);
     setIsSortOpen(!isSortOpen);
   };
-
-  useEffect(() => {
-    const getCategories = async () => {
-      try {
-        const data = await getAllCategories();
-        setCategories(data);
-      } catch (error) {
-        console.log("error getCategories", error);
-      }
-    };
-    getCategories();
-  }, []);
 
   return (
     <section className="mb-12 flex flex-col gap-9 px-9 lg:px-8 xl:px-[120px]">
@@ -95,26 +78,20 @@ export default function CatalogBody() {
 
       {isFilterOpen && (
         <div className="lg:hidden">
-          <FiltersDrawer toggleFilter={toggleFilter} categories={categories} />
+          <FiltersDrawer toggleFilter={toggleFilter} />
         </div>
       )}
 
       {isSortOpen && !isFilterOpen && <SortDrawer />}
 
       <div className={cn("lg:hidden", isFilterOpen && "hidden")}>
-        <Suspense>
-          <GameList />
-        </Suspense>
+        <GameList />
       </div>
 
       <div className="hidden w-full lg:flex">
-        {isFilterOpen && (
-          <FiltersStatic toggleFilter={toggleFilter} categories={categories} />
-        )}
+        {isFilterOpen && <FiltersStatic toggleFilter={toggleFilter} />}
         <div className="flex-1">
-          <Suspense>
-            <GameList />
-          </Suspense>
+          <GameList />
         </div>
       </div>
     </section>

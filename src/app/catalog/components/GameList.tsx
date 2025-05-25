@@ -1,40 +1,17 @@
-"use client";
-
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-
-import { getAllGames } from "@/shared/utils";
-import Game from "@/shared/types/game";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import SkeletonCard from "../../../components/layout/Skeleton";
 import Button from "@/components/ui/Button";
 import GameListCard from "./GameListCard";
+import { useAllGame } from "@/shared/hooks/useAllGame";
 
 export default function GameList() {
-  const [games, setGames] = useState<Game[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [, setSelectedFilters] = useState<{
     [key: string]: number[];
   }>({});
 
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const getGames = async () => {
-      try {
-        const query = searchParams.toString();
-        console.log(query);
-        const data = await getAllGames(query);
-        setGames(data.results);
-        setIsLoading(true);
-      } catch (error) {
-        console.log("error getGame", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getGames();
-  }, [searchParams]);
+  const { games, isLoading, error } = useAllGame();
 
   const router = useRouter();
 
@@ -43,7 +20,27 @@ export default function GameList() {
     router.push("/catalog");
   };
 
+  const handleRetry = () => {
+    router.refresh();
+  };
+
   if (isLoading) return <SkeletonCard />;
+  if (error) {
+    return (
+      <div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">
+        <p className="text-primary text-center font-semibold">
+          Oops... <br /> З запитом сталася помилка. Спробуйте ще раз
+        </p>
+
+        <Button
+          as="button"
+          variant="primary"
+          onClick={handleRetry}
+          text="Спробувати ще раз"
+        />
+      </div>
+    );
+  }
   if (!games.length)
     return (
       <div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">

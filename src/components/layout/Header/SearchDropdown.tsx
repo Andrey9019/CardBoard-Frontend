@@ -2,9 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import Game from "@/shared/types/game";
 import { useEffect, useRef, useState } from "react";
-import { getAllGames, formatPrice } from "@/shared/utils/index";
+import {
+  // getAllGames,
+  formatPrice,
+} from "@/shared/utils/index";
 
 import noImg from "../../../../public/images/not-found-page/no-image.png";
+import { useAllGame } from "@/shared/hooks/useAllGame";
 
 interface SearchDropdownProps {
   setIsSearchOpen: (value: boolean) => void;
@@ -17,22 +21,24 @@ export default function SearchDropdown({
 }: SearchDropdownProps) {
   const itemRef = useRef<HTMLDivElement | null>(null);
 
-  const [games, setGames] = useState<Game[]>([]);
+  // const [games, setGames] = useState<Game[]>([]);
+  const { games } = useAllGame();
+
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Game[]>([]);
 
-  useEffect(() => {
-    const getGames = async () => {
-      try {
-        const data = await getAllGames();
-        setGames(data.results);
-        console.log(data);
-      } catch (error) {
-        console.log("error getGame", error);
-      }
-    };
-    getGames();
-  }, []);
+  // useEffect(() => {
+  //   const getGames = async () => {
+  //     try {
+  //       const data = await getAllGames();
+  //       setGames(data.results);
+  //       console.log(data);
+  //     } catch (error) {
+  //       console.log("error getGame", error);
+  //     }
+  //   };
+  //   getGames();
+  // }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

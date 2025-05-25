@@ -1,79 +1,32 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTriggerFilter,
 } from "@/components/ui/accordion";
-import Categorires from "@/shared/types/allCategories";
-import { Checkbox } from "@/components/ui/ckeckbox";
-import { Label } from "@/components/ui/label";
-import Button from "@/components/ui/Button";
 
+import Button from "@/components/ui/Button";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/ckeckbox";
+import { useCategories } from "@/shared/hooks/useCategories";
+import { useFilterLogic } from "../hooks/useFilterLogic";
 
 interface FiltersDrawerProps {
   toggleFilter: () => void;
-  categories: Categorires[];
 }
 
-export default function FiltersDrawer({
-  toggleFilter,
-  categories,
-}: FiltersDrawerProps) {
-  const [selectedFilters, setSelectedFilters] = useState<{
-    [key: string]: number[];
-  }>({});
+export default function FiltersDrawer({ toggleFilter }: FiltersDrawerProps) {
+  const {
+    categories,
+    // isLoading, error
+  } = useCategories();
 
-  useEffect(() => {
-    const currentParams = new URLSearchParams(window.location.search);
-    const restoredFilters: { [key: string]: number[] } = {};
-
-    for (const [key, value] of currentParams.entries()) {
-      const intValue = parseInt(value);
-      if (!restoredFilters[key]) restoredFilters[key] = [];
-      restoredFilters[key].push(intValue);
-    }
-
-    setSelectedFilters(restoredFilters);
-  }, []);
-
-  const handleToggle = (category: string, value: number) => {
-    setSelectedFilters((prevFilters) => {
-      const categoryFilters = prevFilters[category] ?? [];
-      const updatedFilters = categoryFilters.includes(value)
-        ? categoryFilters.filter((v) => v !== value)
-        : [...categoryFilters, value];
-      return {
-        ...prevFilters,
-        [category]: updatedFilters,
-      };
-    });
-  };
-
-  const router = useRouter();
-
-  const handlleApplyFilters = () => {
-    const searchParams = new URLSearchParams();
-
-    Object.entries(selectedFilters).forEach(([key, values]) => {
-      values.forEach((value) => {
-        searchParams.append(key, value.toString());
-      });
-    });
-    router.push(`?${searchParams.toString()}`);
-
-    toggleFilter();
-  };
-
-  const handlleResetFilters = () => {
-    setSelectedFilters({});
-    router.push("/catalog");
-    toggleFilter();
-  };
+  const {
+    selectedFilters,
+    handleToggle,
+    handlleApplyFilters,
+    handlleResetFilters,
+  } = useFilterLogic(toggleFilter);
 
   return (
     <div className="animate-fade-in-left-03 flex max-w-[408px] flex-col gap-4 rounded-lg bg-white p-6">

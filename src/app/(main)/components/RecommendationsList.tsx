@@ -8,7 +8,6 @@ import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Game from "@/shared/types/game";
 
-
 import noImg from "../../../../public/images/not-found-page/no-image.png";
 import SkeletonCard from "@/components/layout/Skeleton";
 
