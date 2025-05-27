@@ -5,12 +5,12 @@ import Image from "next/image";
 import { useCartStore } from "@/stores/cartStore";
 
 import noImg from "../../../../public/images/not-found-page/no-image.png";
+
 import NumberInput from "@/components/widgets/NumberInput";
 
 export default function GameList() {
   const cart = useCartStore((state) => state.cart);
-  // const removeProduct = useCartStore((state) => state.removeProduct);
-  // const addProduct = useCartStore((state) => state.addProduct);
+
   const deleteProduct = useCartStore((state) => state.deleteProduct);
 
   return (
@@ -30,7 +30,7 @@ export default function GameList() {
             <div className="flex items-start justify-between gap-4">
               <Link
                 href={`/game/${game.id}`}
-                className="hover:text-primary line-clamp-2 cursor-pointer overflow-hidden text-base font-bold text-ellipsis sm:text-lg lg:text-lg"
+                className="hover:text-primary line-clamp-2 cursor-pointer overflow-hidden text-base font-bold text-ellipsis sm:text-lg lg:text-lg xl:text-lg"
               >
                 {game.title}
               </Link>
@@ -38,28 +38,19 @@ export default function GameList() {
                 onClick={() => deleteProduct(game.id)}
                 className="text-primary text-xl"
               >
-                <svg className="h-6 w-6" fill="currentColor">
+                <svg className="h-6 w-6 xl:h-7 xl:w-7" fill="currentColor">
                   <use href="/sprite.svg#icon-delete"></use>
                 </svg>
               </button>
             </div>
 
-            {/* <div className="flex w-max items-center gap-3 rounded border p-1">
-              <button onClick={() => removeProduct(game)} className="">
-                -
-              </button>
-              <span className="text-center font-semibold">{game.amount}</span>
-              <button onClick={() => addProduct(game)} className="">
-                +
-              </button>
-            </div> */}
-            <NumberInput />
+            <NumberInput game={game} />
 
-            <span className="text-xs">{game.price} грн</span>
+            <span className="text-xs xl:text-sm">{game.price} грн</span>
 
-            <div className="flex justify-between">
-              <p className="text-xs md:text-base">Всього:</p>
-              <span className="text-xs font-semibold md:text-base">
+            <div className="flex justify-between text-xs md:text-base">
+              <p>Всього:</p>
+              <span className="font-semibold">
                 {game.price * game.amount} грн
               </span>
             </div>

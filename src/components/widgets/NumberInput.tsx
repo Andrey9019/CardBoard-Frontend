@@ -1,98 +1,52 @@
-import NumberFlow from "@number-flow/react";
-import clsx from "clsx/lite";
+import Game from "@/shared/types/game";
+import { useCartStore } from "@/stores/cartStore";
 import { Minus, Plus } from "lucide-react";
-import * as React from "react";
-type Props = {
-  value?: number;
-  min?: number;
-  max?: number;
-  onChange?: (value: number) => void;
-};
-export default function NumberInput({
-  value = 0,
-  min = -Infinity,
-  max = Infinity,
-  onChange,
-}: Props) {
-  const defaultValue = React.useRef(value);
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const [animated, setAnimated] = React.useState(true);
-  // Hide the caret during transitions so you can't see it shifting around:
-  const [showCaret, setShowCaret] = React.useState(true);
-  const handleInput: React.ChangeEventHandler<HTMLInputElement> = ({
-    currentTarget: el,
-  }) => {
-    setAnimated(false);
-    let next = value;
-    if (el.value === "") {
-      next = defaultValue.current;
-    } else {
-      const num = el.valueAsNumber;
-      if (!isNaN(num) && min <= num && num <= max) next = num;
-    }
-    // Manually update the input.value in case the number stays the same e.g. 09 == 9
-    el.value = String(next);
-    onChange?.(next);
-  };
-  const handlePointerDown =
-    (diff: number) => (event: React.PointerEvent<HTMLButtonElement>) => {
-      setAnimated(true);
-      if (event.pointerType === "mouse") {
-        event?.preventDefault();
-        inputRef.current?.focus();
-      }
-      const newVal = Math.min(Math.max(value + diff, min), max);
-      onChange?.(newVal);
-    };
+
+interface NumberInputCard {
+  game: Game;
+}
+
+export default function NumberInput({ game }: NumberInputCard) {
+  const removeProduct = useCartStore((state) => state.removeProduct);
+  const addProduct = useCartStore((state) => state.addProduct);
   return (
-    <div className="group flex items-stretch rounded-md text-3xl font-semibold ring ring-zinc-200 transition-[box-shadow] focus-within:ring-2 focus-within:ring-blue-500 dark:ring-zinc-800">
+    <div className="flex w-max items-center gap-2 rounded-md border p-1 text-sm xl:text-lg">
       <button
-        aria-hidden="true"
-        tabIndex={-1}
-        className="flex items-center pr-[.325em] pl-[.5em]"
-        disabled={min != null && value <= min}
-        onPointerDown={handlePointerDown(-1)}
+        onClick={() => removeProduct(game)}
+        disabled={game.amount === 1}
+        className={`${
+          game.amount === 1
+            ? "cursor-not-allowed opacity-50"
+            : "hover:text-primary"
+        }`}
+        aria-label="Зменшити кількість"
       >
-        <Minus className="size-4" absoluteStrokeWidth strokeWidth={3.5} />
+        <Minus
+          className="size-4 xl:size-5"
+          absoluteStrokeWidth
+          strokeWidth={3}
+        />
       </button>
-      <div className="relative grid items-center justify-items-center text-center [grid-template-areas:'overlap'] *:[grid-area:overlap]">
-        <input
-          ref={inputRef}
-          className={clsx(
-            showCaret ? "caret-primary" : "caret-transparent",
-            "spin-hide w-[1.5em] bg-transparent py-2 text-center font-[inherit] text-transparent outline-none",
-          )}
-          // Make sure to disable kerning, to match NumberFlow:
-          style={{ fontKerning: "none" }}
-          type="number"
-          min={min}
-          step={1}
-          autoComplete="off"
-          inputMode="numeric"
-          max={max}
-          value={value}
-          onInput={handleInput}
-        />
-        <NumberFlow
-          value={value}
-          locales="en-US"
-          format={{ useGrouping: false }}
-          aria-hidden="true"
-          animated={animated}
-          onAnimationsStart={() => setShowCaret(false)}
-          onAnimationsFinish={() => setShowCaret(true)}
-          className="pointer-events-none"
-          willChange
-        />
+
+      <div className="flex min-w-[24px] justify-center">
+        <span className="font-semibold">{game.amount}</span>
       </div>
+
       <button
-        aria-hidden="true"
-        tabIndex={-1}
-        className="flex items-center pr-[.5em] pl-[.325em]"
-        disabled={max != null && value >= max}
-        onPointerDown={handlePointerDown(1)}
+        onClick={() => addProduct(game)}
+        disabled={game.amount === 99}
+        className={`${
+          game.amount === 99
+            ? "cursor-not-allowed opacity-50"
+            : "hover:text-primary"
+        }`}
+        aria-label="Збільшити кількість"
       >
-        <Plus className="size-4" absoluteStrokeWidth strokeWidth={3.5} />
+        <Plus
+          className="size-4 xl:size-5"
+          absoluteStrokeWidth
+          strokeWidth={3}
+        />
       </button>
     </div>
   );

@@ -6,7 +6,7 @@ export default function CheckoutSummary() {
   const total = useCartStore((state) => state.total);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 lg:mx-0">
       <div className="flex justify-between">
         <p>Всього:</p>
         <span>{total}</span>
@@ -34,8 +34,8 @@ export default function CheckoutSummary() {
       </div>
 
       <div className="flex justify-between border-t-[1px] border-gray-400 pt-4 font-semibold">
-        <p>До сплати:</p>
-        <span>{total}</span>
+        <p>До сплати: </p>
+        <span> {total} грн</span>
       </div>
     </div>
   );
