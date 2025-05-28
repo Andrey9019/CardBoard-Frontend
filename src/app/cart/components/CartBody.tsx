@@ -8,17 +8,18 @@ import Button from "@/components/ui/Button";
 import GameList from "./GameList";
 import CartForm from "./CartForm";
 import CheckoutSummary from "./CheckoutSummary";
+import { cn } from "@/shared/lib/utils";
 
 interface CartBodyProp {
   isFormСonfirm: boolean;
   setIsFormСonfirm: (value: boolean) => void;
 }
+
 export default function CartBody({
   isFormСonfirm,
   setIsFormСonfirm,
 }: CartBodyProp) {
-  const cart = useCartStore((state) => state.cart);
-  const countTotal = useCartStore((state) => state.countTotal);
+  const { cart, countTotal } = useCartStore();
 
   const switchToConfirm = () => {
     setIsFormСonfirm(true);
@@ -39,20 +40,29 @@ export default function CartBody({
       <div className="container">
         {cart.length != 0 ? (
           <div className="justify-between gap-4 lg:flex">
-            <GameList />
-
-            <div className="mx-2 flex flex-1 flex-col gap-4 pt-7 lg:mx-6 lg:border-t-[1px] lg:border-gray-400">
-              <CheckoutSummary />
-              {isFormСonfirm ? (
-                <CartForm />
-              ) : (
-                <Button
-                  as="button"
-                  variant="primary"
-                  text="Перейти до оформлення"
-                  className="min-w-full"
-                  onClick={switchToConfirm}
+            <div>
+              <GameList isFormСonfirm={isFormСonfirm} />
+              {isFormСonfirm && (
+                <CheckoutSummary
+                  switchToConfirm={switchToConfirm}
+                  isFormСonfirm={isFormСonfirm}
                 />
+              )}
+            </div>
+
+            <div
+              className={cn(
+                "mx-2 flex flex-1 flex-col gap-4 pt-7 lg:mx-6 lg:border-t-[1px] lg:border-gray-400",
+                isFormСonfirm && "border-0 pt-0 lg:border-transparent",
+              )}
+            >
+              {!isFormСonfirm ? (
+                <CheckoutSummary
+                  switchToConfirm={switchToConfirm}
+                  isFormСonfirm={isFormСonfirm}
+                />
+              ) : (
+                <CartForm />
               )}
             </div>
           </div>

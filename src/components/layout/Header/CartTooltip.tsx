@@ -19,9 +19,7 @@ interface CartTooltipProps {
 }
 
 export default function CartTooltip({ closeAll }: CartTooltipProps) {
-  const cart = useCartStore((state) => state.cart);
-  const total = useCartStore((state) => state.total);
-  const countTotal = useCartStore((state) => state.countTotal);
+  const { cart, total, countTotal } = useCartStore();
 
   useEffect(() => {
     countTotal();

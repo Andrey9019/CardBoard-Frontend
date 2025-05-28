@@ -7,8 +7,7 @@ interface NumberInputCard {
 }
 
 export default function NumberInput({ game }: NumberInputCard) {
-  const removeProduct = useCartStore((state) => state.removeProduct);
-  const addProduct = useCartStore((state) => state.addProduct);
+  const { addProduct, removeProduct } = useCartStore();
   return (
     <div className="flex w-max items-center gap-2 rounded-md border p-1 text-sm xl:text-lg">
       <button

@@ -1,9 +1,18 @@
 "use client";
 
+import Button from "@/components/ui/Button";
 import { useCartStore } from "@/stores/cartStore";
 
-export default function CheckoutSummary() {
-  const total = useCartStore((state) => state.total);
+interface CheckoutSummaryProp {
+  switchToConfirm: () => void;
+  isFormСonfirm: boolean;
+}
+
+export default function CheckoutSummary({
+  switchToConfirm,
+  isFormСonfirm,
+}: CheckoutSummaryProp) {
+  const { total } = useCartStore();
 
   return (
     <div className="flex flex-col gap-4 lg:mx-0">
@@ -37,6 +46,16 @@ export default function CheckoutSummary() {
         <p>До сплати: </p>
         <span> {total} грн</span>
       </div>
+
+      {!isFormСonfirm && (
+        <Button
+          as="button"
+          variant="primary"
+          text="Перейти до оформлення"
+          className="min-w-full"
+          onClick={switchToConfirm}
+        />
+      )}
     </div>
   );
 }

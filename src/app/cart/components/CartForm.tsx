@@ -50,6 +50,17 @@ export default function CartForm() {
             />
             Самовивіз з магазину
           </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="radio"
+              // name="delivery"
+              // value="pickup"
+              // checked={delivery === "pickup"}
+              // onChange={() => setDelivery("pickup")}
+              className="accent-primary"
+            />
+            Самовивіз з магазину
+          </label>
         </div>
 
         <div>

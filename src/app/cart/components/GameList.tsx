@@ -7,18 +7,27 @@ import { useCartStore } from "@/stores/cartStore";
 import noImg from "../../../../public/images/not-found-page/no-image.png";
 
 import NumberInput from "@/components/widgets/NumberInput";
+import { cn } from "@/shared/lib/utils";
 
-export default function GameList() {
-  const cart = useCartStore((state) => state.cart);
+interface GameListProp {
+  isFormСonfirm: boolean;
+}
 
-  const deleteProduct = useCartStore((state) => state.deleteProduct);
+export default function GameList({ isFormСonfirm }: GameListProp) {
+  const { cart, deleteProduct } = useCartStore();
 
   return (
-    <ul className="flex flex-col items-center gap-5 sm:px-6 lg:gap-4 lg:px-0">
+    <ul
+      className={cn(
+        "flex flex-col items-center gap-5 sm:px-6 lg:gap-4 lg:px-0",
+        isFormСonfirm &&
+          `border-primary/40 mb-4 max-h-[400px] overflow-y-auto rounded-md border lg:max-h-[450px] xl:max-h-[500px]`,
+      )}
+    >
       {cart.map((game) => (
         <li
           key={game.id}
-          className="item-shadow flex w-full max-w-[358px] rounded-lg bg-white px-4 py-3 lg:max-w-[472px] xl:min-w-[684px]"
+          className="flex w-full max-w-[358px] rounded-lg bg-white px-4 py-3 lg:max-w-[472px] xl:min-w-[684px]"
         >
           <Image
             className="mr-4 h-[120px] w-[120px] lg:h-[164px] lg:w-[164px] xl:h-[175px] xl:w-[175px]"
