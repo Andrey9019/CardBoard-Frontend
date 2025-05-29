@@ -19,7 +19,7 @@ export default function GameList({ isFormСonfirm }: GameListProp) {
   return (
     <ul
       className={cn(
-        "flex flex-col items-center gap-5 sm:px-6 lg:gap-4 lg:px-0",
+        "animate-fade-in-left-03 flex flex-col items-center gap-5 sm:px-6 lg:gap-4 lg:px-0",
         isFormСonfirm &&
           `border-primary/40 mb-4 max-h-[400px] overflow-y-auto rounded-md border lg:max-h-[450px] xl:max-h-[500px]`,
       )}

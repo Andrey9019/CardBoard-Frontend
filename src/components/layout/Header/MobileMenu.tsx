@@ -32,7 +32,7 @@ export default function MobileMenu({
   return (
     <div
       ref={containerRef}
-      className="bg-primary custom-scroll animate-fade-in-rigth-05 text-secondary fixed top-0 left-0 z-999 flex h-full w-full flex-col justify-between overflow-y-auto shadow-xl"
+      className="bg-primary custom-scroll animate-fade-in-rigth-03 text-secondary fixed top-0 left-0 z-999 flex h-full w-full flex-col justify-between overflow-y-auto shadow-xl"
     >
       <div className="container flex items-center justify-between px-9 py-6">
         <Logo size="small" className="w-24" />

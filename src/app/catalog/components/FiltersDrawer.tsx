@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/accordion";
 
 import Button from "@/components/ui/Button";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/ckeckbox";
 import { useCategories } from "@/shared/hooks/useCategories";
 import { useFilterLogic } from "../hooks/useFilterLogic";
@@ -66,12 +65,12 @@ export default function FiltersDrawer({ toggleFilter }: FiltersDrawerProps) {
                       }
                       className="h-6 w-6"
                     />
-                    <Label
+                    <label
                       htmlFor={`filter-${category.name}-${value.id}`}
                       className="text-base"
                     >
                       {value.name}
-                    </Label>
+                    </label>
                   </li>
                 ))}
               </ul>
