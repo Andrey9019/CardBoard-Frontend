@@ -2,24 +2,23 @@
 
 import { useEffect, useState } from "react";
 
-import { getAllGames } from "@/shared/utils/index";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import Game from "@/shared/types/game";
 
 import noImg from "../../../../public/images/not-found-page/no-image.png";
 import SkeletonCard from "@/components/layout/Skeleton";
+import { useAllGame } from "@/shared/hooks/useAllGame";
 
 interface ListGameProp {
   title: string;
 }
 
 export default function RecommendationsList(title: ListGameProp) {
-  const [games, setGames] = useState<Game[]>([]);
+  const { games, isLoading, error, handleRetry } = useAllGame();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [gamesPerPage, setGamesPerPage] = useState(2);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,20 +43,6 @@ export default function RecommendationsList(title: ListGameProp) {
   const currentGames = games.slice(indexOfFirstGame, indexOfLastGame);
   const totalPages = Math.ceil(games.length / gamesPerPage);
 
-  useEffect(() => {
-    const getGames = async () => {
-      try {
-        const data = await getAllGames();
-        console.log(data);
-        setGames(data.results);
-      } catch (error) {
-        console.log("error getGame", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getGames();
-  }, []);
   return (
     <>
       <div className="mb-7 flex justify-between lg:mb-4 xl:mb-12">
@@ -102,6 +87,38 @@ export default function RecommendationsList(title: ListGameProp) {
           </button>
         </div>
       </div>
+
+      {/* якщо помилка то... */}
+      {error && (
+        <div className="mx-auto flex min-h-[365px] max-w-[628px] flex-col items-center justify-center gap-9 py-9 lg:min-h-[429px] xl:min-h-[477px]">
+          <p className="text-primary text-center font-semibold">
+            Oops... <br /> З запитом сталася помилка. Спробуйте ще раз
+          </p>
+          <Button
+            as="button"
+            variant="primary"
+            onClick={handleRetry}
+            text="Спробувати ще раз"
+          />
+        </div>
+      )}
+
+      {/* якщо нічого не знайдено */}
+      {!isLoading && !error && !games.length && (
+        <div className="mx-auto flex min-h-[365px] max-w-[628px] flex-col items-center justify-center gap-9 py-9 lg:min-h-[429px] xl:min-h-[477px]">
+          <p className="text-primary text-center font-semibold">
+            Oops... <br /> Ми не знайшли нічого за вашим запитом. Але не
+            засмучуйтесь — у нас точно є гра, яка вам сподобається. Пограйте з
+            фільтрами!
+          </p>
+          <Button
+            as="button"
+            variant="primary"
+            onClick={() => window.location.reload()}
+            text=" Скинути фільтри"
+          />
+        </div>
+      )}
       {isLoading ? (
         <SkeletonCard />
       ) : (

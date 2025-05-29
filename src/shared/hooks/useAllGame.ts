@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { getAllGames } from "@/shared/utils";
 import Game from "@/shared/types/game";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function useAllGame() {
   const [games, setGames] = useState<Game[]>([]);
@@ -10,6 +11,7 @@ export function useAllGame() {
   const [error, setError] = useState<string | null>(null);
 
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     const getGames = async () => {
@@ -29,5 +31,9 @@ export function useAllGame() {
     getGames();
   }, [searchParams]);
 
-  return { games, isLoading, error };
+  const handleRetry = () => {
+    router.refresh();
+  };
+
+  return { games, isLoading, error, handleRetry };
 }

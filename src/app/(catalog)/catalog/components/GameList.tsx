@@ -11,17 +11,13 @@ export default function GameList() {
     [key: string]: number[];
   }>({});
 
-  const { games, isLoading, error } = useAllGame();
+  const { games, isLoading, error, handleRetry } = useAllGame();
 
   const router = useRouter();
 
   const handlleResetFilters = () => {
     setSelectedFilters({});
     router.push("/catalog");
-  };
-
-  const handleRetry = () => {
-    router.refresh();
   };
 
   if (isLoading) return <SkeletonCard />;
