@@ -6,7 +6,6 @@ import {
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 
-
 export default function BreadcrumbWidgest({
   text1,
   text2,
@@ -22,12 +21,12 @@ export default function BreadcrumbWidgest({
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/" className="text-primary font-bold">
-              <svg width="24" height="24">
+              <svg width="18" height="18">
                 <use href="/sprite.svg#icon-home"></use>
               </svg>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <svg className="h-6 w-6">
+          <svg className="h-4 w-4">
             <use href="/sprite.svg#icon-arrow-right-purple"></use>
           </svg>
           {text2 ? (
@@ -40,10 +39,10 @@ export default function BreadcrumbWidgest({
                   {text1}
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <svg className="h-6 w-6">
-                <use href="/sprite.svg#icon-arrow-right-purple"></use>
-              </svg>
               <BreadcrumbItem>
+                <svg className="h-4 w-4">
+                  <use href="/sprite.svg#icon-arrow-right-purple"></use>
+                </svg>
                 <BreadcrumbPage className="text-primary">
                   {text2}
                 </BreadcrumbPage>
@@ -51,9 +50,7 @@ export default function BreadcrumbWidgest({
             </>
           ) : (
             <BreadcrumbItem>
-              <BreadcrumbPage className="text-primary font-bold">
-                {text1}
-              </BreadcrumbPage>
+              <BreadcrumbPage className="text-primary">{text1}</BreadcrumbPage>
             </BreadcrumbItem>
           )}
         </BreadcrumbList>

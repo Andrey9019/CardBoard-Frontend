@@ -27,7 +27,7 @@ export default function Footer() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/contacts">
               <span className="text-sm font-bold"> Звʼязатися з нами</span>
             </Link>
           </li>

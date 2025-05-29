@@ -188,10 +188,26 @@ body::-webkit-scrollbar {
     animation: fade-in-left 0.3s ease-out forwards;
   }
 
-  .animate-fade-in-rigth-05 {
-    animation: fade-in-rigth 0.5s ease-out forwards;
+  .animate-fade-in-rigth-03 {
+    animation: fade-in-rigth 0.3s ease-out forwards;
   }
 
+}
+
+/* анімація loader */
+.loader {
+  animation: jump 0.5s ease-in infinite alternate;
+}
+
+
+@keyframes jump {
+  0% {
+    transform: translate(-50%, -150%)
+  }
+
+  100% {
+    transform: translate(-50%, 10%)
+  }
 }
 
 /* фон сторінки 404 */

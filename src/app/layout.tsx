@@ -3,8 +3,8 @@ import { Poppins } from "next/font/google";
 
 import "./(main)/globals.css";
 
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+// import Header from "@/components/layout/Header/Header";
+// import Footer from "@/components/layout/Footer";
 
 const poppinsSans = Poppins({
   variable: "--font-poppins-sans",
@@ -26,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppinsSans.variable} antialiased`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        {/* <Header /> */}
+        {children}
+        {/* <Footer /> */}
       </body>
     </html>
   );
