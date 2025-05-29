@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCartStore } from "@/stores/cartStore";
 
-import noImg from "../../../../public/images/not-found-page/no-image.png";
+import noImg from "../../../../../public/images/not-found-page/no-image.png";
 
 import NumberInput from "@/components/widgets/NumberInput";
 import { cn } from "@/shared/lib/utils";

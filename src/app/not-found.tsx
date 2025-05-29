@@ -8,9 +8,9 @@ export default function NotFound() {
   const handleMain = () => {
     window.location.href = "/";
   };
-
   return (
-    <div className="not-found-page relative -mt-8 -mb-8 flex h-full w-full flex-col items-center justify-center text-center text-white">
+    // -mt-8 -mb-8;
+    <div className="not-found-page relative flex h-full w-full flex-col items-center justify-center text-center text-white">
       <p className="text-2xl font-bold lg:text-4xl xl:text-[40px]">Oops...</p>
       <div className="flex items-center leading-none">
         <span className="text-[200px] font-bold lg:text-[280px] xl:text-[300px]">

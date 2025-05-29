@@ -7,7 +7,11 @@ import HeaderNav from "./HeaderNav";
 import SearchDropdown from "./SearchDropdown";
 import CatalogDropdown from "./CatalogDropdown";
 
-export default function Header() {
+interface HeaderProps {
+  hasCart?: boolean;
+}
+
+export default function Header({ hasCart = true }: HeaderProps) {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -63,6 +67,7 @@ export default function Header() {
           setIsSearchOpen={setIsSearchOpen}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
           closeAll={closeAll}
+          hasCart={hasCart}
         />
       </div>
 

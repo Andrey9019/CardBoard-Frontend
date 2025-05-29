@@ -6,6 +6,8 @@ interface HeaderNavProp {
   isSearchOpen: boolean;
   isMobileMenuOpen: boolean;
 
+  hasCart?: boolean;
+
   setIsCatalogOpen: (value: boolean) => void;
   setIsSearchOpen: (value: boolean) => void;
   setIsMobileMenuOpen: (value: boolean) => void;
@@ -17,6 +19,8 @@ export default function HeaderNav({
   isCatalogOpen,
   isSearchOpen,
   isMobileMenuOpen,
+
+  hasCart = true,
 
   setIsCatalogOpen,
   setIsSearchOpen,
@@ -55,9 +59,11 @@ export default function HeaderNav({
           </button>
         </li>
 
-        <li className="p-2">
-          <CartTooltip closeAll={closeAll} />
-        </li>
+        {hasCart && (
+          <li className="p-2">
+            <CartTooltip closeAll={closeAll} />
+          </li>
+        )}
 
         <li className="hidden p-2 lg:flex">
           <svg className="h-8 w-8 cursor-pointer">

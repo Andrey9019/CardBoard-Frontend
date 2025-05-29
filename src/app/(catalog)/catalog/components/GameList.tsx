@@ -1,7 +1,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import SkeletonCard from "../../../components/layout/Skeleton";
+import SkeletonCard from "@/components/layout/Skeleton";
 import Button from "@/components/ui/Button";
 import GameListCard from "./GameListCard";
 import { useAllGame } from "@/shared/hooks/useAllGame";

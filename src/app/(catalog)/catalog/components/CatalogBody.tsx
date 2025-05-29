@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import FiltersStatic from "@/app/catalog/components/FiltersStatic";
-import FiltersDrawer from "@/app/catalog/components/FiltersDrawer";
-import SortDrawer from "@/app/catalog/components/SortDrawer";
+import FiltersStatic from "./FiltersStatic";
+import FiltersDrawer from "./FiltersDrawer";
+import SortDrawer from "./SortDrawer";
 import GameList from "./GameList";
 
 import Button from "@/components/ui/Button";

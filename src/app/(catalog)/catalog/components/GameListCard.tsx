@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Game from "@/shared/types/game";
 import Button from "@/components/ui/Button";
-import noImg from "../../../../public/images/not-found-page/no-image.png";
-
+import noImg from "../../../../../public/images/not-found-page/no-image.png";
 
 interface GameListCard {
   game: Game;
