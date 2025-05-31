@@ -109,11 +109,16 @@ export default function MobileMenu({
         </Link>
       </div>
 
-      <div className="px-9 pb-12">
-        <p className="py-9 font-semibold">особистий кабінет</p>
+      <div className="flex flex-col gap-9 px-9 pt-9 pb-12">
+        <Link href="/contacts" className="max-w-max">
+          <span className="font-semibold">Особистий кабінет</span>
+        </Link>
 
         <div className="before:bg-secondary relative before:absolute before:top-0 before:left-0 before:h-[1px] before:w-full"></div>
-        <p className="pt-9 font-semibold">звʼязатись з нами</p>
+
+        <Link href="/contacts" className="max-w-max">
+          <span className="font-semibold"> Звʼязатися з нами</span>
+        </Link>
       </div>
     </div>
   );

@@ -3,12 +3,12 @@
 import { useEffect } from "react";
 import { useCartStore } from "@/stores/cartStore";
 
-import Button from "@/components/ui/Button";
-
 import GameList from "./GameList";
 import CartForm from "./CartForm";
 import CheckoutSummary from "./CheckoutSummary";
+
 import { cn } from "@/shared/lib/utils";
+import Button from "@/components/ui/Button";
 
 interface CartBodyProp {
   isFormСonfirm: boolean;
@@ -39,7 +39,8 @@ export default function CartBody({
 
       <div className="container">
         {cart.length != 0 ? (
-          <div className="justify-between gap-4 lg:flex">
+          // <div className="justify-between gap-4 lg:flex">
+          <div className="grid gap-6 lg:grid-cols-2">
             <div>
               <GameList isFormСonfirm={isFormСonfirm} />
               {isFormСonfirm && (

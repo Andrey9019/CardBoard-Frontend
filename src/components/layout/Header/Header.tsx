@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import Logo from "../Logo";
 import HeaderNav from "./HeaderNav";
@@ -32,6 +32,30 @@ export default function Header({ hasCart = true }: HeaderProps) {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
   }, [isMobileMenuOpen]);
 
+  const catalogRef = useRef<HTMLDivElement>(null);
+  const catalogButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+
+      if (
+        isCatalogOpen &&
+        catalogRef.current &&
+        !catalogRef.current.contains(target) &&
+        catalogButtonRef.current &&
+        !catalogButtonRef.current.contains(target)
+      ) {
+        setIsCatalogOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isCatalogOpen]);
+
   return (
     <header
       className={`bg-primary text-secondary relative z-10 px-9 py-6 transition-all xl:px-16 ${
@@ -41,6 +65,7 @@ export default function Header({ hasCart = true }: HeaderProps) {
       <div className="container flex items-center justify-between">
         {/* Кнопка каталог */}
         <button
+          ref={catalogButtonRef}
           onClick={toggleCatalog}
           className="hidden cursor-pointer items-center justify-between gap-4 xl:flex"
         >
@@ -78,7 +103,11 @@ export default function Header({ hasCart = true }: HeaderProps) {
         />
       )}
 
-      {isCatalogOpen && <CatalogDropdown toggleCatalog={toggleCatalog} />}
+      {isCatalogOpen && (
+        <div ref={catalogRef}>
+          <CatalogDropdown toggleCatalog={toggleCatalog} />
+        </div>
+      )}
     </header>
   );
 }
