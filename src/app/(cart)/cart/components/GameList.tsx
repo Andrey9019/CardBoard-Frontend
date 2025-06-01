@@ -27,7 +27,7 @@ export default function GameList({ isFormСonfirm }: GameListProp) {
       {cart.map((game) => (
         <li
           key={game.id}
-          className="flex w-full rounded-lg bg-white px-4 py-3 lg:max-w-[472px] xl:min-w-[684px]"
+          className="flex w-full rounded-lg bg-white px-4 py-3 lg:max-w-[590px] xl:min-w-[580px]"
         >
           <Image
             className="mr-4 h-[120px] w-[120px] sm:h-[164px] sm:w-[164px] xl:h-[175px] xl:w-[175px]"
