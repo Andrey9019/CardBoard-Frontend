@@ -13,11 +13,13 @@ import Button from "@/components/ui/Button";
 interface CartBodyProp {
   isFormСonfirm: boolean;
   setIsFormСonfirm: (value: boolean) => void;
+  setIsOrderComplete: (value: boolean) => void;
 }
 
 export default function CartBody({
   isFormСonfirm,
   setIsFormСonfirm,
+  setIsOrderComplete,
 }: CartBodyProp) {
   const { cart, countTotal } = useCartStore();
 
@@ -63,7 +65,7 @@ export default function CartBody({
                   isFormСonfirm={isFormСonfirm}
                 />
               ) : (
-                <CartForm />
+                <CartForm setIsOrderComplete={setIsOrderComplete} />
               )}
             </div>
           </div>

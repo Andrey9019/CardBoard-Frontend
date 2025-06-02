@@ -72,6 +72,11 @@ export const useCartStore = create<CartStore>()(
           );
           set({ cart: newCart });
         },
+
+        // очищяє кошик
+        clearCart: () => {
+          set({ cart: [] });
+        },
       }),
 
       {

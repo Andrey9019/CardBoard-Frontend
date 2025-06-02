@@ -8,4 +8,5 @@ export default interface CardStore {
   removeProduct: (data: CartItem) => void;
   deleteProduct: (id: number) => void;
   changeAmount: (id: number, amount: number) => void;
+  clearCart: () => void;
 }
