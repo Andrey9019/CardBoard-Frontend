@@ -65,11 +65,11 @@ export default function HeaderNav({
           </li>
         )}
 
-        <li className="hidden p-2 lg:flex">
+        {/* <li className="hidden p-2 lg:flex">
           <svg className="h-8 w-8 cursor-pointer">
             <use href="/sprite.svg#icon-person"></use>
           </svg>
-        </li>
+        </li> */}
 
         <li className="p-2 xl:hidden">
           <button className=" " onClick={toggleMobileMenu}>

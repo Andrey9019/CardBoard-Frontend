@@ -68,16 +68,8 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
                       </Link>
 
                       <div className="flex justify-between text-sm">
-                        <span
-                        // className="font-semibold"
-                        >
-                          {game.amount} шт.
-                        </span>
-                        <span
-                        // className="font-semibold"
-                        >
-                          {game.price * game.amount} грн
-                        </span>
+                        <span>{game.amount} шт.</span>
+                        <span>{game.price * game.amount} грн</span>
                       </div>
                     </div>
                   </li>
@@ -87,6 +79,16 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
               <div className="mx-2 flex flex-1 justify-between gap-4 pt-7">
                 <p>Всього:</p>
                 <span>{total} грн</span>
+              </div>
+
+              <div className="mt-7 flex justify-center">
+                <Button
+                  as="link"
+                  href="/cart"
+                  text={"Перейти до кошика"}
+                  variant="primary"
+                  className="w-full text-center text-sm xl:text-base"
+                />
               </div>
             </div>
           ) : (
@@ -100,7 +102,7 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
                 href="/catalog"
                 text={"Перейти до каталогу"}
                 variant="primary"
-                className="text-sm"
+                className="text-center text-sm xl:text-base"
               />
             </div>
           )}

@@ -9,6 +9,7 @@ import Button from "@/components/ui/Button";
 import { CartFormFields } from "@/shared/types/cartForm";
 import { Checkbox } from "@/components/ui/ckeckbox";
 import { useCartStore } from "@/stores/cartStore";
+import Link from "next/link";
 
 interface FormProp {
   setIsOrderComplete: (value: boolean) => void;
@@ -176,8 +177,17 @@ export default function CheckoutForm({ setIsOrderComplete }: FormProp) {
             type="submit"
             className="mt-4 min-w-full"
             disabled={!isValid}
-            // onClick={() => clearCart()}
           />
+          <div>
+            <p className="text-center text-sm">
+              Натискаючи на кнопку, ви погоджуєтеся з умовами
+            </p>
+            <Link href="/policy">
+              <p className="text-center text-sm font-bold text-blue-400">
+                Правової політики
+              </p>
+            </Link>
+          </div>
         </div>
       </form>
     </div>

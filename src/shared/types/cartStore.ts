@@ -9,4 +9,6 @@ export default interface CardStore {
   deleteProduct: (id: number) => void;
   changeAmount: (id: number, amount: number) => void;
   clearCart: () => void;
+  isLoading: boolean;
+  setIsLoading: (loading: boolean) => void;
 }

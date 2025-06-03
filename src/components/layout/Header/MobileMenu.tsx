@@ -56,11 +56,11 @@ export default function MobileMenu({
               </Link>
             </li>
             {/* користувач */}
-            <li className="hidden p-2 lg:flex">
+            {/* <li className="hidden p-2 lg:flex">
               <svg className="h-8 w-8">
                 <use href="/sprite.svg#icon-person"></use>
               </svg>
-            </li>
+            </li> */}
           </ul>
 
           <button onClick={onClose} className="ml-2 p-2">
