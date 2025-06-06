@@ -9,7 +9,6 @@ import { useGameByID } from "../hooks/useGamebyID";
 
 export default function GameHeader() {
   const { game } = useGameByID();
-
   const { addProduct } = useCartStore();
 
   const router = useRouter();

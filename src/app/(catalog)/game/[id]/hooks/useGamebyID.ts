@@ -12,7 +12,6 @@ export function useGameByID() {
 
   const params = useParams();
   const id = params.id;
-  console.log("id", id);
 
   useEffect(() => {
     if (!id || Array.isArray(id)) {

@@ -28,7 +28,7 @@ export default function FiltersStatic({ toggleFilter }: FiltersStaticProps) {
   } = useFilterLogic(toggleFilter);
 
   return (
-    <div className="item-shadow animate-fade-in-left-03 mr-4 flex h-max max-w-[228px] min-w-[228px] flex-col gap-4 rounded-lg bg-white p-6 xl:mr-10 xl:max-w-[270px] xl:min-w-[270px]">
+    <div className="item-shadow animate-fade-in-left-03 mr-4 flex h-max max-w-[228px] min-w-[228px] flex-col gap-4 rounded-lg bg-white p-6 lg:mr-[86px] xl:mr-10 xl:max-w-[270px] xl:min-w-[270px]">
       <Accordion type="multiple">
         {categories.map((category) => (
           <AccordionItem
