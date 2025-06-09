@@ -1,22 +1,24 @@
 "use client";
 
-import { useCartStore } from "@/stores/cartStore";
 import { useRouter } from "next/navigation";
+import { useCartStore } from "@/stores/cartStore";
+import { useGameByID } from "../hooks/useGamebyID";
 
 import Button from "@/components/ui/Button";
 import { Badge } from "@/components/ui/badge";
-import { useGameByID } from "../hooks/useGamebyID";
+
+import GameListImages from "./GameListImages";
 
 export default function GameHeader() {
   const { game } = useGameByID();
-
   const { addProduct } = useCartStore();
 
   const router = useRouter();
 
   return (
-    <div className="xl:grid xl:grid-cols-2">
-      <div className="mb-12 xl:mb-16">tyt spisok foto</div>
+    <div className="ml:grid ml:grid-cols-2 gap-x-10 xl:mb-12">
+      <GameListImages />
+
       <div className="mb-12 flex flex-col gap-6 xl:mb-16">
         <h2 className="hidden text-4xl font-bold xl:flex">{game?.title}</h2>
         <Badge variant="default" className="lg:text-sm">
@@ -38,7 +40,7 @@ export default function GameHeader() {
             <span className="text-2xl font-bold">{game.price} грн</span>
           )}
         </p>
-        <div className="flex justify-between gap-6 sm:justify-start">
+        <div className="flex flex-wrap justify-between gap-6 sm:justify-start">
           <Button
             as="button"
             variant="primary"

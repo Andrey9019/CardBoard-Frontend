@@ -4,7 +4,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-} from "@/components/ui/breadcrumb";
+} from "@/components/ui/index";
 
 export default function BreadcrumbWidgest({
   text1,

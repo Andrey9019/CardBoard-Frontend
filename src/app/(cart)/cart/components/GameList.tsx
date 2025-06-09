@@ -19,18 +19,18 @@ export default function GameList({ isFormСonfirm }: GameListProp) {
   return (
     <ul
       className={cn(
-        "animate-fade-in-left-03 flex flex-col items-center gap-5 sm:px-6 lg:gap-4 lg:px-0",
+        "animate-fade-in-left-03 flex flex-col items-center gap-5 sm:mx-6 lg:mx-0 lg:gap-4",
         isFormСonfirm &&
-          `border-primary/40 mb-4 max-h-[400px] overflow-y-auto rounded-md border lg:max-h-[450px] xl:max-h-[500px]`,
+          `border-primary/40 mb-4 max-h-[425px] overflow-y-auto rounded-md border lg:max-h-[450px] xl:max-h-[500px]`,
       )}
     >
       {cart.map((game) => (
         <li
           key={game.id}
-          className="flex w-full max-w-[358px] rounded-lg bg-white px-4 py-3 lg:max-w-[472px] xl:min-w-[684px]"
+          className="flex w-full rounded-lg bg-white px-4 py-3 lg:max-w-[590px] xl:min-w-[580px]"
         >
           <Image
-            className="mr-4 h-[120px] w-[120px] lg:h-[164px] lg:w-[164px] xl:h-[175px] xl:w-[175px]"
+            className="mr-4 h-[120px] w-[120px] sm:h-[164px] sm:w-[164px] xl:h-[175px] xl:w-[175px]"
             src={noImg}
             alt="Фото гри"
           />

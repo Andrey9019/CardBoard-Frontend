@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist, createJSONStorage, devtools } from "zustand/middleware";
+import { persist, devtools } from "zustand/middleware";
 
 import CartStore from "@/shared/types/cartStore";
 
@@ -9,6 +9,7 @@ export const useCartStore = create<CartStore>()(
       (set, get) => ({
         cart: [],
         total: 0,
+        isLoading: true,
 
         // підрахунок загальної суми total
         countTotal: () => {
@@ -72,11 +73,21 @@ export const useCartStore = create<CartStore>()(
           );
           set({ cart: newCart });
         },
+
+        // очищяє кошик
+        clearCart: () => {
+          set({ cart: [] });
+        },
+        // завантаження кошика
+        setIsLoading: (loading) => set({ isLoading: loading }),
       }),
 
       {
         name: "cart_storage",
-        storage: createJSONStorage(() => localStorage),
+        onRehydrateStorage: () => (state) => {
+          state?.setIsLoading(false);
+        },
+        // storage: createJSONStorage(() => localStorage),
       },
     ),
   ),

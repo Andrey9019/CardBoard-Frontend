@@ -15,7 +15,7 @@ export default function CheckoutSummary({
   const { total } = useCartStore();
 
   return (
-    <div className="animate-fade-in-rigth-03 flex flex-col gap-4 lg:mx-0">
+    <div className="animate-fade-in-left-03 flex flex-col gap-4 sm:px-6 lg:px-0">
       <div className="flex justify-between">
         <p>Всього:</p>
         <span>{total}</span>
