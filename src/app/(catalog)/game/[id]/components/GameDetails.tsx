@@ -5,7 +5,7 @@ export default function GameDetails() {
   const { game } = useGameByID();
 
   return (
-    <div className="grid-cols-2 lg:grid">
+    <div className="grid-cols-2 gap-10 lg:grid">
       <div className="mb-12 lg:mb-16">
         <p className="mb-6 text-2xl font-semibold">Опис</p>
         <p className="text-sm lg:text-base xl:text-lg">{game?.description}</p>

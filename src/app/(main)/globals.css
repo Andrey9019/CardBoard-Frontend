@@ -126,6 +126,7 @@ body::-webkit-scrollbar {
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
+  --breakpoint-ml: 1280px;
   --breakpoint-xl: 1440px;
 }
 

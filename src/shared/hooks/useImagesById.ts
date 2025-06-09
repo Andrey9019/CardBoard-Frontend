@@ -1,12 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
-import Game from "@/shared/types/game";
-import { getGameById } from "@/shared/utils";
+import { getImagesById } from "@/shared/utils";
+import { ImagesById } from "../types/typeImagesById";
 
-export function useGameByID() {
-  const [game, setGame] = useState<Game | null>(null);
+export function useImagesByID() {
+  const [images, setImages] = useState<ImagesById | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,26 +21,24 @@ export function useGameByID() {
       return;
     }
 
-    const getGame = async () => {
+    const getImages = async () => {
       try {
         const numericId = parseInt(id);
-        const data = await getGameById(numericId);
+        const data = await getImagesById(numericId);
         if (!data) {
           setNotFound(true);
         } else {
-          setGame(data);
+          setImages(data);
           console.log(data);
         }
       } catch (error) {
         setNotFound(true);
         console.log(error);
-        setIsLoading(false);
       } finally {
         setIsLoading(false);
       }
     };
-    getGame();
+    getImages();
   }, [id]);
-
-  return { game, notFound, isLoading };
+  return { images, notFound, isLoading };
 }
