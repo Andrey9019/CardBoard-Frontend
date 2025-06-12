@@ -2,13 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["board-games-back-1-0-0.onrender.com", "localhost"],
+    domains: ["16.170.31.38", "localhost"],
   },
   async rewrites() {
     return [
       {
-        source: "/api/media/:path*",
-        destination: "https://board-games-back-1-0-0.onrender.com/media/:path*",
+        source: "/api/:path*",
+        destination: "http://16.170.31.38:8000/api/:path*",
       },
     ];
   },
