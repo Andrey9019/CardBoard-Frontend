@@ -84,8 +84,8 @@ body::-webkit-scrollbar {
   --color-ring: #6a2ecb;
 
   /* шрифти і розмір тексту */
-  /* --text-*: initial; */
-  /* --text-xs: 8px;
+  /* --text-*: initial;
+ --text-xs: 8px;
   --text-xs--line-height: normal;
   --text-xs--font-weight: 400;
   --text-xs--letter-spacing: -0.16px;

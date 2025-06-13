@@ -40,25 +40,6 @@ export default function GameListImagesProps() {
     emblaMainApi.on("select", onSelect).on("reInit", onSelect);
   }, [emblaMainApi, onSelect]);
 
-  console.log("Environment URL:", process.env.NEXT_PUBLIC_DB_API_BASE_URL);
-  console.log(
-    "Image path on prod:",
-    images?.map((image) => image.path),
-  );
-
-  const testFetch = async () => {
-    const imagePath =
-      typeof images?.[0]?.path === "string" ? images[0].path : noImg;
-    const response = await fetch(
-      decodeURIComponent(
-        typeof imagePath === "string" ? imagePath : imagePath.src,
-      ),
-    );
-    console.log("Fetch response status:", response.status);
-    console.log("Fetch response text:", await response.text());
-  };
-  testFetch();
-
   return (
     <div className="ml:max-w-[580px] mx-auto mb-12 max-w-[768px] [--slide-size:100%] xl:mb-0">
       <div className="overflow-hidden" ref={emblaMainRef}>

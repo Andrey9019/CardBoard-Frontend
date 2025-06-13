@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["16.170.31.38", "localhost"],
+    domains: ["16.170.31.38", "localhost"], // Додано IP для зображень
   },
   async rewrites() {
     return [
