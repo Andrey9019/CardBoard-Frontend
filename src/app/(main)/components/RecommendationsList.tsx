@@ -121,17 +121,19 @@ export default function RecommendationsList({ title }: ListGameProp) {
                       className="flex h-full flex-col justify-between p-4"
                     >
                       <div className="flex justify-end">
-                        <button className="max-w-max">
+                        {/* <button className="max-w-max">
                           <svg width="18" height="18">
                             <use href="/sprite.svg#icon-heart"></use>
                           </svg>
-                        </button>
+                        </button> */}
                       </div>
                       <div className="flex items-center">
                         <Image
                           className="my-4 flex items-center justify-center object-contain"
-                          src={noImg}
+                          src={game.thumbnail || noImg}
                           alt={game.title || "Фото гри"}
+                          width={242}
+                          height={242}
                         />
                       </div>
 
@@ -139,7 +141,7 @@ export default function RecommendationsList({ title }: ListGameProp) {
                         {game.title}
                       </p>
                       <p className="mb-2 text-lg font-bold lg:text-xl">
-                        {game.price}
+                        {game.price} ₴
                       </p>
                       <div className="mt-auto">
                         <Button

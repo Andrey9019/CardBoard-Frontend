@@ -1,26 +1,31 @@
-type NamedItem = {
+export interface Game {
   id: number;
-  name: string;
-};
+  title: string;
+  description: string | null;
+  rules_summary: string | null;
+  release_year: string | null;
+  price: number;
+  discount_price: string | null;
+  stock: number;
+  amount: number | null;
 
-export default interface Game {
-  id: number;
-  genre: NamedItem[];
-  type: NamedItem[];
-  mechanic: NamedItem[];
+  created_at: string;
+  updated_at: string;
+
+  genres: NamedItem[];
+  types: NamedItem[];
+  mechanics: NamedItem[];
   difficulty: NamedItem;
   player_count: NamedItem;
   age_group: NamedItem;
   duration: NamedItem;
   publisher: NamedItem;
-  title: string;
-  description: string;
-  rules_summary: string;
-  release_year: string;
-  price: number;
-  discount_price: string;
-  stock: number;
-  created_at: string;
-  updated_at: string;
-  amount: number;
+
+  images: string[];
+  thumbnail: string;
 }
+
+type NamedItem = {
+  id: number;
+  name: string;
+};

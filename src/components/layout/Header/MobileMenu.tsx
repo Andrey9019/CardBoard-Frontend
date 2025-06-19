@@ -86,7 +86,7 @@ export default function MobileMenu({
                   {category.values.map((value) => (
                     <li key={value.id} className="py-1.5 text-base">
                       <Link
-                        href={`/catalog${value.filter_url}`}
+                        href={`/catalog?${category.name}=${value.id}`}
                         onClick={onClose}
                         className="pb-1 hover:border-b-1"
                       >

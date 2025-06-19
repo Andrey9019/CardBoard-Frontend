@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import Game from "@/shared/types/game";
+import { Game } from "@/shared/types/game";
 import { getGameById } from "@/shared/utils";
 
 export function useGameByID() {

@@ -55,7 +55,8 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
                     <Image
                       className="mr-4 rounded-l-lg"
                       width={75}
-                      src={noImg}
+                      height={75}
+                      src={game.thumbnail ?? noImg}
                       alt="Фото гри"
                     />
 

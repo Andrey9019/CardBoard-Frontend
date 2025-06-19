@@ -1,11 +1,12 @@
-type NamedItem = {
+export type NamedItem = {
   id: number;
   name: string;
-  filter_url: string;
 };
 
-export default interface Categorires {
+export interface Category {
   name: string;
   display_name: string;
   values: NamedItem[];
 }
+
+export type Categories = Category[];

@@ -45,7 +45,7 @@ export default function FiltersDrawer({ toggleFilter }: FiltersDrawerProps) {
             className="mb-4 max-w-max font-semibold"
           >
             <AccordionTriggerFilter className="mb-4">
-              {category.display_name}
+              {category.name}
             </AccordionTriggerFilter>
             <AccordionContent className="">
               <ul className="flex flex-col gap-2.5">

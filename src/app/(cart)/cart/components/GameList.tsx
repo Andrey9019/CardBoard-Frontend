@@ -31,7 +31,9 @@ export default function GameList({ isFormСonfirm }: GameListProp) {
         >
           <Image
             className="mr-4 h-[120px] w-[120px] sm:h-[164px] sm:w-[164px] xl:h-[175px] xl:w-[175px]"
-            src={noImg}
+            src={game.thumbnail ?? noImg}
+            width={175}
+            height={175}
             alt="Фото гри"
           />
 

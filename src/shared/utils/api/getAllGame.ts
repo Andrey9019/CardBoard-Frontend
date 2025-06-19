@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const baseUrl = process.env.NEXT_PUBLIC_DB_API_BASE_URL;
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.NEXT_PUBLIC_DB_API_BASE_URL || "https://card-board.vercel.app"
+    : "http://localhost:3000";
 
 export const getAllGames = async (query?: string) => {
   try {

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Game from "@/shared/types/game";
+import { Game } from "@/shared/types/game";
 import Button from "@/components/ui/Button";
 import noImg from "../../../../../public/images/not-found-page/no-image.png";
 
@@ -19,22 +19,24 @@ export default function GameListCard({ game }: GameListCard) {
       >
         <div className="flex justify-end">
           <button className="max-w-max">
-            <svg className="h-[18px] w-[18px]">
+            {/* <svg className="h-[18px] w-[18px]">
               <use href="/sprite.svg#icon-heart"></use>
-            </svg>
+            </svg> */}
           </button>
         </div>
 
         <Image
           className="my-4 flex justify-center"
-          src={noImg}
+          src={game.thumbnail || noImg}
           alt="Фото гри"
+          width={242}
+          height={242}
         />
 
         <p className="mb-2 line-clamp-2 leading-snug font-bold lg:text-lg">
           {game.title}
         </p>
-        <p className="mb-2 text-lg font-bold lg:text-xl">{game.price}</p>
+        <p className="mb-2 text-lg font-bold lg:text-xl">{game.price} ₴</p>
 
         <div className="mt-auto flex w-full flex-col justify-end">
           <Button

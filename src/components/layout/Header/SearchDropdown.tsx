@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import Game from "@/shared/types/game";
+import { Game } from "@/shared/types/game";
 import { useEffect, useRef, useState } from "react";
 import { formatPrice } from "@/shared/utils/index";
 
@@ -90,9 +90,10 @@ export default function SearchDropdown({
                 >
                   <li className="lg:border-b-primary mb-3 flex w-full p-1 lg:border-b">
                     <Image
-                      src={noImg}
+                      src={result.thumbnail || noImg}
                       alt="Фото гри"
                       width={68}
+                      height={68}
                       className="mr-5"
                     />
                     <div className="flex flex-col justify-between">

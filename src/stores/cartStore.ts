@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, devtools } from "zustand/middleware";
 
-import CartStore from "@/shared/types/cartStore";
+import { CartStore } from "@/shared/types/cartStore";
 
 export const useCartStore = create<CartStore>()(
   devtools(
@@ -15,7 +15,10 @@ export const useCartStore = create<CartStore>()(
         countTotal: () => {
           const { cart } = get();
           const total = Math.round(
-            cart.reduce((acc, item) => acc + item.price * item.amount, 0),
+            cart.reduce(
+              (acc, item) => acc + item.price * (item.amount || 0),
+              0,
+            ),
           );
           set({
             total: total,
@@ -29,7 +32,7 @@ export const useCartStore = create<CartStore>()(
           const newItem = isItemInCart
             ? cart.map((item) =>
                 item.id === data.id
-                  ? { ...item, amount: item.amount + 1 }
+                  ? { ...item, amount: (item.amount || 0) + 1 }
                   : item,
               )
             : [...cart, { ...data, amount: 1 }];
@@ -46,10 +49,10 @@ export const useCartStore = create<CartStore>()(
           const isItemInCart = cart.find((item) => item.id === data.id);
           if (!isItemInCart) return;
           const newItem =
-            isItemInCart.amount > 1
+            (isItemInCart.amount ?? 0) > 1
               ? cart.map((item) =>
                   item.id === data.id
-                    ? { ...item, amount: item.amount - 1 }
+                    ? { ...item, amount: (item.amount || 0) - 1 }
                     : item,
                 )
               : cart.filter((item) => item.id !== data.id);

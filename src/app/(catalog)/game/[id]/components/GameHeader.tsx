@@ -15,9 +15,11 @@ export default function GameHeader() {
 
   const router = useRouter();
 
+  if (!game) return null;
+
   return (
     <div className="ml:grid ml:grid-cols-2 gap-x-10 xl:mb-12">
-      <GameListImages />
+      <GameListImages game={game} />
 
       <div className="mb-12 flex flex-col gap-6 xl:mb-16">
         <h2 className="hidden text-4xl font-bold xl:flex">{game?.title}</h2>
@@ -26,19 +28,15 @@ export default function GameHeader() {
         </Badge>
         <p>{game?.description}</p>
         <div className="flex flex-wrap gap-4 lg:text-sm xl:text-lg">
-          {game?.type.map((type) => (
+          {game?.types.map((type) => (
             <Badge key={type.id} variant="default">
               {type.name}
             </Badge>
           ))}
-          {game?.player_count?.name && (
-            <Badge variant="default">{game.player_count.name}</Badge>
-          )}
+          <Badge variant="default">{game.player_count.name}</Badge>
         </div>
         <p className="text-2xl font-bold">
-          {game?.price && (
-            <span className="text-2xl font-bold">{game.price} грн</span>
-          )}
+          <span className="text-2xl font-bold">{game.price} грн</span>
         </p>
         <div className="flex flex-wrap justify-between gap-6 sm:justify-start">
           <Button

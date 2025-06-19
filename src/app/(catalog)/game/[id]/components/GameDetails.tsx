@@ -44,19 +44,19 @@ export default function GameDetails() {
                 <td className="xl:text-lg">{game.difficulty.name}</td>
               </tr>
             )}
-            {game?.genre && (
+            {game?.genres && (
               <tr>
                 <td className="text-background">Жанр гри</td>
                 <td className="xl:text-lg">
-                  {game.genre.map((g) => g.name).join(", ")}
+                  {game.genres.map((g) => g.name).join(", ")}
                 </td>
               </tr>
             )}
-            {game?.mechanic && (
+            {game?.mechanics && (
               <tr>
                 <td className="text-background">Механіка гри</td>
                 <td className="xl:text-lg">
-                  {game.mechanic.map((m) => m.name).join(", ")}
+                  {game.mechanics.map((m) => m.name).join(", ")}
                 </td>
               </tr>
             )}

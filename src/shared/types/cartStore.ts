@@ -1,11 +1,12 @@
-import CartItem from "./game";
+import { Game } from "./game";
 
-export default interface CardStore {
-  cart: CartItem[];
+export interface CartStore {
+  cart: Game[];
   total: number;
+  // amount: number;
   countTotal: () => void;
-  addProduct: (data: CartItem) => void;
-  removeProduct: (data: CartItem) => void;
+  addProduct: (data: Game) => void;
+  removeProduct: (data: Game) => void;
   deleteProduct: (id: number) => void;
   changeAmount: (id: number, amount: number) => void;
   clearCart: () => void;

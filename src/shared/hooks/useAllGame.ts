@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 
 import { getAllGames } from "@/shared/utils";
-import Game from "@/shared/types/game";
+import { Game } from "@/shared/types/game";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -19,7 +19,7 @@ export function useAllGame() {
         const query = searchParams.toString();
         console.log(query);
         const data = await getAllGames(query);
-        setGames(data.results);
+        setGames(data);
         setIsLoading(true);
       } catch (error) {
         console.error("Error fetching games:", error);

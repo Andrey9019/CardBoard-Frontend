@@ -31,7 +31,7 @@ export default function CatalogDropdown({
             {category.values.map((value) => (
               <li key={value.id} className="py-1.5 text-base">
                 <Link
-                  href={`/catalog${value.filter_url}`}
+                  href={`/catalog?${category.name}=${value.id}`}
                   onClick={toggleCatalog}
                   className="pb-1 hover:border-b-1"
                 >

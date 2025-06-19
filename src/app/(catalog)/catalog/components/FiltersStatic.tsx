@@ -15,10 +15,7 @@ interface FiltersStaticProps {
 }
 
 export default function FiltersStatic({ toggleFilter }: FiltersStaticProps) {
-  const {
-    categories,
-    // isLoading, error
-  } = useCategories();
+  const { categories, isLoading, error } = useCategories();
 
   const {
     selectedFilters,
@@ -26,6 +23,24 @@ export default function FiltersStatic({ toggleFilter }: FiltersStaticProps) {
     handlleApplyFilters,
     handlleResetFilters,
   } = useFilterLogic(toggleFilter);
+
+  // вимагає налаштування
+  if (isLoading) return <p>Loading...</p>;
+  if (error) {
+    return (
+      <div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">
+        <p className="text-primary text-center font-semibold">
+          Oops... <br /> З запитом сталася помилка. Спробуйте ще раз
+        </p>
+        <Button
+          as="button"
+          variant="primary"
+          onClick={toggleFilter}
+          text="Спробувати ще раз"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="item-shadow animate-fade-in-left-03 mr-4 flex h-max max-w-[228px] min-w-[228px] flex-col gap-4 rounded-lg bg-white p-6 lg:mr-[86px] xl:mr-10 xl:max-w-[270px] xl:min-w-[270px]">
@@ -37,7 +52,7 @@ export default function FiltersStatic({ toggleFilter }: FiltersStaticProps) {
             className="mb-4 max-w-max font-semibold"
           >
             <AccordionTriggerFilter className="mb-4">
-              {category.display_name}
+              {category.display_name || category.name}
             </AccordionTriggerFilter>
             <AccordionContent>
               <ul className="flex flex-col gap-2.5">
