@@ -62,7 +62,7 @@ export default function GameList({ isFormСonfirm }: GameListProp) {
             <div className="flex justify-between text-xs md:text-base">
               <p>Всього:</p>
               <span className="font-semibold">
-                {game.price * game.amount} грн
+                {game.price * (game.amount ?? 0)} грн
               </span>
             </div>
           </div>

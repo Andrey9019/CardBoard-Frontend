@@ -1,18 +1,18 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../../../../prisma/prisma-client";
 
+interface PrismaModel {
+  findMany<T extends { select: { id: boolean; name: boolean } }>(
+    args?: T,
+  ): Promise<Array<{ id: number; name: string }>>;
+}
+
 type CategoryConfigItem = {
   name: string;
   display_name: string;
-  model:
-    | typeof prisma.genre
-    | typeof prisma.type
-    | typeof prisma.mechanic
-    | typeof prisma.difficulty
-    | typeof prisma.playerCount
-    | typeof prisma.ageGroup
-    | typeof prisma.duration;
+  model: PrismaModel;
 };
+
 // Конфігурація категорій
 const categoryConfig: CategoryConfigItem[] = [
   { name: "genres", display_name: "Жанри", model: prisma.genre },
@@ -26,7 +26,7 @@ const categoryConfig: CategoryConfigItem[] = [
   },
   { name: "age_group", display_name: "Вікова група", model: prisma.ageGroup },
   { name: "duration", display_name: "Тривалість", model: prisma.duration },
-];
+] as const;
 
 export async function GET() {
   try {

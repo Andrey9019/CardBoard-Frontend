@@ -70,7 +70,7 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
 
                       <div className="flex justify-between text-sm">
                         <span>{game.amount} шт.</span>
-                        <span>{game.price * game.amount} грн</span>
+                        <span>{game.price * (game.amount ?? 0)} грн</span>
                       </div>
                     </div>
                   </li>

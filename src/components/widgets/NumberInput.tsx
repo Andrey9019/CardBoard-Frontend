@@ -1,4 +1,4 @@
-import Game from "@/shared/types/game";
+import { Game } from "@/shared/types/game";
 import { useCartStore } from "@/stores/cartStore";
 import { Minus, Plus } from "lucide-react";
 
