@@ -6,6 +6,7 @@ import Logo from "../Logo";
 import HeaderNav from "./HeaderNav";
 import SearchDropdown from "./SearchDropdown";
 import CatalogDropdown from "./CatalogDropdown";
+import { useCategories } from "@/shared/hooks/useCategories";
 
 interface HeaderProps {
   hasCart?: boolean;
@@ -15,6 +16,12 @@ export default function Header({ hasCart = true }: HeaderProps) {
   const [isCatalogOpen, setIsCatalogOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const {
+    // data:
+    categories,
+    // = [],
+    // error
+  } = useCategories();
 
   const toggleCatalog = () => {
     if (isSearchOpen) setIsSearchOpen(false);
@@ -93,6 +100,7 @@ export default function Header({ hasCart = true }: HeaderProps) {
           setIsMobileMenuOpen={setIsMobileMenuOpen}
           closeAll={closeAll}
           hasCart={hasCart}
+          categories={categories}
         />
       </div>
 
@@ -105,7 +113,10 @@ export default function Header({ hasCart = true }: HeaderProps) {
 
       {isCatalogOpen && (
         <div ref={catalogRef}>
-          <CatalogDropdown toggleCatalog={toggleCatalog} />
+          <CatalogDropdown
+            categories={categories}
+            toggleCatalog={toggleCatalog}
+          />
         </div>
       )}
     </header>

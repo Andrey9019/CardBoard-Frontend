@@ -8,26 +8,26 @@ import {
 } from "@/components/ui/accordion";
 import Logo from "../Logo";
 import Link from "next/link";
-import { useCategories } from "@/shared/hooks/useCategories";
+import { Category } from "@/shared/types/allCategories";
+// import { useCategories } from "@/shared/hooks/useCategories";
 
 interface MobileMenuProps {
   onClose: () => void;
   toggleSearch: () => void;
   isMobileMenuOpen: boolean;
   closeAll: () => void;
+  categories: Category[];
 }
 
 export default function MobileMenu({
   onClose,
   toggleSearch,
   closeAll,
+  categories,
 }: MobileMenuProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const {
-    categories,
-    // isLoading, error
-  } = useCategories();
+  // const { data: categories = [], isLoading, error } = useCategories();
 
   return (
     <div

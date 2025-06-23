@@ -15,6 +15,7 @@ import {
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 import useEmblaCarousel from "embla-carousel-react";
+import { useMemo } from "react";
 
 interface ListGameProp {
   title: string;
@@ -22,6 +23,11 @@ interface ListGameProp {
 
 export default function RecommendationsList({ title }: ListGameProp) {
   const { games, isLoading, error, handleRetry } = useAllGame();
+
+  const shuffledGames = useMemo(
+    () => [...games].sort(() => Math.random() - 0.5),
+    [games],
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1, // 1 картка до 640px
@@ -110,7 +116,7 @@ export default function RecommendationsList({ title }: ListGameProp) {
         <>
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
-              {games.map((game) => (
+              {shuffledGames.map((game) => (
                 <ul
                   key={game.id}
                   className="min-w-0 flex-[0_0_100%] items-center justify-items-center sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] lg:flex-[0_0_25%]"

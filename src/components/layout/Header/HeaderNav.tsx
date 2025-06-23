@@ -1,10 +1,13 @@
 import MobileMenu from "./MobileMenu";
 import CartTooltip from "./CartTooltip";
+import { Category } from "@/shared/types/allCategories";
 
 interface HeaderNavProp {
   isCatalogOpen: boolean;
   isSearchOpen: boolean;
   isMobileMenuOpen: boolean;
+
+  categories: Category[];
 
   hasCart?: boolean;
 
@@ -27,6 +30,7 @@ export default function HeaderNav({
   setIsMobileMenuOpen,
 
   closeAll,
+  categories,
 }: HeaderNavProp) {
   const toggleSearch = () => {
     if (isCatalogOpen) setIsCatalogOpen(false);
@@ -86,6 +90,7 @@ export default function HeaderNav({
           onClose={() => setIsMobileMenuOpen(false)}
           toggleSearch={toggleSearch}
           isMobileMenuOpen={isMobileMenuOpen}
+          categories={categories}
         />
       )}
     </div>

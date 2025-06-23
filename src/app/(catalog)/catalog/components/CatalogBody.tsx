@@ -11,11 +11,18 @@ import GameList from "./GameList";
 import Button from "@/components/ui/Button";
 
 import { cn } from "@/shared/lib/utils";
+import { useCategories } from "@/shared/hooks/useCategories";
 
 export default function CatalogBody() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [, setSelectedFilters] = useState<{ [key: string]: number[] }>({});
+  const {
+    // data:
+    categories,
+    // = [],
+    // error
+  } = useCategories();
 
   const router = useRouter();
 
@@ -78,7 +85,7 @@ export default function CatalogBody() {
 
       {isFilterOpen && (
         <div className="lg:hidden">
-          <FiltersDrawer toggleFilter={toggleFilter} />
+          <FiltersDrawer categories={categories} toggleFilter={toggleFilter} />
         </div>
       )}
 
@@ -89,7 +96,13 @@ export default function CatalogBody() {
       </div>
 
       <div className="hidden w-full lg:flex">
-        {isFilterOpen && <FiltersStatic toggleFilter={toggleFilter} />}
+        {isFilterOpen && (
+          <FiltersStatic
+            categories={categories}
+            // error={error}
+            toggleFilter={toggleFilter}
+          />
+        )}
         <div className="flex-1">
           <GameList />
         </div>

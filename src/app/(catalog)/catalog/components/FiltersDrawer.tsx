@@ -7,18 +7,20 @@ import {
 
 import Button from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/ckeckbox";
-import { useCategories } from "@/shared/hooks/useCategories";
+// import { useCategories } from "@/shared/hooks/useCategories";
 import { useFilterLogic } from "../hooks/useFilterLogic";
+import { Category } from "@/shared/types/allCategories";
 
 interface FiltersDrawerProps {
   toggleFilter: () => void;
+  categories: Category[];
 }
 
-export default function FiltersDrawer({ toggleFilter }: FiltersDrawerProps) {
-  const {
-    categories,
-    // isLoading, error
-  } = useCategories();
+export default function FiltersDrawer({
+  toggleFilter,
+  categories,
+}: FiltersDrawerProps) {
+  // const { data: categories = [], isLoading, error } = useCategories();
 
   const {
     selectedFilters,

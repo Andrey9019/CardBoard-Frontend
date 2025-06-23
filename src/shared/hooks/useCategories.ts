@@ -25,3 +25,16 @@ export function useCategories() {
 
   return { categories, isLoading, error };
 }
+
+// import { useQuery } from "@tanstack/react-query";
+// import { Categories } from "@/shared/types/allCategories";
+// import { getAllCategories } from "@/shared/utils";
+
+// export function useCategories() {
+//   return useQuery<Categories, Error>({
+//     queryKey: ["categories"],
+//     queryFn: getAllCategories,
+//     staleTime: 5 * 60 * 1000,
+//     retry: 1,
+//   });
+// }

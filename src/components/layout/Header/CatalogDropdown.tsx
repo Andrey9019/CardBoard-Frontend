@@ -1,19 +1,19 @@
 "use client";
 
+import { Category } from "@/shared/types/allCategories";
 import Link from "next/link";
-import { useCategories } from "@/shared/hooks/useCategories";
+// import { useCategories } from "@/shared/hooks/useCategories";
 
 interface CatalogDropdownProp {
   toggleCatalog: () => void;
+  categories: Category[];
 }
 
 export default function CatalogDropdown({
   toggleCatalog,
+  categories,
 }: CatalogDropdownProp) {
-  const {
-    categories,
-    // isLoading, error
-  } = useCategories();
+  // const { data: categories = [], isLoading, error } = useCategories();
 
   return (
     <div
