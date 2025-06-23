@@ -18,7 +18,7 @@ export default function ExchangePage() {
           Умови обміну та повернення
         </h2>
 
-        <div className="mx-auto my-0 mt-12 mb-12 min-w-[408px] text-[18px] md:mt-16 md:mb-16 md:w-[716px] lg:w-[994px]">
+        <div className="mx-auto my-0 mt-12 mb-12 max-w-5xl text-[18px] md:mt-16 md:mb-16">
           <p>
             Якщо з будь-яких причин вас не влаштовує товар, придбаний в
             Card&Board, ви можете повернути або обміняти його протягом 14 днів з
