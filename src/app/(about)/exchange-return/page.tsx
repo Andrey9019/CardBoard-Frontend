@@ -5,7 +5,7 @@ export default function ExchangePage() {
   return (
     <>
       <BreadcrumbWidgest text1="Умови обміну та повернення" />
-      <section className="px-9 pt-12">
+      <section className="px-9 pt-12 lg:px-8 lg:pt-16 xl:px-[120px]">
         <div className="mb-[48px] flex h-[40px] items-center md:hidden">
           <Link href="/">
             <svg height="32" width="32">
