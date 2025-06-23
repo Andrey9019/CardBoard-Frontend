@@ -2,7 +2,6 @@
 
 import { Category } from "@/shared/types/allCategories";
 import Link from "next/link";
-// import { useCategories } from "@/shared/hooks/useCategories";
 
 interface CatalogDropdownProp {
   toggleCatalog: () => void;
@@ -13,13 +12,11 @@ export default function CatalogDropdown({
   toggleCatalog,
   categories,
 }: CatalogDropdownProp) {
-  // const { data: categories = [], isLoading, error } = useCategories();
-
   return (
     <div
       className={`bg-primary animate-fade-in-down-03 absolute left-0 z-9 mt-4 w-full rounded-b-3xl px-16 py-8 opacity-0`}
     >
-      <div className="container mb-9 grid grid-cols-3 grid-rows-3 gap-9">
+      <div className="container grid grid-cols-3 grid-rows-3 gap-9 pb-9">
         {categories.map((category) => (
           <ul key={category.name} className="mr-2 font-bold">
             <div className="flex gap-2">

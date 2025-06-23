@@ -13,17 +13,20 @@ export default function GameBody() {
   if (isLoading) {
     return <Loading />;
   }
+  if (!game) {
+    return;
+  }
 
   return (
     <section className="px-9 pt-12 lg:px-8 lg:pt-16 xl:px-[120px]">
       <div>
         <h2 className="mb-12 text-2xl font-bold lg:text-4xl xl:mb-16 xl:hidden">
-          {game?.title}
+          {game.title}
         </h2>
 
-        <GameHeader />
+        <GameHeader game={game} />
 
-        <GameDetails />
+        <GameDetails game={game} />
       </div>
       <div className="mb-12 lg:mb-16">
         <RecommendationsList title="Вас також може зацікавити" />

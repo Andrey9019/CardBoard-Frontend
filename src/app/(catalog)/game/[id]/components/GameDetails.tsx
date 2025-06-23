@@ -1,70 +1,98 @@
 import Button from "@/components/ui/Button";
-import { useGameByID } from "../hooks/useGamebyID";
+import { Game } from "@/shared/types/game";
 
-export default function GameDetails() {
-  const { game } = useGameByID();
+interface GameDetailsProps {
+  game: Game;
+}
 
+export default function GameDetails({ game }: GameDetailsProps) {
   return (
     <div className="grid-cols-2 gap-10 lg:grid">
       <div className="mb-12 lg:mb-16">
         <p className="mb-6 text-2xl font-semibold">Опис</p>
-        <p className="text-sm lg:text-base xl:text-lg">{game?.description}</p>
+        <p className="text-sm lg:text-base xl:text-lg">{game.rules_summary}</p>
       </div>
       <div className="mb-12 lg:mb-16">
         <p className="mb-6 text-2xl font-semibold">Характеристики</p>
         <table className="w-full border-separate border-spacing-y-4 text-left text-sm lg:text-base">
-          <tbody>
-            {game?.publisher && (
-              <tr>
-                <td className="text-background">Видавець</td>
-                <td className="xl:text-lg">{game.publisher.name}</td>
-              </tr>
-            )}
-            {game?.duration && (
-              <tr>
-                <td className="text-background">Час партії</td>
-                <td className="xl:text-lg">{game.duration.name}</td>
-              </tr>
-            )}
-            {game?.player_count && (
-              <tr>
-                <td className="text-background">Гравців</td>
-                <td className="xl:text-lg">{game.player_count.name}</td>
-              </tr>
-            )}
-            {game?.age_group && (
-              <tr>
-                <td className="text-background">Вік</td>
-                <td className="xl:text-lg">{game.age_group.name}</td>
-              </tr>
-            )}
-            {game?.difficulty && (
-              <tr>
-                <td className="text-background">Складність гри</td>
-                <td className="xl:text-lg">{game.difficulty.name}</td>
-              </tr>
-            )}
-            {game?.genres && (
-              <tr>
-                <td className="text-background">Жанр гри</td>
-                <td className="xl:text-lg">
+          <tbody className="">
+            {game.genres && (
+              <tr className="">
+                <td className="text-background border-primary/40 border-b">
+                  Жанр гри
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
                   {game.genres.map((g) => g.name).join(", ")}
                 </td>
               </tr>
             )}
-            {game?.mechanics && (
+            {game.mechanics && (
               <tr>
-                <td className="text-background">Механіка гри</td>
-                <td className="xl:text-lg">
+                <td className="border-primary/40 text-background border-b">
+                  Механіка гри
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
                   {game.mechanics.map((m) => m.name).join(", ")}
                 </td>
               </tr>
             )}
-            {game?.release_year && (
+            {game.difficulty && (
               <tr>
-                <td className="text-background">Рік випуску</td>
-                <td className="xl:text-lg">
-                  {new Date(game.release_year).getFullYear()}
+                <td className="border-primary/40 text-background border-b">
+                  Складність гри
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
+                  {game.difficulty.name}
+                </td>
+              </tr>
+            )}
+            {game.duration && (
+              <tr>
+                <td className="border-primary/40 text-background border-b">
+                  Час партії
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
+                  {game.duration.name}
+                </td>
+              </tr>
+            )}
+            {game.player_count && (
+              <tr>
+                <td className="border-primary/40 text-background border-b">
+                  Гравців
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
+                  {game.player_count.name}
+                </td>
+              </tr>
+            )}
+            {game.age_group && (
+              <tr>
+                <td className="border-primary/40 text-background border-b">
+                  Вік
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
+                  {game.age_group.name}
+                </td>
+              </tr>
+            )}
+            {game.release_year && (
+              <tr>
+                <td className="border-primary/40 text-background border-b">
+                  Рік випуску
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
+                  {new Date(game.release_year).getFullYear()} рік
+                </td>
+              </tr>
+            )}
+            {game.publisher && (
+              <tr>
+                <td className="border-primary/40 text-background border-b">
+                  Видавець
+                </td>
+                <td className="border-primary/40 border-b xl:text-lg">
+                  {game.publisher.name}
                 </td>
               </tr>
             )}
@@ -75,9 +103,10 @@ export default function GameDetails() {
         <p className="mb-6 text-2xl font-semibold">Доставка</p>
 
         <p className="mb-4 text-sm lg:text-base xl:text-lg">
-          Самовивіз з магазину
+          Здійснюється Новою Поштою по всій Україні. Вартість доставки залежить
+          від тарифів перевізника та обраного способу доставки.
         </p>
-        <p className="text-sm lg:text-base xl:text-lg">Детальніше</p>
+        {/* <p className="text-sm lg:text-base xl:text-lg">Детальніше</p> */}
       </div>
       <div className="mb-12 lg:mb-16">
         <p className="mb-6 text-2xl font-semibold">Відгуки</p>

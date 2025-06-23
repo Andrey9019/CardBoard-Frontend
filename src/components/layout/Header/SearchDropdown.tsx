@@ -107,7 +107,7 @@ export default function SearchDropdown({
                 </Link>
               ))}
             </ul>
-            <Link href={"/"} className="p-2 text-center font-bold">
+            <Link href={"/catalog"} className="p-2 text-center font-bold">
               Всі результати
             </Link>
           </div>

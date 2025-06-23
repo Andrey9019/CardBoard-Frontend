@@ -36,10 +36,10 @@ export default function CatalogBody() {
     setIsFilterOpen(!isFilterOpen);
   };
 
-  const toggleSort = () => {
-    if (isFilterOpen) setIsFilterOpen(false);
-    setIsSortOpen(!isSortOpen);
-  };
+  // const toggleSort = () => {
+  //   if (isFilterOpen) setIsFilterOpen(false);
+  //   setIsSortOpen(!isSortOpen);
+  // };
 
   return (
     <section className="mb-12 flex flex-col gap-9 px-9 lg:px-8 xl:px-[120px]">
@@ -76,11 +76,26 @@ export default function CatalogBody() {
           />
         </div>
 
-        <button onClick={toggleSort} className="flex">
-          <svg className="h-8 w-8 cursor-pointer">
-            <use href="/sprite.svg#icon-sort"></use>
-          </svg>
-        </button>
+        {/* <div>
+          <button onClick={toggleSort} className="flex">
+            <svg className="h-8 w-8 cursor-pointer lg:hidden">
+              <use href="/sprite.svg#icon-sort"></use>
+            </svg>
+          </button>
+
+          <Button
+            as="button"
+            variant="secondary"
+            text="Сортування"
+            icon={
+              <svg className="text-primary h-8 w-8">
+                <use href="/sprite.svg#icon-arrow-down-dark"></use>
+              </svg>
+            }
+            onClick={toggleSort}
+            className="hidden w-full max-w-[228px] min-w-[228px] cursor-pointer items-center justify-center lg:flex lg:h-11 lg:max-w-[228px] lg:min-w-[228px] xl:max-w-[270px] xl:min-w-[270px]"
+          />
+        </div> */}
       </div>
 
       {isFilterOpen && (
