@@ -25,6 +25,4 @@ _Посилання на бекенд-репо:_ https://github.com/Andrey9019/C
 
 ## Мови та інструменти
 
-![Languages and Tools](https://skills.syvixor.com/api/icons?reactjs,nextjs,typescript,prisma,zustand,radixui,reacthookform,axios,tanstack,tailwindcss,eslint,prettier,vercel,vscode,figma&perline=8)
-
-![Languages and Tools](https://skills.syvixor.com/api/icons?i=ts,react,dndkit,radixui,tanstack,stanjs,axios,datefns,reactdatepicker,reacthookform,valibot,tailwind,gcp,commitlint,eslint,prettier,githubactions,fsd,yarn,vercel,vite,vscode,figma&perline=8)
+![Languages and Tools](https://skills.syvixor.com/api/icons?i=ts,reactjs,nextjs,prisma,zustand,radixui,reacthookform,axios,tanstack,tailwindcss,fsd,eslint,prettier,vercel,vscode,figma&perline=8)
