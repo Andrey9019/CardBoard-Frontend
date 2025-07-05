@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Card&Board
 
-## Getting Started
+Ласкаво просимо до Card&Board, інтернет-магазину настільних ігор! Цей проєкт створений як зручна платформа для перегляду, пошуку та покупки настільних ігор з інтуїтивним інтерфейсом.
 
-First, run the development server:
+![Card&Board Preview](/public//images/screenshots/main-screenshot.png)
 
-```bash
-npm run dev
-# o r
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+_Посилання на бекенд-репо:_ https://github.com/Andrey9019/CardBoard-Backend
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Можливості
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Каталог ігор:** Переглядайте широкий асортимент настільних ігор з детальними описами та зображеннями.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Фільтри та пошук:** Швидко знаходьте потрібні ігри за категоріями, ціною чи популярністю.
 
-## Learn More
+- **Кошик:** Додавайте товари до кошика та оформлюйте замовлення в кілька кліків.
 
-To learn more about Next.js, take a look at the following resources:
+- **Адаптивний дизайн:** Зручно користуйтеся сайтом на будь-якому пристрої — від телефонів до ПК.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Доступність:** Сайт підтримує навігацію за допомогою клавіатури для зручності всіх користувачів.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Підтримка:** Звертайтеся до служби підтримки через форму зворотного зв’язку.
 
-## Deploy on Vercel
+<!-- - **Аутентифікація:** Реєструйтеся або входьте через email чи Google. -->
+<!-- - **Switch Themes:** Choose between light, dark, or violet themes to match your style and mood. -->
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Мови та інструменти
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![Languages and Tools](https://skills.syvixor.com/api/icons?reactjs,nextjs,typescript,prisma,zustand,radixui,reacthookform,axios,tanstack,tailwindcss,eslint,prettier,vercel,vscode,figma&perline=8)
