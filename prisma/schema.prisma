@@ -1,182 +1,182 @@
-generator client {
-    provider = "prisma-client-js"
-}
-
-datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
-}
-
-model User {
-    id       Int      @id @default(autoincrement())
-    fullName String
-    email    String   @unique
-    password String
-    role     UserRole @default(user)
-
-    provider   String?
-    providerId String?
-
-    cart   Cart?
-    orders Order[]
-    // verificationToken VerificationToken?
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
-model Product {
-    id             Int      @id @default(autoincrement())
-    title          String
-    description    String
-    rules_summary  String
-    release_year   String
-    price          Float
-    discount_price String?
-    stock          Int
-    amount         Int?
-    images         String[]
-    thumbnail      String
-
-    created_at DateTime @default(now())
-    updated_at DateTime @updatedAt
-
-    genres        Genre[]
-    types         Type[]
-    mechanics     Mechanic[]
-    difficulty    Difficulty  @relation(fields: [difficultyId], references: [id])
-    difficultyId  Int         @default(1) // Default to a specific difficulty
-    player_count  PlayerCount @relation(fields: [playerCountId], references: [id])
-    playerCountId Int         @default(1) // Default to a specific player count
-    age_group     AgeGroup    @relation(fields: [ageGroupId], references: [id])
-    ageGroupId    Int         @default(1) // Default to a specific age group
-    duration      Duration    @relation(fields: [durationId], references: [id])
-    durationId    Int         @default(1) // Default to a specific duration
-    publisher     Publisher   @relation(fields: [publisherId], references: [id])
-    publisherId   Int         @default(1) // Default to a specific publisher
-
-    cartItem CartItem?
-}
-
-model Genre {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model Type {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model Mechanic {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model Difficulty {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model PlayerCount {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model AgeGroup {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model Duration {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model Publisher {
-    id       Int       @id @default(autoincrement())
-    name     String    @unique
-    products Product[]
-}
-
-model Cart {
-    id     Int   @id @default(autoincrement())
-    user   User? @relation(fields: [userId], references: [id])
-    userId Int?  @unique
-
-    token String @unique
-
-    totalAmount Int @default(0)
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    cartItem CartItem[]
-}
-
-model CartItem {
-    id        Int     @id @default(autoincrement())
-    product   Product @relation(fields: [productId], references: [id])
-    productId Int     @unique
-
-    cart   Cart @relation(fields: [cartId], references: [id])
-    cartId Int
-
-    quantity Int
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
-model Order {
-    id Int @id @default(autoincrement())
-
-    user   User? @relation(fields: [userId], references: [id])
-    userId Int
-
-    token String
-
-    totalAmount Int
-    status      OrderStatus // pending, completed, cancelled
-
-    paymentID String?
-
-    items Json
-
-    fullName String?
-    email    String?
-    address  String?
-    phone    String?
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}
-
-// model VerificationToken {
-//     id Int @id @default(autoincrement())
-
-//     // user User @relation(fields: [userId], references: [id])
-//     // userId Int @unique
-
-//     // code String @unique
-
-//     createdAt DateTime @default(now())
+// generator client {
+//     provider = "prisma-client-js"
 // }
 
-enum OrderStatus {
-    pending
-    completed
-    cancelled
-}
+// datasource db {
+//     provider = "postgresql"
+//     url      = env("DATABASE_URL")
+// }
 
-enum UserRole {
-    user
-    admin
-}
+// model User {
+//     id       Int      @id @default(autoincrement())
+//     fullName String
+//     email    String   @unique
+//     password String
+//     role     UserRole @default(user)
+
+//     provider   String?
+//     providerId String?
+
+//     cart   Cart?
+//     orders Order[]
+//     // verificationToken VerificationToken?
+
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+// }
+
+// model Product {
+//     id             Int      @id @default(autoincrement())
+//     title          String
+//     description    String
+//     rules_summary  String
+//     release_year   String
+//     price          Float
+//     discount_price String?
+//     stock          Int
+//     amount         Int?
+//     images         String[]
+//     thumbnail      String
+
+//     created_at DateTime @default(now())
+//     updated_at DateTime @updatedAt
+
+//     genres        Genre[]
+//     types         Type[]
+//     mechanics     Mechanic[]
+//     difficulty    Difficulty  @relation(fields: [difficultyId], references: [id])
+//     difficultyId  Int         @default(1) // Default to a specific difficulty
+//     player_count  PlayerCount @relation(fields: [playerCountId], references: [id])
+//     playerCountId Int         @default(1) // Default to a specific player count
+//     age_group     AgeGroup    @relation(fields: [ageGroupId], references: [id])
+//     ageGroupId    Int         @default(1) // Default to a specific age group
+//     duration      Duration    @relation(fields: [durationId], references: [id])
+//     durationId    Int         @default(1) // Default to a specific duration
+//     publisher     Publisher   @relation(fields: [publisherId], references: [id])
+//     publisherId   Int         @default(1) // Default to a specific publisher
+
+//     cartItem CartItem?
+// }
+
+// model Genre {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model Type {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model Mechanic {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model Difficulty {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model PlayerCount {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model AgeGroup {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model Duration {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model Publisher {
+//     id       Int       @id @default(autoincrement())
+//     name     String    @unique
+//     products Product[]
+// }
+
+// model Cart {
+//     id     Int   @id @default(autoincrement())
+//     user   User? @relation(fields: [userId], references: [id])
+//     userId Int?  @unique
+
+//     token String @unique
+
+//     totalAmount Int @default(0)
+
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+
+//     cartItem CartItem[]
+// }
+
+// model CartItem {
+//     id        Int     @id @default(autoincrement())
+//     product   Product @relation(fields: [productId], references: [id])
+//     productId Int     @unique
+
+//     cart   Cart @relation(fields: [cartId], references: [id])
+//     cartId Int
+
+//     quantity Int
+
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+// }
+
+// model Order {
+//     id Int @id @default(autoincrement())
+
+//     user   User? @relation(fields: [userId], references: [id])
+//     userId Int
+
+//     token String
+
+//     totalAmount Int
+//     status      OrderStatus // pending, completed, cancelled
+
+//     paymentID String?
+
+//     items Json
+
+//     fullName String?
+//     email    String?
+//     address  String?
+//     phone    String?
+
+//     createdAt DateTime @default(now())
+//     updatedAt DateTime @updatedAt
+// }
+
+// // model VerificationToken {
+// //     id Int @id @default(autoincrement())
+
+// //     // user User @relation(fields: [userId], references: [id])
+// //     // userId Int @unique
+
+// //     // code String @unique
+
+// //     createdAt DateTime @default(now())
+// // }
+
+// enum OrderStatus {
+//     pending
+//     completed
+//     cancelled
+// }
+
+// enum UserRole {
+//     user
+//     admin
+// }
