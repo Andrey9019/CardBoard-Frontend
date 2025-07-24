@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import extraLargeLogo from "@/assets/logos/Logo-Extra-Large.svg";
-import largeLogo from "@/assets/logos/Logo-Large.svg";
-import mediumLogo from "@/assets/logos/Logo-Medium.svg";
-import smallLogo from "@/assets/logos/Logo-Small.svg";
+import extraLargeLogo from "/public/icon/logos/Logo-Extra-Large.svg";
+import largeLogo from "/public/icon/logos/Logo-Large.svg";
+import mediumLogo from "/public/icon/logos/Logo-Medium.svg";
+import smallLogo from "/public/icon/logos/Logo-Small.svg";
 
 interface LogoProps {
   size?: "extraLarge" | "large" | "medium" | "small";
