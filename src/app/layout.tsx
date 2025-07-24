@@ -12,7 +12,7 @@ const poppinsSans = Poppins({
 export const metadata: Metadata = {
   title: "Card&Board",
   description: "A large selection of board games",
-  icons: `/favicon.ico`,
+  icons: `icon/favicon.ico`,
 };
 
 export default function RootLayout({
