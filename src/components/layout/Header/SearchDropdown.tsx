@@ -69,7 +69,7 @@ export default function SearchDropdown({
 
             <button type="button">
               <svg className="h-8 w-8 cursor-pointer group-focus-within:text-black">
-                <use href="/sprite.svg#icon-search"></use>
+                <use href="/icon/sprite.svg#icon-search"></use>
               </svg>
             </button>
           </div>

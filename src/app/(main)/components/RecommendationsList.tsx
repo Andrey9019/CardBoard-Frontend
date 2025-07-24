@@ -129,7 +129,7 @@ export default function RecommendationsList({ title }: ListGameProp) {
                       <div className="flex justify-end">
                         {/* <button className="max-w-max">
                           <svg width="18" height="18">
-                            <use href="/sprite.svg#icon-heart"></use>
+                            <use href="/icon/sprite.svg#icon-heart"></use>
                           </svg>
                         </button> */}
                       </div>

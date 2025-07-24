@@ -20,7 +20,7 @@ export default function GameListCard({ game }: GameListCard) {
         <div className="flex justify-end">
           <button className="max-w-max">
             {/* <svg className="h-[18px] w-[18px]">
-              <use href="/sprite.svg#icon-heart"></use>
+              <use href="/icon/sprite.svg#icon-heart"></use>
             </svg> */}
           </button>
         </div>

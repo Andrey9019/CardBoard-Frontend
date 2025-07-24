@@ -22,12 +22,12 @@ export default function BreadcrumbWidgest({
           <BreadcrumbItem>
             <BreadcrumbLink href="/" className="text-primary font-bold">
               <svg width="18" height="18">
-                <use href="/sprite.svg#icon-home"></use>
+                <use href="/icon/sprite.svg#icon-home"></use>
               </svg>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <svg className="h-4 w-4">
-            <use href="/sprite.svg#icon-arrow-right-purple"></use>
+            <use href="/icon/sprite.svg#icon-arrow-right-purple"></use>
           </svg>
           {text2 ? (
             <>
@@ -41,7 +41,7 @@ export default function BreadcrumbWidgest({
               </BreadcrumbItem>
               <BreadcrumbItem>
                 <svg className="h-4 w-4">
-                  <use href="/sprite.svg#icon-arrow-right-purple"></use>
+                  <use href="/icon/sprite.svg#icon-arrow-right-purple"></use>
                 </svg>
                 <BreadcrumbPage className="text-primary">
                   {text2}

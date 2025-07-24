@@ -22,7 +22,7 @@ export default function CatalogDropdown({
             <div className="flex gap-2">
               <p> {category.display_name}</p>
               <svg className="h-6 w-6 items-start justify-between text-left">
-                <use href="/sprite.svg#icon-arrow-down"></use>
+                <use href="/icon/sprite.svg#icon-arrow-down"></use>
               </svg>
             </div>
             {category.values.map((value) => (

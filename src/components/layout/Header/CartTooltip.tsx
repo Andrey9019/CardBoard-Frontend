@@ -30,7 +30,7 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
       <HoverCardTrigger asChild>
         <Link href="/cart" onClick={closeAll} className="relative">
           <svg className="h-8 w-8 cursor-pointer">
-            <use href="/sprite.svg#icon-cart"></use>
+            <use href="/icon/sprite.svg#icon-cart"></use>
           </svg>
 
           {cart.length != 0 && (

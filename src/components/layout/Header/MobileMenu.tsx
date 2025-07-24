@@ -43,7 +43,7 @@ export default function MobileMenu({
             <li className={`p-2 transition-all duration-300`}>
               <button onClick={toggleSearch} className="flex">
                 <svg className="h-8 w-8">
-                  <use href="/sprite.svg#icon-search"></use>
+                  <use href="/icon/sprite.svg#icon-search"></use>
                 </svg>
               </button>
             </li>
@@ -51,21 +51,21 @@ export default function MobileMenu({
             <li className="p-2">
               <Link href="/cart" onClick={closeAll} className="relative">
                 <svg className="h-8 w-8 cursor-pointer">
-                  <use href="/sprite.svg#icon-cart"></use>
+                  <use href="/icon/sprite.svg#icon-cart"></use>
                 </svg>
               </Link>
             </li>
             {/* користувач */}
             {/* <li className="hidden p-2 lg:flex">
               <svg className="h-8 w-8">
-                <use href="/sprite.svg#icon-person"></use>
+                <use href="/icon/sprite.svg#icon-person"></use>
               </svg>
             </li> */}
           </ul>
 
           <button onClick={onClose} className="ml-2 p-2">
             <svg className="h-8 w-8" fill="currentColor">
-              <use href="/sprite.svg#icon-close-black"></use>
+              <use href="/icon/sprite.svg#icon-close-black"></use>
             </svg>
           </button>
         </div>

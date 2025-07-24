@@ -50,7 +50,7 @@ export default function GameList({ isFormСonfirm }: GameListProp) {
                 className="text-primary text-xl"
               >
                 <svg className="h-6 w-6 xl:h-7 xl:w-7" fill="currentColor">
-                  <use href="/sprite.svg#icon-delete"></use>
+                  <use href="/icon/sprite.svg#icon-delete"></use>
                 </svg>
               </button>
             </div>

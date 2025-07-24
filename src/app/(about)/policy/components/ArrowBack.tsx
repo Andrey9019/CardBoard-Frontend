@@ -18,7 +18,7 @@ export default function ArrowBack({
         className="mb-[48px] flex h-[40px] items-center md:hidden"
       >
         <svg height="32" width="32">
-          <use href="/sprite.svg#icon-arrow-left"></use>
+          <use href="/icon/sprite.svg#icon-arrow-left"></use>
         </svg>
       </button>
     );
@@ -27,7 +27,7 @@ export default function ArrowBack({
       <div className="mb-[48px] flex h-[40px] items-center md:hidden">
         <Link href="/">
           <svg height="32" width="32">
-            <use href="/sprite.svg#icon-arrow-left"></use>
+            <use href="/icon/sprite.svg#icon-arrow-left"></use>
           </svg>
         </Link>
       </div>

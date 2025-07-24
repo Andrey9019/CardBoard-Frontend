@@ -48,7 +48,7 @@ export default function CatalogBody() {
         <div className="flex">
           <button onClick={toggleFilter} className="flex">
             <svg className="h-8 w-8 cursor-pointer lg:hidden">
-              <use href="/sprite.svg#icon-filters"></use>
+              <use href="/icon/sprite.svg#icon-filters"></use>
             </svg>
           </button>
 
@@ -58,7 +58,7 @@ export default function CatalogBody() {
             text="Фільтр"
             icon={
               <svg className="h-8 w-8">
-                <use href="/sprite.svg#icon-filters"></use>
+                <use href="/icon/sprite.svg#icon-filters"></use>
               </svg>
             }
             onClick={toggleFilter}
@@ -79,7 +79,7 @@ export default function CatalogBody() {
         {/* <div>
           <button onClick={toggleSort} className="flex">
             <svg className="h-8 w-8 cursor-pointer lg:hidden">
-              <use href="/sprite.svg#icon-sort"></use>
+              <use href="/icon/sprite.svg#icon-sort"></use>
             </svg>
           </button>
 
@@ -89,7 +89,7 @@ export default function CatalogBody() {
             text="Сортування"
             icon={
               <svg className="text-primary h-8 w-8">
-                <use href="/sprite.svg#icon-arrow-down-dark"></use>
+                <use href="/icon/sprite.svg#icon-arrow-down-dark"></use>
               </svg>
             }
             onClick={toggleSort}

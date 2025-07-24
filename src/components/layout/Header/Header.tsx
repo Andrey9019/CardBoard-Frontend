@@ -83,7 +83,7 @@ export default function Header({ hasCart = true }: HeaderProps) {
               isCatalogOpen ? "rotate-180" : ""
             }`}
           >
-            <use href="/sprite.svg#icon-arrow-down"></use>
+            <use href="/icon/sprite.svg#icon-arrow-down"></use>
           </svg>
         </button>
 

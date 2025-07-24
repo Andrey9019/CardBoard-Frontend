@@ -74,7 +74,7 @@ export default function PolicyMobile({
               }}
             >
               <svg width="34" height="34">
-                <use href="/sprite.svg#icon-long-arrow-right"></use>
+                <use href="/icon/sprite.svg#icon-long-arrow-right"></use>
               </svg>
             </button>
           </div>
@@ -141,7 +141,7 @@ export default function PolicyMobile({
               }}
             >
               <svg width="34" height="34">
-                <use href="/sprite.svg#icon-long-arrow-right"></use>
+                <use href="/icon/sprite.svg#icon-long-arrow-right"></use>
               </svg>
             </button>
           </div>
@@ -215,7 +215,7 @@ export default function PolicyMobile({
               }}
             >
               <svg width="34" height="34">
-                <use href="/sprite.svg#icon-long-arrow-right"></use>
+                <use href="/icon/sprite.svg#icon-long-arrow-right"></use>
               </svg>
             </button>
           </div>

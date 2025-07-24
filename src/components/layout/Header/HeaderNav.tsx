@@ -58,7 +58,7 @@ export default function HeaderNav({
             className="flex"
           >
             <svg className="h-8 w-8 cursor-pointer">
-              <use href="/icon/sprite.svg#icon-search"></use>
+              <use href="/icon/icon/sprite.svg#icon-search"></use>
             </svg>
           </button>
         </li>
@@ -71,14 +71,14 @@ export default function HeaderNav({
 
         {/* <li className="hidden p-2 lg:flex">
           <svg className="h-8 w-8 cursor-pointer">
-            <use href="/sprite.svg#icon-person"></use>
+            <use href="/icon/sprite.svg#icon-person"></use>
           </svg>
         </li> */}
 
         <li className="p-2 xl:hidden">
           <button className=" " onClick={toggleMobileMenu}>
             <svg className="h-8 w-8 cursor-pointer">
-              <use href="/sprite.svg#icon-burger"></use>
+              <use href="/icon/sprite.svg#icon-burger"></use>
             </svg>
           </button>
         </li>

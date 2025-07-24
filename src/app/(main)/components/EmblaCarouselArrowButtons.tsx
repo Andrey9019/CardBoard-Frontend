@@ -62,7 +62,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
       {...restProps}
     >
       <svg className="h-5 w-5 text-[#2B1047]">
-        <use href="/sprite.svg#icon-arrow-left"></use>
+        <use href="/icon/sprite.svg#icon-arrow-left"></use>
       </svg>
       {children}
     </button>
@@ -80,7 +80,7 @@ export const NextButton: React.FC<PropType> = (props) => {
       {...restProps}
     >
       <svg className="h-5 w-5 text-[#2B1047]">
-        <use href="/sprite.svg#icon-arrow-right"></use>
+        <use href="/icon/sprite.svg#icon-arrow-right"></use>
       </svg>
       {children}
     </button>

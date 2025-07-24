@@ -9,7 +9,7 @@ export default function ExchangePage() {
         <div className="mb-[48px] flex h-[40px] items-center md:hidden">
           <Link href="/">
             <svg height="32" width="32">
-              <use href="/icon/sprite.svg#icon-arrow-left"></use>
+              <use href="/icon/icon/sprite.svg#icon-arrow-left"></use>
             </svg>
           </Link>
         </div>
