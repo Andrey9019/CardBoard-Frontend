@@ -58,7 +58,7 @@ export default function HeaderNav({
             className="flex"
           >
             <svg className="h-8 w-8 cursor-pointer">
-              <use href="/sprite.svg#icon-search"></use>
+              <use href="/icon/sprite.svg#icon-search"></use>
             </svg>
           </button>
         </li>
