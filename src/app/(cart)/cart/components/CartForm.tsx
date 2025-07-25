@@ -171,7 +171,6 @@ export default function CheckoutForm({ setIsOrderComplete }: FormProp) {
             )}
           </div>
           <Button
-            as="button"
             variant="primary"
             text="Оформити замовлення"
             type="submit"

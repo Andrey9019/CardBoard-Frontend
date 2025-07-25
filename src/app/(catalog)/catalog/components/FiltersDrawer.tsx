@@ -81,14 +81,12 @@ export default function FiltersDrawer({
         ))}
       </Accordion>
       <Button
-        as="button"
         variant="primary"
         text="Застосувати"
         onClick={handlleApplyFilters}
         className="min-w-full"
       />
       <Button
-        as="button"
         variant="secondary"
         text="Скинути фільтр"
         onClick={handlleResetFilters}

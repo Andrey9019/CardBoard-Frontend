@@ -8,7 +8,7 @@ import CartForm from "./CartForm";
 import CheckoutSummary from "./CheckoutSummary";
 
 import { cn } from "@/shared/lib/utils";
-import Button from "@/components/ui/Button";
+import LinkButton from "@/components/ui/LinkButton";
 import LoadingWidgest from "@/components/widgets/LoadingWidgest";
 
 interface CartBodyProp {
@@ -79,8 +79,7 @@ export default function CartBody({
               Кошик пустий, як поле перед першим ходом!
               <br /> Зроби перший хід — обери свою гру!
             </p>
-            <Button
-              as="link"
+            <LinkButton
               href="/catalog"
               text={"Перейти до каталогу"}
               variant="primary"

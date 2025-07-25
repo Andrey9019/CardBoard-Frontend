@@ -40,7 +40,6 @@ export default function GameListCard({ game }: GameListCard) {
 
         <div className="mt-auto flex w-full flex-col justify-end">
           <Button
-            as="button"
             variant="primary"
             text="Купити"
             className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"

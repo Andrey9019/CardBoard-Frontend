@@ -10,7 +10,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/widgets/HoverCard";
-import Button from "../../ui/Button";
+import LinkButton from "@/components/ui/LinkButton";
 
 import noImg from "../../../../public/images/not-found-page/no-image.png";
 
@@ -83,8 +83,7 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
               </div>
 
               <div className="mt-7 flex justify-center">
-                <Button
-                  as="link"
+                <LinkButton
                   href="/cart"
                   text={"Перейти до кошика"}
                   variant="primary"
@@ -98,8 +97,7 @@ export default function CartTooltip({ closeAll }: CartTooltipProps) {
                 Кошик пустий, як поле перед першим ходом!
                 <br /> Зроби перший хід — обери свою гру!
               </p>
-              <Button
-                as="link"
+              <LinkButton
                 href="/catalog"
                 text={"Перейти до каталогу"}
                 variant="primary"

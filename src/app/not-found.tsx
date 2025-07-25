@@ -27,7 +27,6 @@ export default function NotFound() {
         Спробуйте свою вдачу ще раз
       </p>
       <Button
-        as="button"
         variant="primary"
         text="Повернутись на головну"
         onClick={handleMain}

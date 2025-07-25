@@ -29,7 +29,6 @@ export default function GameList() {
         </p>
 
         <Button
-          as="button"
           variant="primary"
           onClick={handleRetry}
           text="Спробувати ще раз"
@@ -47,7 +46,6 @@ export default function GameList() {
         </p>
 
         <Button
-          as="button"
           variant="primary"
           onClick={handlleResetFilters}
           text=" Скинути фільтри"

@@ -114,12 +114,7 @@ export default function GameDetails({ game }: GameDetailsProps) {
           Поки що ніхто не залишив відгуків
         </p>
         <div className="flex justify-end">
-          <Button
-            as="button"
-            variant="secondary"
-            text="Залиште свій відгук"
-            disabled
-          />
+          <Button variant="secondary" text="Залиште свій відгук" disabled />
         </div>
       </div>
     </div>

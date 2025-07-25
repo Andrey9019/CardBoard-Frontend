@@ -49,7 +49,6 @@ export default function CheckoutSummary({
 
       {!isFormСonfirm && (
         <Button
-          as="button"
           variant="primary"
           text="Перейти до оформлення"
           className="min-w-full"

@@ -43,7 +43,6 @@ export default function GameHeader({ game }: GameHeaderProps) {
         </p>
         <div className="flex flex-wrap justify-between gap-6 sm:justify-start">
           <Button
-            as="button"
             variant="primary"
             text="Купити зараз"
             className="lg:min-w-[346px] xl:min-w-[264px]"
@@ -54,7 +53,6 @@ export default function GameHeader({ game }: GameHeaderProps) {
             }}
           />
           <Button
-            as="button"
             variant="secondary"
             text="Додати в кошик"
             className="lg:min-w-[346px] xl:min-w-[264px]"

@@ -1,21 +1,19 @@
-import { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
+import Link from "next/link";
+import { AnchorHTMLAttributes } from "react";
 
 type ButtonProps = {
   variant: "primary" | "secondary";
   text?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  href: string;
   icon?: React.ReactNode;
   className?: string;
-  disabled?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement> &
-  AnchorHTMLAttributes<HTMLAnchorElement>;
+} & AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export default function Button({
+export default function LinkButton({
+  href,
   text,
   variant = "primary",
-  onClick,
   icon,
-  disabled,
   className = "",
   ...rest
 }: ButtonProps) {
@@ -30,14 +28,13 @@ export default function Button({
   const buttonStyles = variant === "primary" ? primaryStyles : secondaryStyles;
 
   return (
-    <button
+    <Link
+      href={href}
       {...rest}
       className={`${baseStyles} ${buttonStyles} ${className}`}
-      onClick={onClick}
-      disabled={disabled}
     >
       {icon && <span>{icon}</span>}
       {text}
-    </button>
+    </Link>
   );
 }

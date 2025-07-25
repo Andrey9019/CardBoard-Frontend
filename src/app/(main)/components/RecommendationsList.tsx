@@ -86,7 +86,6 @@ export default function RecommendationsList({ title }: ListGameProp) {
             Oops... <br /> З запитом сталася помилка. Спробуйте ще раз
           </p>
           <Button
-            as="button"
             variant="primary"
             onClick={handleRetry}
             text="Спробувати ще раз"
@@ -103,7 +102,6 @@ export default function RecommendationsList({ title }: ListGameProp) {
             фільтрами!
           </p>
           <Button
-            as="button"
             variant="primary"
             onClick={() => window.location.reload()}
             text=" Скинути фільтри"
@@ -151,7 +149,6 @@ export default function RecommendationsList({ title }: ListGameProp) {
                       </p>
                       <div className="mt-auto">
                         <Button
-                          as="button"
                           variant="primary"
                           text="Купити"
                           className="min-w-full !py-1.5 text-sm uppercase lg:!py-3 lg:text-base"

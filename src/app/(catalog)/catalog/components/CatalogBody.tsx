@@ -53,7 +53,6 @@ export default function CatalogBody() {
           </button>
 
           <Button
-            as="button"
             variant="secondary"
             text="Фільтр"
             icon={
@@ -66,7 +65,6 @@ export default function CatalogBody() {
           />
 
           <Button
-            as="button"
             variant="secondary"
             text="Скинути фільтри"
             onClick={handlleResetFilters}

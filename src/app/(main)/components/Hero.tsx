@@ -1,4 +1,4 @@
-import Button from "@/components/ui/Button";
+import LinkButton from "@/components/ui/LinkButton";
 
 export default function Hero() {
   return (
@@ -12,8 +12,7 @@ export default function Hero() {
           форми.
         </p>
 
-        <Button
-          as="link"
+        <LinkButton
           href="/catalog"
           text={"Перейти до каталогу"}
           variant="primary"
