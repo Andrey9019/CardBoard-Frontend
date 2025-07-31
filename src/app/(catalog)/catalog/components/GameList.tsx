@@ -11,7 +11,7 @@ export default function GameList() {
     [key: string]: number[];
   }>({});
 
-  const { games, isLoading, error, handleRetry } = useAllGame();
+  const { products, isLoading, error, handleRetry } = useAllGame();
 
   const router = useRouter();
 
@@ -36,7 +36,7 @@ export default function GameList() {
       </div>
     );
   }
-  if (!games.length)
+  if (!products.length)
     return (
       <div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">
         <p className="text-primary text-center font-semibold">
@@ -56,7 +56,7 @@ export default function GameList() {
   return (
     <>
       <ul className="animate-fade-in-left-03 grid grid-cols-[repeat(auto-fit,minmax(196px,1fr))] justify-items-center gap-x-6 gap-y-9 lg:grid-cols-[repeat(auto-fit,minmax(228px,1fr))] lg:gap-x-10 xl:grid-cols-[repeat(auto-fit,minmax(270px,1fr))]">
-        {games.map((game) => (
+        {products.map((game) => (
           <GameListCard key={game.id} game={game} />
         ))}
       </ul>

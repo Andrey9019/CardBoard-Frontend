@@ -1,45 +1,18 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-
-import { Game } from "@/shared/types/game";
+import { useQuery } from "@tanstack/react-query";
 import { getGameById } from "@/shared/utils";
+import { useParams } from "next/navigation";
+import { Game } from "@/shared/types/game";
 
 export function useGameByID() {
-  const [game, setGame] = useState<Game | null>(null);
-  const [notFound, setNotFound] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
   const params = useParams();
   const id = params.id;
 
-  useEffect(() => {
-    if (!id || Array.isArray(id)) {
-      setNotFound(true);
-      setIsLoading(false);
-      return;
-    }
+  const { data, isLoading, error } = useQuery<Game | null, Error>({
+    queryKey: ["product", id],
+    queryFn: () => (typeof id === "string" ? getGameById(parseInt(id)) : null),
+  });
 
-    const getGame = async () => {
-      try {
-        const numericId = parseInt(id);
-        const data = await getGameById(numericId);
-        if (!data) {
-          setNotFound(true);
-        } else {
-          setGame(data);
-          console.log(data);
-        }
-      } catch (error) {
-        setNotFound(true);
-        console.log(error);
-        setIsLoading(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getGame();
-  }, [id]);
+  const notFound = !isLoading && !data && !error;
 
-  return { game, notFound, isLoading };
+  return { product: data, notFound, isLoading };
 }

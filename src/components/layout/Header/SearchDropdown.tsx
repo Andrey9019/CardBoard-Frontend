@@ -18,7 +18,7 @@ export default function SearchDropdown({
 }: SearchDropdownProps) {
   const itemRef = useRef<HTMLDivElement | null>(null);
 
-  const { games } = useAllGame();
+  const { products } = useAllGame();
 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Game[]>([]);
@@ -38,7 +38,7 @@ export default function SearchDropdown({
     setQuery(value);
 
     if (value.length > 0) {
-      const filtered = games.filter((game) =>
+      const filtered = products.filter((game) =>
         game.title.toLocaleLowerCase().includes(value.toLocaleLowerCase()),
       );
       setResults(filtered.slice(0, 4));

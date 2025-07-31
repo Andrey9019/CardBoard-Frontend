@@ -7,12 +7,6 @@ const baseUrl =
     : "http://localhost:3001";
 
 export const getAllCategories = async () => {
-  try {
-    const response = await axios.get(`${baseUrl}/api/all_categories`);
-    console.log("Response:", response);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching games:", error);
-    throw error;
-  }
+  const response = await axios.get(`${baseUrl}/api/all_categories`);
+  return response.data;
 };

@@ -7,12 +7,6 @@ const baseUrl =
     : "http://localhost:3001";
 
 export const getAllGames = async (query?: string) => {
-  try {
-    const response = await axios.get(`${baseUrl}/api/products/?${query}`);
-    console.log("Response:", response);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching games:", error);
-    throw error;
-  }
+  const response = await axios.get(`${baseUrl}/api/products/?${query}`);
+  return response.data;
 };
