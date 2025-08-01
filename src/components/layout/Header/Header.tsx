@@ -18,9 +18,7 @@ export default function Header({ hasCart = true }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const {
     // data:
-    categories,
-    // = [],
-    // error
+    categories = [],
   } = useCategories();
 
   const toggleCatalog = () => {

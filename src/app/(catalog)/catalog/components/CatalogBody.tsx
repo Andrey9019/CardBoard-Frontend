@@ -17,12 +17,7 @@ export default function CatalogBody() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [, setSelectedFilters] = useState<{ [key: string]: number[] }>({});
-  const {
-    // data:
-    categories,
-    // = [],
-    // error
-  } = useCategories();
+  const { categories = [] } = useCategories();
 
   const router = useRouter();
 
