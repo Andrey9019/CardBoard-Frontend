@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { useCartStore } from "@/stores/cartStore";
 
 import GameList from "./GameList";
@@ -22,15 +21,11 @@ export default function CartBody({
   setIsFormСonfirm,
   setIsOrderComplete,
 }: CartBodyProp) {
-  const { cart, countTotal, isLoading } = useCartStore();
+  const { cart, total, isLoading } = useCartStore();
 
   const switchToConfirm = () => {
     setIsFormСonfirm(true);
   };
-
-  useEffect(() => {
-    countTotal();
-  }, [cart, countTotal]);
 
   return (
     <section className="mb-12 flex flex-col items-center gap-12 px-9 lg:gap-16 lg:px-8 xl:px-[120px]">
@@ -53,6 +48,7 @@ export default function CartBody({
                 <CheckoutSummary
                   switchToConfirm={switchToConfirm}
                   isFormСonfirm={isFormСonfirm}
+                  total={total}
                 />
               )}
             </div>
@@ -67,6 +63,7 @@ export default function CartBody({
                 <CheckoutSummary
                   switchToConfirm={switchToConfirm}
                   isFormСonfirm={isFormСonfirm}
+                  total={total}
                 />
               ) : (
                 <CartForm setIsOrderComplete={setIsOrderComplete} />
