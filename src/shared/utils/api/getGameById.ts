@@ -7,6 +7,6 @@ const baseUrl =
     : "http://localhost:3001";
 
 export const getGameById = async (id: number) => {
-  const response = await axios.get(`${baseUrl}/api/products/${id}`);
+  const response = await axios.get(`${baseUrl}/api/product/${id}`);
   return response.data;
 };
