@@ -11,8 +11,9 @@ export function useAllGame() {
   const { data, isLoading, error } = useQuery<Game[], Error>({
     queryKey: ["allProducts", query],
     queryFn: () => getAllGames(query),
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
   });
+  console.log("Data:", data);
   const handleRetry = () => {
     queryClient.refetchQueries({ queryKey: ["allProducts", query] });
   };
