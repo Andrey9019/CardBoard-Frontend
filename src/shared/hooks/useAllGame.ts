@@ -13,7 +13,6 @@ export function useAllGame() {
     queryFn: () => getAllGames(query),
     staleTime: 1000 * 60 * 5,
   });
-  console.log("Data:", data);
   const handleRetry = () => {
     queryClient.refetchQueries({ queryKey: ["allProducts", query] });
   };

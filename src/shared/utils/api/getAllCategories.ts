@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const baseUrl =
+const API_BASE_URL =
   process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_DB_API_BASE_URL ||
-      "https://cardboard-backend.onrender.com/"
+    ? process.env.NEXT_PUBLIC_API_BASE_URL
     : "http://localhost:3001";
 
 export const getAllCategories = async () => {
-  const response = await axios.get(`${baseUrl}/api/all_categories`);
+  const response = await axios.get(`${API_BASE_URL}/api/all_categories`);
+
   return response.data;
 };
