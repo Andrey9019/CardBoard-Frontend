@@ -6,7 +6,11 @@ const API_BASE_URL =
     : "http://localhost:3001";
 
 export const getAllCategories = async () => {
-  const response = await axios.get(`${API_BASE_URL}/api/all_categories`);
+  const response = await axios.get(`${API_BASE_URL}/api/all_categories`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   return response.data;
 };

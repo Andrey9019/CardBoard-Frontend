@@ -6,7 +6,11 @@ const API_BASE_URL =
     : "http://localhost:3001";
 
 export const getGameById = async (id: number) => {
-  const response = await axios.get(`${API_BASE_URL}/api/product/${id}`);
+  const response = await axios.get(`${API_BASE_URL}/api/product/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   return response.data;
 };
