@@ -14,15 +14,12 @@ export const useCartStore = create<CartStore>()(
         // підрахунок загальної суми total
         countTotal: () => {
           const { cart } = get();
-          const total = Math.round(
+          return Math.round(
             cart.reduce(
               (acc, item) => acc + item.price * (item.amount || 0),
               0,
             ),
           );
-          set({
-            total: total,
-          });
         },
 
         // додає товар
@@ -89,6 +86,7 @@ export const useCartStore = create<CartStore>()(
         name: "cart_storage",
         onRehydrateStorage: () => (state) => {
           state?.setIsLoading(false);
+          state?.countTotal();
         },
         // storage: createJSONStorage(() => localStorage),
       },

@@ -22,11 +22,11 @@ interface ListGameProp {
 }
 
 export default function RecommendationsList({ title }: ListGameProp) {
-  const { games, isLoading, error, handleRetry } = useAllGame();
+  const { products, isLoading, error, handleRetry } = useAllGame();
 
   const shuffledGames = useMemo(
-    () => [...games].sort(() => Math.random() - 0.5),
-    [games],
+    () => [...products].sort(() => Math.random() - 0.5),
+    [products],
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -94,7 +94,7 @@ export default function RecommendationsList({ title }: ListGameProp) {
       )}
 
       {/* якщо нічого не знайдено */}
-      {!isLoading && !error && !games.length && (
+      {!isLoading && !error && !products.length && (
         <div className="mx-auto flex min-h-[365px] max-w-[628px] flex-col items-center justify-center gap-9 py-9 lg:min-h-[429px] xl:min-h-[477px]">
           <p className="text-primary text-center font-semibold">
             Oops... <br /> Ми не знайшли нічого за вашим запитом. Але не

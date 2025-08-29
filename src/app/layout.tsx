@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import ClientProvider from "@/components/layout/ClientProvider";
+import ClientProvider from "@/app/providers/ClientProvider";
 import "./(main)/globals.css";
 
 const poppinsSans = Poppins({

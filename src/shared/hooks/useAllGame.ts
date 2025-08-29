@@ -1,39 +1,25 @@
+import { queryClient } from "@/app/providers/queryClient";
 import { useSearchParams } from "next/navigation";
-
+import { useQuery } from "@tanstack/react-query";
 import { getAllGames } from "@/shared/utils";
 import { Game } from "@/shared/types/game";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 export function useAllGame() {
-  const [games, setGames] = useState<Game[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const query = searchParams.toString();
 
-  useEffect(() => {
-    const getGames = async () => {
-      try {
-        const query = searchParams.toString();
-        console.log(query);
-        const data = await getAllGames(query);
-        setGames(data);
-        setIsLoading(true);
-      } catch (error) {
-        console.error("Error fetching games:", error);
-        setError("Failed to load games. Please try again later.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getGames();
-  }, [searchParams]);
-
+  const { data, isLoading, error } = useQuery<Game[], Error>({
+    queryKey: ["allProducts", query],
+    queryFn: () => getAllGames(query),
+    staleTime: 1000 * 60 * 5,
+  });
   const handleRetry = () => {
-    router.refresh();
+    queryClient.refetchQueries({ queryKey: ["allProducts", query] });
   };
-
-  return { games, isLoading, error, handleRetry };
+  return {
+    products: data || [],
+    isLoading,
+    error,
+    handleRetry,
+  };
 }

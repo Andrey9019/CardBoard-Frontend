@@ -7,7 +7,7 @@ import BreadcrumbWidgest from "@/components/widgets/BreadcrumbWidgest";
 import NotFound from "@/app/not-found";
 
 export default function GamePage() {
-  const { game, notFound } = useGameByID();
+  const { product, notFound } = useGameByID();
 
   if (notFound) {
     return <NotFound />;
@@ -15,7 +15,11 @@ export default function GamePage() {
 
   return (
     <>
-      <BreadcrumbWidgest text1="Каталог" text2={game?.title} link="/catalog" />
+      <BreadcrumbWidgest
+        text1="Каталог"
+        text2={product?.title}
+        link="/catalog"
+      />
 
       <GameBody />
     </>
