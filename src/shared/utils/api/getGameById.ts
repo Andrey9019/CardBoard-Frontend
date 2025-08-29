@@ -1,12 +1,13 @@
-import axios from "axios";
+import { Game } from "@/shared/types/game";
 
-const API_BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_API_BASE_URL
-    : "http://localhost:3001";
-
-export const getGameById = async (id: number) => {
-  const response = await axios.get(`${API_BASE_URL}/api/product/${id}`);
-
-  return response.data;
-};
+export async function getGameById(id: number): Promise<Game> {
+  const url = `${process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_DB_API_BASE_URL : "http://localhost:3001"}/api/product/${id}`;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) throw new Error(`Failed to fetch game with id ${id}`);
+  return response.json();
+}

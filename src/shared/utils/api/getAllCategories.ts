@@ -1,12 +1,13 @@
-import axios from "axios";
+import { Categories } from "@/shared/types/allCategories";
 
-const API_BASE_URL =
-  process.env.NODE_ENV === "production"
-    ? process.env.NEXT_PUBLIC_API_BASE_URL
-    : "http://localhost:3001";
-
-export const getAllCategories = async () => {
-  const response = await axios.get(`${API_BASE_URL}/api/all_categories`);
-
-  return response.data;
-};
+export async function getAllCategories(): Promise<Categories> {
+  const url = `${process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_DB_API_BASE_URL : "http://localhost:3001"}/api/all_categories`;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (!response.ok) throw new Error("Failed to fetch categories");
+  return response.json();
+}
