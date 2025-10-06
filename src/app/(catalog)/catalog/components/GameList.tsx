@@ -7,59 +7,59 @@ import GameListCard from "./GameListCard";
 import { useAllGame } from "@/shared/hooks/useAllGame";
 
 export default function GameList() {
-  const [, setSelectedFilters] = useState<{
-    [key: string]: number[];
-  }>({});
+	const [, setSelectedFilters] = useState<{
+		[key: string]: number[];
+	}>({});
 
-  const { products, isLoading, error, handleRetry } = useAllGame();
+	const { products, isLoading, error, handleRetry } = useAllGame();
 
-  const router = useRouter();
+	const router = useRouter();
 
-  const handlleResetFilters = () => {
-    setSelectedFilters({});
-    router.push("/catalog");
-  };
+	const handlleResetFilters = () => {
+		setSelectedFilters({});
+		router.push("/catalog");
+	};
 
-  if (isLoading) return <SkeletonCard />;
-  if (error) {
-    return (
-      <div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">
-        <p className="text-primary text-center font-semibold">
-          Oops... <br /> З запитом сталася помилка. Спробуйте ще раз
-        </p>
+	if (isLoading) return <SkeletonCard />;
+	if (error) {
+		return (
+			<div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">
+				<p className="text-primary text-center font-semibold">
+					Oops... <br /> З запитом сталася помилка. Спробуйте ще раз
+				</p>
 
-        <Button
-          variant="primary"
-          onClick={handleRetry}
-          text="Спробувати ще раз"
-        />
-      </div>
-    );
-  }
-  if (!products.length)
-    return (
-      <div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">
-        <p className="text-primary text-center font-semibold">
-          Oops... <br /> Ми не знайшли нічого за вашим запитом. Але не
-          засмучуйтесь — у нас точно є гра, яка вам сподобається. Пограйте з
-          фільтрами!
-        </p>
+				<Button
+					variant="primary"
+					onClick={handleRetry}
+					text="Спробувати ще раз"
+				/>
+			</div>
+		);
+	}
+	if (!products.length)
+		return (
+			<div className="mx-auto flex max-w-[628px] flex-col items-center gap-9 py-9">
+				<p className="text-primary text-center font-semibold">
+					Oops... <br /> Ми не знайшли нічого за вашим запитом. Але не
+					засмучуйтесь — у нас точно є гра, яка вам сподобається. Пограйте з
+					фільтрами!
+				</p>
 
-        <Button
-          variant="primary"
-          onClick={handlleResetFilters}
-          text=" Скинути фільтри"
-        />
-      </div>
-    );
+				<Button
+					variant="primary"
+					onClick={handlleResetFilters}
+					text=" Скинути фільтри"
+				/>
+			</div>
+		);
 
-  return (
-    <>
-      <ul className="animate-fade-in-left-03 grid grid-cols-[repeat(auto-fit,minmax(196px,1fr))] justify-items-center gap-x-6 gap-y-9 lg:grid-cols-[repeat(auto-fit,minmax(228px,1fr))] lg:gap-x-10 xl:grid-cols-[repeat(auto-fit,minmax(270px,1fr))]">
-        {products.map((game) => (
-          <GameListCard key={game.id} game={game} />
-        ))}
-      </ul>
-    </>
-  );
+	return (
+		<>
+			<ul className="animate-fade-in-left-03 grid grid-cols-[repeat(auto-fit,minmax(196px,1fr))] justify-items-center gap-x-6 gap-y-9 lg:grid-cols-[repeat(auto-fit,minmax(228px,1fr))] lg:gap-x-10 xl:grid-cols-[repeat(auto-fit,minmax(270px,1fr))]">
+				{products.map((game) => (
+					<GameListCard key={game.id} game={game} />
+				))}
+			</ul>
+		</>
+	);
 }

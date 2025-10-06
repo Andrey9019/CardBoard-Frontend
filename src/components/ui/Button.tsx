@@ -1,43 +1,43 @@
-import { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 
 type ButtonProps = {
-  variant: "primary" | "secondary";
-  text?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-  icon?: React.ReactNode;
-  className?: string;
-  disabled?: boolean;
+	variant: "primary" | "secondary";
+	text?: string;
+	onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+	icon?: React.ReactNode;
+	className?: string;
+	disabled?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement> &
-  AnchorHTMLAttributes<HTMLAnchorElement>;
+	AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export default function Button({
-  text,
-  variant = "primary",
-  onClick,
-  icon,
-  disabled,
-  className = "",
-  ...rest
+	text,
+	variant = "primary",
+	onClick,
+	icon,
+	disabled,
+	className = "",
+	...rest
 }: ButtonProps) {
-  const baseStyles =
-    "px-6 py-3 text-lg xl:text-2xl rounded-lg font-bold max-w-max transition duration-200 flex items-center justify-center gap-2 cursor-pointer transform transition-all duration-300";
+	const baseStyles =
+		"px-6 py-3 text-lg xl:text-2xl rounded-lg font-bold max-w-max transition duration-200 flex items-center justify-center gap-2 cursor-pointer transform transition-all duration-300";
 
-  const primaryStyles = `bg-primary text-secondary  hover:bg-card active:bg-background disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed`;
+	const primaryStyles = `bg-primary text-secondary  hover:bg-card active:bg-background disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed`;
 
-  const secondaryStyles =
-    "border border-primary text-primary hover:border-card hover:text-card active:text-background active:border-background disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed";
+	const secondaryStyles =
+		"border border-primary text-primary hover:border-card hover:text-card active:text-background active:border-background disabled:bg-gray-400 disabled:text-gray-700 disabled:cursor-not-allowed";
 
-  const buttonStyles = variant === "primary" ? primaryStyles : secondaryStyles;
+	const buttonStyles = variant === "primary" ? primaryStyles : secondaryStyles;
 
-  return (
-    <button
-      {...rest}
-      className={`${baseStyles} ${buttonStyles} ${className}`}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {icon && <span>{icon}</span>}
-      {text}
-    </button>
-  );
+	return (
+		<button
+			{...rest}
+			className={`${baseStyles} ${buttonStyles} ${className}`}
+			onClick={onClick}
+			disabled={disabled}
+		>
+			{icon && <span>{icon}</span>}
+			{text}
+		</button>
+	);
 }
