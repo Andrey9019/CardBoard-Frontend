@@ -4,12 +4,12 @@ import QuestionsAndAnswers from "./components/Q&A";
 import Recommendations from "./components/Recommendations";
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <Recommendations />
-      <About />
-      <QuestionsAndAnswers />
-    </>
-  );
+	return (
+		<>
+			<Hero />
+			<Recommendations />
+			<About />
+			<QuestionsAndAnswers />
+		</>
+	);
 }

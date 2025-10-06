@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+
+    "lint": "biome lint src --fix",
+    "format": "biome format src --write",
+    "check": "biome check src"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -32,22 +35,13 @@
     "zustand": "^5.0.4"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@biomejs/biome": "2.2.5",
     "@tailwindcss/postcss": "^4.1.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.4",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.3",
     "typescript": "^5"
-  },
-  "prettier": {
-    "plugins": [
-      "prettier-plugin-tailwindcss"
-    ]
   }
 }

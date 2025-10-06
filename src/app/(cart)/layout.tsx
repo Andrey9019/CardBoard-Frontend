@@ -1,22 +1,22 @@
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Card&Board | Кошик",
-  description: "A large selection of board games",
+	title: "Card&Board | Кошик",
+	description: "A large selection of board games",
 };
 
 export default function CartLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <>
-      <Header hasCart={false} />
-      <main>{children}</main>
-      <Footer />
-    </>
-  );
+	return (
+		<>
+			<Header hasCart={false} />
+			<main>{children}</main>
+			<Footer />
+		</>
+	);
 }
