@@ -61,7 +61,7 @@ export default function CheckoutForm({ setIsOrderComplete }: FormProp) {
 			>
 				<h2 className="mb-4 text-2xl font-bold">Контакти</h2>
 
-				<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4">
 					<div>
 						<label className="text-xs font-semibold">ПІБ</label>
 						<input

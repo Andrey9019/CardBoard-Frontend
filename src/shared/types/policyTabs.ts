@@ -1,1 +1,1 @@
-export type TabType = "policy-confident" | "policy-cookies" | "use-terms";
+export type TabType = 'policy-confident' | 'policy-cookies' | 'use-terms';
