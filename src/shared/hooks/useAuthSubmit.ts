@@ -18,7 +18,7 @@ export const useAuthSubmit = (formType: 'signin' | 'signup') => {
 
   const mutation = useMutation({
     mutationFn: async (data: AuthData) => {
-      const endpoint = formType; // Використовуємо переданий formType
+      const endpoint = formType;
       const response = await fetch(`/api/auth/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -32,11 +32,9 @@ export const useAuthSubmit = (formType: 'signin' | 'signup') => {
     onSuccess: (result) => {
       console.log('Auth success:', result);
 
-      // Для signin зберігаємо токен та користувача
       if (formType === 'signin' && result.token && result.user) {
         login(result.user, result.token);
       } else if (formType === 'signup') {
-        // Для signup просто переходимо на сторінку логіну
         console.log('Реєстрація успішна, переходимо на логін');
         router.push('/sign');
       }

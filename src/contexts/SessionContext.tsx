@@ -27,7 +27,7 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
     user: User | null;
     token: string | null;
   }>({ user: null, token: null });
-  const [isLoading, setIsLoading] = useState(true); // Додаємо стан завантаження
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -57,24 +57,21 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
         }
       }
 
-      setIsLoading(false); // Завершуємо завантаження
+      setIsLoading(false);
     };
 
     checkAuth();
   }, []);
-
+  // тут треба оформити на cookie
   const login = (user: User, token: string) => {
     console.log("login called with:", { user, token });
-    // Використовуємо localStorage замість localStorage (безпечніше)
     localStorage.setItem("auth-token", token);
-    // Додаємо безпечні атрибути для cookie
     document.cookie = `auth-token=${token}; path=/; max-age=604800; SameSite=Strict; Secure`;
     setSession({ user, token });
     setTimeout(() => router.push("/profile"), 0);
   };
   const logout = () => {
     localStorage.removeItem("auth-token");
-    // Очищаємо cookie
     document.cookie =
       "auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     setSession({ user: null, token: null });
