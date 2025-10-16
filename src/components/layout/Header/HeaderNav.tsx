@@ -1,6 +1,7 @@
 import MobileMenu from "./MobileMenu";
 import CartTooltip from "./CartTooltip";
 import type { Category } from "@/shared/types/allCategories";
+import Link from "next/link";
 
 interface HeaderNavProp {
 	isCatalogOpen: boolean;
@@ -69,11 +70,13 @@ export default function HeaderNav({
 					</li>
 				)}
 
-				{/* <li className="hidden p-2 lg:flex">
-          <svg className="h-8 w-8 cursor-pointer">
+				<li className="hidden p-2 lg:flex">
+         <Link href="/profile">
+		  <svg className="h-8 w-8 cursor-pointer">
             <use href="/icon/sprite.svg#icon-person"></use>
           </svg>
-        </li> */}
+		 </Link>
+        </li>
 
 				<li className="p-2 xl:hidden">
 					<button className=" " onClick={toggleMobileMenu}>

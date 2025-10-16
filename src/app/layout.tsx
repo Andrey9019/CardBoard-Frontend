@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import ClientProvider from "@/app/providers/ClientProvider";
+import { SessionProvider } from "@/contexts/SessionContext";
 import "./(main)/globals.css";
 
 const poppinsSans = Poppins({
@@ -23,7 +24,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${poppinsSans.variable} antialiased`}>
-				<ClientProvider>{children}</ClientProvider>
+				<ClientProvider>
+				<SessionProvider>
+					{children}
+				</SessionProvider>
+				</ClientProvider>
 			</body>
 		</html>
 	);

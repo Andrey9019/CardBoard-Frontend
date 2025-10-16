@@ -9,7 +9,6 @@ export default function NotFound() {
 		window.location.href = "/";
 	};
 	return (
-		// -mt-8 -mb-8;
 		<div className="not-found-page relative flex h-full w-full flex-col items-center justify-center text-center text-white">
 			<p className="text-2xl font-bold lg:text-4xl xl:text-[40px]">Oops...</p>
 			<div className="flex items-center leading-none">

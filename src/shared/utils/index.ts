@@ -1,5 +1,5 @@
-export { getGameById } from "./api/getGameById";
-export { getAllGames } from "./api/getAllGame";
-export { getAllCategories } from "./api/getAllCategories";
+export { formatPrice } from '../helpers/formatPrice';
 
-export { formatPrice } from "../helpers/formatPrice";
+export { getAllCategories } from './api/getAllCategories';
+export { getAllGames } from './api/getAllGame';
+export { getGameById } from './api/getGameById';
