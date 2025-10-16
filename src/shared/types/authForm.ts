@@ -1,5 +1,5 @@
 export interface FormFieldConfig {
-  name: "email" | "password" | "confirmPassword" | "name";
+  name: 'email' | 'password' | 'confirmPassword' | 'name';
   label: string;
   type: string;
   placeholder: string;
@@ -7,35 +7,37 @@ export interface FormFieldConfig {
 
 export const signinFields: FormFieldConfig[] = [
   {
-    name: "email",
-    label: "Електронна пошта",
-    type: "email",
-    placeholder: "Введіть свою електронну адресу",
+    name: 'email',
+    label: 'Електронна пошта',
+    type: 'email',
+    placeholder: 'Введіть свою електронну адресу',
   },
   {
-    name: "password",
-    label: "Пароль",
-    type: "password",
-    placeholder: "Введіть свій пароль",
+    name: 'password',
+    label: 'Пароль',
+    type: 'password',
+    placeholder: 'Введіть свій пароль',
   },
 ];
 
 export const signupFields: FormFieldConfig[] = [
   ...signinFields,
   {
-    name: "confirmPassword",
-    label: "Підтвердіть пароль",
-    type: "password",
-    placeholder: "Підтвердіть свій пароль",
+    name: 'confirmPassword',
+    label: 'Підтвердіть пароль',
+    type: 'password',
+    placeholder: 'Підтвердіть свій пароль',
   },
   {
-    name: "name",
+    name: 'name',
     label: "Ім'я",
-    type: "text",
+    type: 'text',
     placeholder: "Введіть своє ім'я",
   },
 ];
 
-export const getFormFields = (formType: "signup" | "signin"): FormFieldConfig[] => {
-  return formType === "signup" ? signupFields : signinFields;
+export const getFormFields = (
+  formType: 'signup' | 'signin',
+): FormFieldConfig[] => {
+  return formType === 'signup' ? signupFields : signinFields;
 };

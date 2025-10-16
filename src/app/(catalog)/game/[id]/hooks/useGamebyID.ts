@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { getGameById } from '@/shared/utils';
 import { useParams } from 'next/navigation';
 import type { Game } from '@/shared/types/game';
+import { getGameById } from '@/shared/utils';
 
 export function useGameByID() {
   const params = useParams();

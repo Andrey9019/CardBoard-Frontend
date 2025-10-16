@@ -30,5 +30,3 @@ export {
   PaginationNext,
   PaginationEllipsis,
 } from './pagination';
-
-export {} from '';

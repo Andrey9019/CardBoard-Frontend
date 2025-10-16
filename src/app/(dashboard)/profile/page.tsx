@@ -1,45 +1,51 @@
 "use client";
 
 import { Button } from "@/components/ui";
+import LoadingWidgest from "@/components/widgets/LoadingWidgest";
 import { useSession } from "@/contexts/SessionContext";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Profile() {
   const { session, isLoading, logout } = useSession();
-  console.log("Session in profile", session);
   const router = useRouter();
 
   useEffect(() => {
-    console.log("session", session);
-    // Перевіряємо тільки після завершення завантаження
     if (!isLoading && !session.user) {
       router.push("/sign");
     }
   }, [session.user, router, isLoading]);
 
-  // Показуємо лоадер поки перевіряється токен
-  if (isLoading) {
-    console.log("loader");
-    return <p>Завантаження...</p>;
-  }
-
-  // Показуємо лоадер якщо немає користувача (після завершення завантаження)
-  if (!session.user) {
-    console.log("no user after loading");
-    return <p>Перенаправлення...</p>;
+  if (isLoading || !session.user) {
+    return (
+      <div className="flex min-h-[60vh] w-full items-center justify-center">
+        <LoadingWidgest />
+      </div>
+    );
   }
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Профіль</h1>
-      <div className="space-y-2">
-        <p className="text-lg">Ім'я: {session.user.name}</p>
-        <p className="text-lg">Email: {session.user.email}</p>
+    <div className="mx-auto max-w-3xl px-6 py-12">
+      <h1 className="text-3xl font-semibold mb-6">Особистий кабінет</h1>
+
+      <div className="space-y-3 text-gray-800">
+        <p>
+          <span className="font-medium">Ім’я:</span> {session.user.fullName}
+        </p>
+        <p>
+          <span className="font-medium">Email:</span> {session.user.email}
+        </p>
       </div>
-      <Button onClick={logout} variant="secondary" className="mt-4">
-        Вийти
-      </Button>
+
+      <div className="mt-8">
+        <Button
+          onClick={logout}
+          variant='default'
+          className="rounded-lg px-5 py-2 text-sm font-medium"
+        >
+          Вийти з акаунту
+        </Button>
+      </div>
     </div>
   );
 }

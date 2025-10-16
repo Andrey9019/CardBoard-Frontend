@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { useSession } from "@/contexts/SessionContext";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
+import { useSession } from '@/contexts/SessionContext';
 
 interface AuthData {
   email: string;
@@ -11,7 +11,7 @@ interface AuthData {
   name?: string;
 }
 
-export const useAuthSubmit = (formType: "signin" | "signup") => {
+export const useAuthSubmit = (formType: 'signin' | 'signup') => {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { login } = useSession();
@@ -20,8 +20,8 @@ export const useAuthSubmit = (formType: "signin" | "signup") => {
     mutationFn: async (data: AuthData) => {
       const endpoint = formType; // Використовуємо переданий formType
       const response = await fetch(`/api/auth/${endpoint}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
       if (!response.ok) {
@@ -30,21 +30,21 @@ export const useAuthSubmit = (formType: "signin" | "signup") => {
       return response.json();
     },
     onSuccess: (result) => {
-      console.log("Auth success:", result);
+      console.log('Auth success:', result);
 
       // Для signin зберігаємо токен та користувача
-      if (formType === "signin" && result.token && result.user) {
+      if (formType === 'signin' && result.token && result.user) {
         login(result.user, result.token);
-      } else if (formType === "signup") {
+      } else if (formType === 'signup') {
         // Для signup просто переходимо на сторінку логіну
-        console.log("Реєстрація успішна, переходимо на логін");
-        router.push("/sign");
+        console.log('Реєстрація успішна, переходимо на логін');
+        router.push('/sign');
       }
 
-      queryClient.invalidateQueries({ queryKey: ["user"] });
+      queryClient.invalidateQueries({ queryKey: ['user'] });
     },
     onError: (error) => {
-      console.log("Auth error:", error);
+      console.log('Auth error:', error);
     },
   });
   return mutation;

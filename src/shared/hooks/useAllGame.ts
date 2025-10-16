@@ -1,8 +1,8 @@
 import { queryClient } from '@/app/providers/queryClient';
 import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { getAllGames } from '@/shared/utils';
 import type { Game } from '@/shared/types/game';
+import { getAllGames } from '@/shared/utils';
 
 export function useAllGame() {
   const searchParams = useSearchParams();
