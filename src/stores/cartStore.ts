@@ -14,12 +14,13 @@ export const useCartStore = create<CartStore>()(
         // підрахунок загальної суми total
         countTotal: () => {
           const { cart } = get();
-          return Math.round(
+          const newTotal = Math.round(
             cart.reduce(
               (acc, item) => acc + item.price * (item.amount || 0),
               0,
             ),
           );
+          set({total:newTotal});
         },
 
         // додає товар
