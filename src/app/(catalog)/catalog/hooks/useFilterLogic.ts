@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function useFilterLogic(toggleFilter: () => void) {
   const router = useRouter();

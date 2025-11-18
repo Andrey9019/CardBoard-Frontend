@@ -32,46 +32,44 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("auth-token");
-      console.log("token", token);
+      const token = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("auth-token="))
+        ?.split("=")[1];
 
-      if (token) {
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
         try {
           const response = await fetch("/api/auth/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ token }),
+            body: JSON.stringify({token}),
+            credentials: "include",
           });
-
-          const data = await response.json();
-          console.log("verify res", data);
-
-          if (data.user) {
-            setSession({ user: data.user, token });
-          } else {
-            localStorage.removeItem("auth-token");
-          }
-        } catch (error) {
-          console.error("Token verify error:", error);
-          localStorage.removeItem("auth-token");
+          if (response.ok) {
+            const data= await response.json();
+        if (data.user) {
+          setSession({ user: data.user, token: null }); 
         }
-      }
-
-      setIsLoading(false);
+          } 
+        } catch (error) {
+console.error("Session check failed:", error);
+        } finally {
+          setIsLoading(false);
+        }
     };
 
     checkAuth();
   }, []);
-  // тут треба оформити на cookie
+
   const login = (user: User, token: string) => {
-    console.log("login called with:", { user, token });
-    localStorage.setItem("auth-token", token);
-    document.cookie = `auth-token=${token}; path=/; max-age=604800; SameSite=Strict; Secure`;
     setSession({ user, token });
     setTimeout(() => router.push("/profile"), 0);
+    document.cookie = `auth-token=${token}; path=/; max-age=604800; SameSite=Strict; Secure`;
   };
   const logout = () => {
-    localStorage.removeItem("auth-token");
     document.cookie =
       "auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     setSession({ user: null, token: null });

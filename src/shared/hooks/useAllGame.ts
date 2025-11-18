@@ -1,6 +1,6 @@
-import { queryClient } from '@/app/providers/queryClient';
-import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
+import { useSearchParams } from 'next/navigation';
+import { queryClient } from '@/app/providers/queryClient';
 import type { Game } from '@/shared/types/game';
 import { getAllGames } from '@/shared/utils';
 

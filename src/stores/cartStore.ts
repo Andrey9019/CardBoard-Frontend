@@ -20,7 +20,7 @@ export const useCartStore = create<CartStore>()(
               0,
             ),
           );
-          set({total:newTotal});
+          set({ total: newTotal });
         },
 
         // додає товар
