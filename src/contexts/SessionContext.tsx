@@ -30,48 +30,67 @@ export const SessionProvider = ({ children }: SessionProviderProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const token = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("auth-token="))
-        ?.split("=")[1];
+//   useEffect(() => {
+//     const checkAuth = async () => {
+//       const token = document.cookie
+//         .split("; ")
+//         .find((row) => row.startsWith("auth-token="))
+//         ?.split("=")[1];
 
-      if (!token) {
-        setIsLoading(false);
-        return;
+//       if (!token) {
+//         setIsLoading(false);
+//         return;
+//       }
+//         try {
+//           const response = await fetch("/api/auth/verify", {
+//             method: "POST",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({token}),
+//             credentials: "include",
+//           });
+//           if (response.ok) {
+//             const data= await response.json();
+//         if (data.user) {
+//           setSession({ user: data.user, token: null }); 
+//         }
+//           } 
+//         } catch (error) {
+// console.error("Session check failed:", error);
+//         } finally {
+//           setIsLoading(false);
+//         }
+//     };
+
+//     checkAuth();
+//   }, []);
+
+useEffect(() => {
+  const checkAuth = async () => {
+    try {
+      const res = await fetch("/api/auth/verify", { credentials: "include" });
+      if (res.ok) {
+        const { user } = await res.json();
+        setSession({ user, token: null });
       }
-        try {
-          const response = await fetch("/api/auth/verify", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({token}),
-            credentials: "include",
-          });
-          if (response.ok) {
-            const data= await response.json();
-        if (data.user) {
-          setSession({ user: data.user, token: null }); 
-        }
-          } 
-        } catch (error) {
-console.error("Session check failed:", error);
-        } finally {
-          setIsLoading(false);
-        }
-    };
+    } catch (error) {
+      console.error("Session check failed:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    checkAuth();
-  }, []);
+  checkAuth();
+}, []);
 
-  const login = (user: User, token: string) => {
-    setSession({ user, token });
+  const login = (user: User, 
+    // token: string
+  ) => {
+    setSession({ user, token: null });
     setTimeout(() => router.push("/profile"), 0);
-    document.cookie = `auth-token=${token}; path=/; max-age=604800; SameSite=Strict; Secure`;
+    // document.cookie = `auth-token=${token}; path=/; max-age=604800; SameSite=Strict; Secure`;
   };
   const logout = () => {
-    document.cookie =
-      "auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    // document.cookie = "auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     setSession({ user: null, token: null });
     router.push("/");
   };
