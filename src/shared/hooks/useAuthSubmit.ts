@@ -19,7 +19,8 @@ export const useAuthSubmit = (formType: 'signin' | 'signup') => {
   const mutation = useMutation({
     mutationFn: async (data: AuthData) => {
       const endpoint = formType;
-      const url = `/api/auth/${endpoint}`;
+      // const url = `/api/auth/${endpoint}`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${endpoint}`;
       console.log('url', url);
       const response = await fetch(url, {
         method: 'POST',
