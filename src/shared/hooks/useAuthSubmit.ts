@@ -26,7 +26,7 @@ export const useAuthSubmit = (formType: 'signin' | 'signup') => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-        credentials: 'include',
+        // credentials: 'include',
       });
       if (!response.ok) {
         throw new Error(`Помилка ${endpoint}: ${response.statusText} `);
