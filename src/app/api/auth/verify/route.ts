@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 const API_BASE_URL =
-  process.env.AUTH_SERVICE_URL ??
+  // process.env.AUTH_SERVICE_URL ??
   process.env.NEXT_PUBLIC_API_BASE_URL ??
   "http://localhost:3001";
 
